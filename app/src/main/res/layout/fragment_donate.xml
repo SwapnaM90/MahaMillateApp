@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".acitivities.ui.donate.DonateFragment"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_an_amount_of_your_choice"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mninetytechnology.mahamillateapp.custom.RadioGridGroup
+            android:id="@+id/grp_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:columnCount="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17">
+
+            <RadioButton
+                android:id="@+id/rb_fifty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/fifty"
+                android:textSize="15sp"
+                android:textColor="@color/ic_radio_text_color_selector"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="142dp"
+                android:background="@drawable/ic_radio_background_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_margin="10dp" />
+
+            <RadioButton
+                android:id="@+id/rb_hundred"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/hundred"
+                android:textSize="15sp"
+                android:textColor="@color/ic_radio_text_color_selector"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="142dp"
+                android:background="@drawable/ic_radio_background_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_margin="10dp" />
+
+            <RadioButton
+                android:id="@+id/rb_twofifty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/twofifty"
+                android:textSize="15sp"
+                android:textColor="@color/ic_radio_text_color_selector"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="142dp"
+                android:background="@drawable/ic_radio_background_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_margin="10dp" />
+
+            <RadioButton
+                android:id="@+id/rb_fivehundred"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/fivehundred"
+                android:textSize="15sp"
+                android:textColor="@color/ic_radio_text_color_selector"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="142dp"
+                android:background="@drawable/ic_radio_background_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_margin="10dp" />
+
+            <RadioButton
+                android:id="@+id/rb_thousand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/thousand"
+                android:textSize="15sp"
+                android:textColor="@color/ic_radio_text_color_selector"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="142dp"
+                android:background="@drawable/ic_radio_background_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_margin="10dp" />
+
+            <RadioButton
+                android:id="@+id/rb_onethousandfivehundred"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/onethousandfivehundred"
+                android:textSize="15sp"
+                android:textColor="@color/ic_radio_text_color_selector"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="142dp"
+                android:background="@drawable/ic_radio_background_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_margin="10dp" />
+
+
+        </com.mninetytechnology.mahamillateapp.custom.RadioGridGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@color/gray"/>
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/or"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@color/gray"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="@string/any_other_amount" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pay"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+</layout>

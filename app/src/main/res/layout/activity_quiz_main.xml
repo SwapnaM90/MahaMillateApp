@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="quizLevelData"
+            type="com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData" />
+        <variable
+            name="presenter"
+            type="com.mninetytechnology.mahamillateapp.presenter.QuizMainPresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".acitivities.ui.quiz.QuizMainActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:titleTextColor="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/img_leaderboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="10dp"
+                android:onClick="@{()->presenter.goToLeaderBoard()}"
+                android:src="@drawable/ic_leaderboard"
+                app:tint="@color/gray" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_quiz_cup" />
+
+        <LinearLayout
+            android:id="@+id/ll_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_quiz_coin" />
+
+            <TextView
+                android:id="@+id/tv_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(quizLevelData.firstLevel)}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/points"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Level 1" />
+
+        <ProgressBar
+            android:id="@+id/pb_level"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:progressDrawable="@drawable/my_progressbar"
+            android:layout_gravity="center"
+            android:value="20"
+            android:min="0"
+            android:max="100"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_level_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_radio_background"
+            android:drawableRight="@drawable/ic_forward_arrow"
+            android:padding="10dp"
+            android:onClick="@{()->presenter.goToQuiz()}"
+            android:text="@string/level_one" />
+
+        <TextView
+            android:id="@+id/tv_level_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_radio_background"
+            android:drawableRight="@drawable/ic_lock"
+            android:padding="10dp"
+            android:text="@string/level_two" />
+
+        <TextView
+            android:id="@+id/tv_level_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_radio_background"
+            android:drawableRight="@drawable/ic_lock"
+            android:padding="10dp"
+            android:text="@string/level_three" />
+
+    </LinearLayout>
+</layout>

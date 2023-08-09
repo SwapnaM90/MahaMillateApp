@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundedCornerEditText">
+        <attr name="passwordToggleEnabled" format="boolean"/>
+        <attr name="my_text" format="string" />
+        <attr name="hint" format="string"/>
+        <attr name="max" format="integer"/>
+        <attr name="min" format="integer"/>
+        <attr name="my_inputType" format="enum">
+            <enum name="number" value="2"/>
+            <enum name="text" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
