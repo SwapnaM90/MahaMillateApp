@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
 import com.mninetytechnology.mahamillateapp.MainActivity;
@@ -19,8 +20,11 @@ import com.mninetytechnology.mahamillateapp.databinding.ActivityRegistrationBind
 import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.RegisterContract;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.SingleClass;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.presenter.RegisterPresenter;
+
+import java.util.List;
 
 public class RegistrationActivity extends BaseActivity implements RegisterContract.ViewModel {
     private ActivityRegistrationBinding binding;
@@ -35,6 +39,7 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
         helper = new GlobalHelper(this);
         presenter = new RegisterPresenter(this,this);
         binding.setPresenter(presenter);
+        //presenter.getClassData();
     }
 
     @Override
@@ -60,6 +65,12 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
     @Override
     public void showRegisterFailed(String error) {
         ScreenHelper.showErrorSnackBar(binding.getRoot(),error);
+    }
+
+    @Override
+    public void setUpClass(List<SingleClass> classes) {
+        ArrayAdapter<SingleClass> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,android.R.id.text1,classes);
+        binding.sprClassText.setAdapter(adapter);
     }
 
     @Override

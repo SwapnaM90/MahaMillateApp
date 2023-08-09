@@ -14,10 +14,11 @@ public class Contants {
     public static final String UPDATE_DISLIKE = "blog/dislike";
     public static final String UPDATE_VIEW = "blog/view";
     public static final String UPDATE_SHARE = "blog/share";
-    public static final String QUIZ = "quiz";
+    public static final String QUIZ = "quiz/class";
     public static final String GET_QUIZ_DATA = "score";
     public static final String LEADERBORAD = "score/leaderboard";
     public static final String UPDATE_SCORE = "score";
+    public static final String GET_CLASS = "class";
 
     public static String PREF_IS_LOGIN = "PREF_IS_LOGIN";
     public static String PREF_AUTH_TOKEN = "PREF_AUTH_TOKEN";

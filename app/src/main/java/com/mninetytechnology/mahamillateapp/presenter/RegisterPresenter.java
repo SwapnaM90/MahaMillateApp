@@ -18,6 +18,7 @@ import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.RegisterContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.RegisterResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClientLogin;
 
@@ -137,6 +138,35 @@ public class RegisterPresenter implements RegisterContract.Presenter {
             } else {
                 mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
             }
+        }
+    }
+
+    @Override
+    public void getClassData() {
+        if(mActivity.isInternetConnected()) {
+            mActivity.startProgressDialog(mActivity);
+
+            RetrofitClientLogin.getApiService().getClassData().enqueue(new Callback<ClassResponseModel>() {
+                @Override
+                public void onResponse(@NonNull Call<ClassResponseModel> call, @NonNull Response<ClassResponseModel> response) {
+                    if (response.code() == 200 || response.code() == 201) {
+                        assert response.body() != null;
+                        mActivity.dismissProgressDialog();
+                        mViewModel.setUpClass(response.body().getData());
+                    } else {
+                        mActivity.dismissProgressDialog();
+                        mViewModel.showRegisterFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                    }
+                }
+                @Override
+                public void onFailure(@NonNull Call<ClassResponseModel> call, @NonNull Throwable t) {
+                    mActivity.dismissProgressDialog();
+                    mViewModel.showRegisterFailed(t.getMessage());
+                }
+            });
+
+        } else {
+            mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
         }
     }
 

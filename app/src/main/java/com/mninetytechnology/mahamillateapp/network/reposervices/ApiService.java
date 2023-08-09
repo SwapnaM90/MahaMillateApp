@@ -4,6 +4,7 @@ import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData;
 import com.mninetytechnology.mahamillateapp.network.Contants;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.LeaderboardResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.LoginResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.OtpCheckResponseModel;
@@ -145,8 +146,10 @@ public interface ApiService {
      * gets all quiz
      * @return
      */
-    @GET(Contants.QUIZ)
-    Call<QuizResponseModel> getAllQuiz();
+    @GET(Contants.QUIZ+"/{id}")
+    Call<QuizResponseModel> getAllQuiz(
+            @Path("id") String userId
+    );
 
     /**
      * @date 7-8-2023
@@ -194,6 +197,12 @@ public interface ApiService {
             @Field("score") String firstLevel
     );
 
-
+    /**
+     * @date 3-8-2023
+     * gets all class
+     * @return
+     */
+    @GET(Contants.GET_CLASS)
+    Call<ClassResponseModel> getClassData();
 }
 

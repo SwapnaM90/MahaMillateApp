@@ -32,6 +32,9 @@
         android:theme="@style/Theme.MahaMillateApp"
         tools:replace="android:appComponentFactory,allowBackup">
         <activity
+            android:name=".acitivities.ui.MobileCheckActivity"
+            android:exported="false" />
+        <activity
             android:name=".acitivities.base.IntroActivity"
             android:exported="false" />
         <activity

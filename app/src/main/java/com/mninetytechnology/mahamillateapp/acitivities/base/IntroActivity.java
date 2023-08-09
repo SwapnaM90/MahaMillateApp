@@ -1,25 +1,20 @@
 package com.mninetytechnology.mahamillateapp.acitivities.base;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.intro.Info1Fragment;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.intro.Info2Fragment;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.intro.Info3Fragment;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityIntroBinding;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
@@ -50,10 +45,11 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
             public void onPageSelected(int position) {
                 selectPage = position;
 
-                if (position == 0 || position == 1) {
-
-                    binding.btnNext.setText("Next");
-                } else if (position == 2) {
+//                if (position == 0 || position == 1) {
+//
+//                    binding.btnNext.setText("Next");
+//                } else
+                    if (position == 0) {
 
                     binding.btnNext.setText("Finish");
                 }
@@ -70,11 +66,12 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_next) {
+//            if (selectPage == 0) {
+//                binding.vpPager.setCurrentItem(1);
+//            } else if (selectPage == 1) {
+//                binding.vpPager.setCurrentItem(2);
+//            } else
             if (selectPage == 0) {
-                binding.vpPager.setCurrentItem(1);
-            } else if (selectPage == 1) {
-                binding.vpPager.setCurrentItem(2);
-            } else if (selectPage == 2) {
                 if (getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId().trim().isEmpty()) {
                     startActivityOnTop(LoginActivity.class,true);
                 } else {
@@ -85,7 +82,7 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
     }
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
-        private int numItems = 3;
+        private int numItems = 1;
 
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -102,10 +99,10 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
             switch (position) {
                 case 0:
                     return Info1Fragment.newInstance();
-                case 1:
-                    return Info2Fragment.newInstance();
-                case 2:
-                    return Info3Fragment.newInstance();
+//                case 1:
+//                    return Info2Fragment.newInstance();
+//                case 2:
+//                    return Info3Fragment.newInstance();
                 default:
                     return null;
             }

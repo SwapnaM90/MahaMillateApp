@@ -1,19 +1,23 @@
 package com.mninetytechnology.mahamillateapp.network.responsemodel;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizData;
 
 import java.util.ArrayList;
 
 public class QuizResponseModel {
-    public ArrayList<QuizData> Data;
+    @Expose
+    @SerializedName("Data")
+    public QuizData Data;
     public int count;
     public int code;
 
-    public ArrayList<QuizData> getData() {
+    public QuizData getData() {
         return Data;
     }
 
-    public void setData(ArrayList<QuizData> data) {
+    public void setData(QuizData data) {
         Data = data;
     }
 

@@ -34,13 +34,14 @@ public class QuizQuestionsPresenter implements QuizQuestionContract.Presenter {
         if(mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
 
+            String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
-            RetrofitClient.getApiService().getAllQuiz().enqueue(new Callback<QuizResponseModel>() {
+            RetrofitClient.getApiService().getAllQuiz(userId).enqueue(new Callback<QuizResponseModel>() {
                 @Override
                 public void onResponse(Call<QuizResponseModel> call, Response<QuizResponseModel> response) {
                     mActivity.dismissProgressDialog();
                     if (response.code() == 200 && response.body() != null) {
-                        mViewModel.setQuestions(response.body().getData().get(0).getQuestions());
+                        mViewModel.setQuestions(response.body().getData().getQuestions());
                     } else {
                         mViewModel.showFailed(mActivity.getResources().getString(R.string.invalid_response));
                     }
