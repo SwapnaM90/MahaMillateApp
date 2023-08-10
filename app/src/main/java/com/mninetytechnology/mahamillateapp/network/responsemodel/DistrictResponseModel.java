@@ -2,23 +2,22 @@ package com.mninetytechnology.mahamillateapp.network.responsemodel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.SingleClass;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.District;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ClassResponseModel {
+public class DistrictResponseModel {
     @Expose
     @SerializedName("Data")
-    public ArrayList<SingleClass> data;
+    public ArrayList<District> data;
     public int count;
     public int code;
 
-    public ArrayList<SingleClass> getData() {
+    public ArrayList<District> getData() {
         return data;
     }
 
-    public void setData(ArrayList<SingleClass> data) {
+    public void setData(ArrayList<District> data) {
         this.data = data;
     }
 

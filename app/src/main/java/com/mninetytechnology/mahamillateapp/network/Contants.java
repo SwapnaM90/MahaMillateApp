@@ -6,7 +6,7 @@ import android.os.Environment;
 public class Contants {
     public static final String BASE_URL = "https://api.milletsindia.org/";
     public static final String GET_LOGIN = "auth/login";
-    public static final String GET_VERIFY_OTP = "http://43.231.126.249/api/mt/SendSMS";
+    public static final String GET_VERIFY_OTP = "sendOtp.php";
     public static final String REGISTER_USER = "user";
     public static final String BLOG = "blog";
     public static final String VIDEOS = "media";
@@ -19,6 +19,11 @@ public class Contants {
     public static final String LEADERBORAD = "score/leaderboard";
     public static final String UPDATE_SCORE = "score";
     public static final String GET_CLASS = "class";
+    public static final String GET_DIVISION = "village/dvncode";
+    public static final String GET_DISTRICT = "village/districtcode";
+    public static final String GET_TALUKA = "village/taluka";
+    public static final String GET_VILLAGE = "village/villagecode";
+    public static final String APP_ADDRESS = "com.mninetytechnology.mahamillateapp.SYNC_ADDRESS";
 
     public static String PREF_IS_LOGIN = "PREF_IS_LOGIN";
     public static String PREF_AUTH_TOKEN = "PREF_AUTH_TOKEN";

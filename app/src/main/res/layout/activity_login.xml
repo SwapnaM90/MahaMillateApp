@@ -42,47 +42,45 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-            <TextView
-                android:id="@+id/textView7"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/phone_number"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                android:background="#FFFFFF">
 
-            <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                android:id="@+id/edt_username_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                app:hint="@string/phone_number"
-                app:max="10"
-                app:my_inputType="number"
-                app:my_text="@={presenter.userId}"
-                />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone_number"
+                    android:background="@drawable/round_corner_edittext"
+                    android:inputType="number"
+                    android:text="@={presenter.userId}"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:maxLength="10" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView8"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/password_hint"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                android:id="@+id/edt_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hint="@string/password_hint"
+                app:counterEnabled="true"
+                app:counterMaxLength="8"
+                android:background="#FFFFFF"
                 app:passwordToggleEnabled="true"
-                android:layout_marginBottom="10dp"
-                app:my_text="@={presenter.password}"/>
+                app:passwordToggleTint="@color/green">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password_hint"
+                    android:background="@drawable/round_corner_toggle"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:text="@={presenter.password}"
+                    android:maxLength="8" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/textView3"

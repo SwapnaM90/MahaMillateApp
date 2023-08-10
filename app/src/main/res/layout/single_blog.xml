@@ -91,7 +91,8 @@
                         android:layout_height="25dp"
                         android:layout_marginStart="20dp"
                         android:background="@drawable/ic_dislike_selector"
-                        android:button="@null"/>
+                        android:button="@null"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/tv_dislike"
@@ -99,6 +100,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:textSize="18sp"
+                        android:visibility="gone"
                         android:text="@{Integer.toString(blog.dislike)}" />
 
                     <ImageView

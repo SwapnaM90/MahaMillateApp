@@ -9,32 +9,25 @@
             type="com.mninetytechnology.mahamillateapp.presenter.RegisterPresenter" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginActivity">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             android:text="@string/register"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="25sp" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,225 +36,76 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/textView7"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/email"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="10dp">
 
-                <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                    android:id="@+id/edt_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:hint="@string/email"
-                    app:my_inputType="text"
-                    app:my_text="@={presenter.email}" />
-
-                <TextView
-                    android:id="@+id/textViewP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/phone_number"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                    android:id="@+id/edt_phone_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:hint="@string/phone_number"
-                    app:my_inputType="number"
-                    app:max="10"
-                    app:my_text="@={presenter.phone_number}" />
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/name"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                    android:id="@+id/edt_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:hint="@string/name"
-                    app:my_text="@={presenter.name}" />
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/password_hint"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                    android:id="@+id/edt_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:hint="@string/password_hint"
-                    app:passwordToggleEnabled="true"
-                    android:layout_marginBottom="10dp"
-                    app:my_text="@={presenter.password}" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/re_enter_password"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                    android:id="@+id/edt_re_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:hint="@string/re_enter_password"
-                    app:passwordToggleEnabled="true"
-                    app:my_text="@={presenter.re_enter_password}" />
-
-               <!-- <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/state"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                    android:id="@+id/edt_state"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:hint="@string/state"
-                    app:my_text="@={presenter.state}" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/district"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                    android:id="@+id/edt_district"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:hint="@string/district"
-                    app:my_text="@={presenter.district}" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_full_name"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:hint="@string/full_name"
+                        android:background="@drawable/round_corner_edittext"
+                        android:inputType="textPersonName"
+                        android:text="@={presenter.name}"
+                        android:padding="@dimen/activity_horizontal_margin"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <TextView
-                            android:id="@+id/textView13"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/taluka"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="10dp">
 
-                        <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                            android:id="@+id/edt_taluka"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            app:hint="@string/taluka"
-                            app:my_text="@={presenter.taluka}" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_email"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:hint="@string/email"
+                        android:background="@drawable/round_corner_edittext"
+                        android:inputType="textEmailAddress"
+                        android:text="@={presenter.email}"
+                        android:padding="@dimen/activity_horizontal_margin"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <TextView
-                            android:id="@+id/textView12"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/village"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                            android:id="@+id/edt_village"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            app:hint="@string/village"
-                            app:my_text="@={presenter.village}" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textView15"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/zip_code"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />-->
+                    android:background="#FFFFFF"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/green">
 
-                <com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                    android:id="@+id/edt_zip_code"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password_hint"
+                        android:background="@drawable/round_corner_toggle"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="@={presenter.password}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:hint="@string/zip_code"
-                    app:my_inputType="number"
-                    app:max="6"
-                    app:my_text="@={presenter.zip_code}" />
+                    android:background="#FFFFFF"
+                    app:passwordToggleEnabled="true"
+                    android:layout_marginTop="10dp"
+                    app:passwordToggleTint="@color/green">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_re_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/re_enter_password"
+                        android:background="@drawable/round_corner_toggle"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="@={presenter.re_enter_password}"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/textView14"
@@ -269,18 +113,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/class_text"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
-                <!--<com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText
-                    android:id="@+id/edt_class_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:hint="@string/class_text"
-                    app:my_text="@={presenter.user_class}" />-->
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spr_class_text"
@@ -288,27 +125,50 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:entries="@array/arr_class"
-                    android:onItemSelected="@{(parent,view,pos,id)->presenter.onSelectItem(parent,view,pos,id)}"
+                    android:padding="10dp"
+                    android:background="@drawable/round_corner_edittext"
                     />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/address"
+                        android:background="@drawable/round_corner_edittext"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="@={presenter.address}"
+                        android:onClick="@{()->presenter.populateAddress()}"
+                        android:drawableEnd="@drawable/ic_forward_arrow"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_rounded_corner_rectangle"
+                    android:onClick="@{()->presenter.doRegistration()}"
                     android:text="@string/sign_up"
                     android:textAllCaps="false"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:backgroundTint="@color/green"
-                    android:onClick="@{()->presenter.doRegistration()}" />
+                    android:layout_marginTop="10dp"
+                    app:backgroundTint="@color/green" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="30dp"
-                    android:gravity="center">
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView10"
@@ -323,13 +183,13 @@
                         android:layout_marginStart="10dp"
                         android:text="@string/sign_in"
                         android:textColor="@color/green"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
                 </LinearLayout>
 
-<!--                <include layout="@layout/bottom_logo_design" />-->
 
             </LinearLayout>
         </ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

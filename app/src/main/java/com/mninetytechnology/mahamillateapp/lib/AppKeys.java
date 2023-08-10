@@ -10,5 +10,6 @@ public class AppKeys {
     public static final String INCORRECT = "incorrect";
     public static final String NOT_ANSWERED = "not_answered";
     public static final String PHONE_NUMBER = "phone_number";
+    public static final String OTP = "otp";
     public static String loginUserId = "loginUserId";
 }

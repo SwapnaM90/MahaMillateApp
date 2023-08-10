@@ -72,9 +72,9 @@ public class SharedPreferencesHelper extends GlobalHelper {
         editor.apply();
     }
 
-    public void setUserId(String loginUserId) {
+    public void setAddress(String address) {
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(Contants.APP_USER_ID, loginUserId);
+        editor.putString(Contants.APP_ADDRESS, address);
         editor.apply();
     }
 
@@ -122,8 +122,8 @@ public class SharedPreferencesHelper extends GlobalHelper {
         return preferences.getString(Contants.APP_LOGIN_USER_KEY, "");
     }
 
-    public String getUserId(){
-        return preferences.getString(Contants.APP_USER_ID, "");
+    public String getAddress(){
+        return preferences.getString(Contants.APP_ADDRESS, "");
     }
 
     public String getLoginUserRole(){

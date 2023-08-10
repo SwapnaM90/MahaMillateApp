@@ -15,8 +15,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
+import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
-import com.mninetytechnology.mahamillateapp.custom.RoundedCornerEditText;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityLoginBinding;
 import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
@@ -57,9 +57,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
             helper.getSharedPreferencesHelper().setLoginKey(token);
 
             //start otp check activity
-            Intent intent = new Intent(this, OtpCheckActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(AppKeys.loginUserId,userLoginObject.get_id());
-            intent.putExtra(AppKeys.PHONE_NUMBER, RoundedCornerEditText.getMy_text(mBinding.edtUsernameEmail));
+            intent.putExtra(AppKeys.PHONE_NUMBER, mBinding.edtPhoneNumber.getText().toString());
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivityOnTop(false,intent);
         } catch (Exception e) {

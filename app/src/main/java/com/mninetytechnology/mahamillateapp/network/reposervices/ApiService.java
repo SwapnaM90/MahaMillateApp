@@ -1,18 +1,20 @@
 package com.mninetytechnology.mahamillateapp.network.reposervices;
 
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData;
 import com.mninetytechnology.mahamillateapp.network.Contants;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.LeaderboardResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.DivisionResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.LoginResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.OtpCheckResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.OtpResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizLevelResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizScoreResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.RegisterResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.TalukaResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.VideoResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.VillageResponseModel;
 
 import java.util.List;
 
@@ -51,11 +53,9 @@ public interface ApiService {
      * @param email
      * @param phone_number
      * @param password
-     * @param state
      * @param district
      * @param city
      * @param village
-     * @param zip_code
      * @param classText
      * @return
      */
@@ -70,7 +70,6 @@ public interface ApiService {
             @Field("district") String district,
             @Field("city") String city,
             @Field("village") String village,
-            @Field("zip_code") String zip_code,
             @Field("class") String classText
     );
 
@@ -166,11 +165,9 @@ public interface ApiService {
      * gets all quiz data
      * @return
      */
-    @FormUrlEncoded
-    @POST(Contants.GET_QUIZ_DATA)
-    Call<QuizLevelData> getAllQuizData(
-            @Field("userId") String userId,
-            @Field("firstLevel") String firstLevel
+    @GET(Contants.GET_QUIZ_DATA+"/{userId}")
+    Call<QuizLevelResponseModel> getAllQuizData(
+            @Path("userId") String userId
     );
 
     /**
@@ -179,10 +176,10 @@ public interface ApiService {
      * @return
      */
     @FormUrlEncoded
-    @POST(Contants.GET_VERIFY_OTP+"?user=gramup&password=gramup&senderid=MTCDSS&channel=Trans&DCS=0&flashsms=0&number={phone_number}&text={text}&peid=1201159203365304053&DLTTemplateId=1407169096161883164")
+    @POST(Contants.GET_VERIFY_OTP)
     Call<OtpResponseModel> getOtp(
-            @Path("phone_number") String phone_number,
-            @Path("text") String text
+            @Field("number") String number,
+            @Field("otp") String otp
     );
 
     /**
@@ -204,5 +201,43 @@ public interface ApiService {
      */
     @GET(Contants.GET_CLASS)
     Call<ClassResponseModel> getClassData();
+
+    /**
+     * @date 3-8-2023
+     * gets all division
+     * @return
+     */
+    @GET(Contants.GET_DIVISION)
+    Call<DivisionResponseModel> getDivisions();
+
+    /**
+     * @date 3-8-2023
+     * gets all district
+     * @return
+     */
+    @GET(Contants.GET_DISTRICT+"/{division}")
+    Call<DistrictResponseModel> getDistricts(
+            @Path("division") String division
+    );
+
+    /**
+     * @date 3-8-2023
+     * gets all taluka
+     * @return
+     */
+    @GET(Contants.GET_TALUKA+"/{district}")
+    Call<TalukaResponseModel> getTaluka(
+            @Path("district") String district
+    );
+
+    /**
+     * @date 3-8-2023
+     * gets all village
+     * @return
+     */
+    @GET(Contants.GET_VILLAGE+"/{taluka}")
+    Call<VillageResponseModel> getVillage(
+            @Path("taluka") String taluka
+    );
 }
 

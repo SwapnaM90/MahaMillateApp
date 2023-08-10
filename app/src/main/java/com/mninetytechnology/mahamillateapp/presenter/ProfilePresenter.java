@@ -1,0 +1,167 @@
+package com.mninetytechnology.mahamillateapp.presenter;
+
+import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
+
+import com.mninetytechnology.mahamillateapp.R;
+import com.mninetytechnology.mahamillateapp.MainActivity;
+import com.mninetytechnology.mahamillateapp.models.contracts.ProfileContract;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.DivisionResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.RegisterResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.TalukaResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.VillageResponseModel;
+import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClientLogin;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+/**
+ * Created by Swapna Thakur on 3/1/2022.
+ */
+public class ProfilePresenter implements ProfileContract.Presenter {
+    private final MainActivity mActivity;
+    private final ProfileContract.ViewModel mViewModel;
+
+    //Address fields
+    public ObservableField<String> division;
+    public ObservableField<String> district;
+    public ObservableField<String> taluka;
+    public ObservableField<String> village;
+    public ObservableField<String> address;
+
+    public ProfilePresenter(MainActivity mActivity, ProfileContract.ViewModel mViewModel) {
+        this.mActivity = mActivity;
+        this.mViewModel = mViewModel;
+        initFields();
+    }
+
+    private void initFields() {
+        division = new ObservableField<>();
+        district = new ObservableField<>();
+        taluka = new ObservableField<>();
+        village = new ObservableField<>();
+        address = new ObservableField<>();
+    }
+
+    @Override
+    public void getDivision() {
+        if(mActivity.isInternetConnected()) {
+            mActivity.startProgressDialog(mActivity);
+            RetrofitClientLogin.getApiService().getDivisions().enqueue(new Callback<DivisionResponseModel>() {
+                @Override
+                public void onResponse(@NonNull Call<DivisionResponseModel> call, @NonNull Response<DivisionResponseModel> response) {
+                    if (response.code() == 200 || response.code() == 201) {
+                        assert response.body() != null;
+                        mActivity.dismissProgressDialog();
+                        mViewModel.setUpDivision(response.body().getData());
+                    } else {
+                        mActivity.dismissProgressDialog();
+                        mViewModel.showProfileFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                    }
+                }
+                @Override
+                public void onFailure(@NonNull Call<DivisionResponseModel> call, @NonNull Throwable t) {
+                    mActivity.dismissProgressDialog();
+                    mViewModel.showProfileFailed(t.getMessage());
+                }
+            });
+
+        } else {
+            mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
+        }
+    }
+
+    @Override
+    public void getDistrict(String divisionCode) {
+        if(mActivity.isInternetConnected()) {
+            mActivity.startProgressDialog(mActivity);
+            RetrofitClientLogin.getApiService().getDistricts(divisionCode).enqueue(new Callback<DistrictResponseModel>() {
+                @Override
+                public void onResponse(@NonNull Call<DistrictResponseModel> call, @NonNull Response<DistrictResponseModel> response) {
+                    if (response.code() == 200 || response.code() == 201) {
+                        assert response.body() != null;
+                        mActivity.dismissProgressDialog();
+                        mViewModel.setUpDistrict(response.body().getData());
+                    } else {
+                        mActivity.dismissProgressDialog();
+                        mViewModel.showProfileFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                    }
+                }
+                @Override
+                public void onFailure(@NonNull Call<DistrictResponseModel> call, @NonNull Throwable t) {
+                    mActivity.dismissProgressDialog();
+                    mViewModel.showProfileFailed(t.getMessage());
+                }
+            });
+
+        } else {
+            mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
+        }
+    }
+
+    @Override
+    public void getTaluka(String districtCode) {
+        if(mActivity.isInternetConnected()) {
+            mActivity.startProgressDialog(mActivity);
+            RetrofitClientLogin.getApiService().getTaluka(districtCode).enqueue(new Callback<TalukaResponseModel>() {
+                @Override
+                public void onResponse(@NonNull Call<TalukaResponseModel> call, @NonNull Response<TalukaResponseModel> response) {
+                    if (response.code() == 200 || response.code() == 201) {
+                        assert response.body() != null;
+                        mActivity.dismissProgressDialog();
+                        mViewModel.setUpTaluka(response.body().getData());
+                    } else {
+                        mActivity.dismissProgressDialog();
+                        mViewModel.showProfileFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                    }
+                }
+                @Override
+                public void onFailure(@NonNull Call<TalukaResponseModel> call, @NonNull Throwable t) {
+                    mActivity.dismissProgressDialog();
+                    mViewModel.showProfileFailed(t.getMessage());
+                }
+            });
+
+        } else {
+            mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
+        }
+    }
+
+    @Override
+    public void getVillage(String talukaCode) {
+        if(mActivity.isInternetConnected()) {
+            mActivity.startProgressDialog(mActivity);
+            RetrofitClientLogin.getApiService().getVillage(talukaCode).enqueue(new Callback<VillageResponseModel>() {
+                @Override
+                public void onResponse(@NonNull Call<VillageResponseModel> call, @NonNull Response<VillageResponseModel> response) {
+                    if (response.code() == 200 || response.code() == 201) {
+                        assert response.body() != null;
+                        mActivity.dismissProgressDialog();
+                        mViewModel.setUpVillage(response.body().getData());
+                    } else {
+                        mActivity.dismissProgressDialog();
+                        mViewModel.showProfileFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                    }
+                }
+                @Override
+                public void onFailure(@NonNull Call<VillageResponseModel> call, @NonNull Throwable t) {
+                    mActivity.dismissProgressDialog();
+                    mViewModel.showProfileFailed(t.getMessage());
+                }
+            });
+
+        } else {
+            mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
+        }
+    }
+
+    public void populateAddress() {
+        mViewModel.setUpAddress();
+    }
+}

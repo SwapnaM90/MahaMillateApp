@@ -5,97 +5,105 @@
     android:layout_margin="10dp">
 
     <data>
-
+        <variable
+            name="presenter"
+            type="com.mninetytechnology.mahamillateapp.presenter.ProfilePresenter" />
     </data>
 
-    <RelativeLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp"
         tools:context=".acitivities.ui.profile.ProfileFragment">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_default_user"
-                app:civ_border_color="@color/gray"
-                app:civ_border_width="4dp" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Deepak Sharma"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView1"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_radio_background"
-                android:drawableRight="@drawable/ic_forward_arrow"
-                android:padding="10dp"
-                android:text="@string/address" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_radio_background"
-                android:drawableRight="@drawable/ic_forward_arrow"
-                android:padding="10dp"
-                android:text="@string/settings" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_default_user"
+                    app:civ_border_color="@color/gray"
+                    app:civ_border_width="4dp" />
 
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_radio_background"
-                android:drawableRight="@drawable/ic_forward_arrow"
-                android:padding="10dp"
-                android:text="@string/privacy_policy" />
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="Deepak Sharma"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_radio_background"
-                android:drawableRight="@drawable/ic_forward_arrow"
-                android:padding="10dp"
-                android:text="@string/help_and_support" />
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_radio_background"
+                    android:drawableRight="@drawable/ic_forward_arrow"
+                    android:padding="10dp"
+                    android:text="@={presenter.address}"
+                    android:onClick="@{()->presenter.populateAddress()}"/>
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_radio_background"
-                android:drawableRight="@drawable/ic_forward_arrow"
-                android:padding="10dp"
-                android:text="@string/about_us" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_radio_background"
+                    android:drawableRight="@drawable/ic_forward_arrow"
+                    android:padding="10dp"
+                    android:visibility="gone"
+                    android:text="@string/settings" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_radio_background"
+                    android:drawableRight="@drawable/ic_forward_arrow"
+                    android:padding="10dp"
+                    android:text="@string/privacy_policy" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_radio_background"
+                    android:drawableRight="@drawable/ic_forward_arrow"
+                    android:padding="10dp"
+                    android:text="@string/help_and_support" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_radio_background"
+                    android:drawableRight="@drawable/ic_forward_arrow"
+                    android:padding="10dp"
+                    android:text="@string/about_us" />
+            </LinearLayout>
+
 
         <Button
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
             android:text="@string/logout" />
-    </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
 </layout>

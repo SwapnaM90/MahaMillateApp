@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class QuizLevelData {
     public String _id;
+    public Date createdAt;
     public int firstLevel;
     public int secondLevel;
     public int thirdLevel;
-    public Date createdAt;
     public Date updatedAt;
 
     public String get_id() {
@@ -16,6 +16,14 @@ public class QuizLevelData {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public int getFirstLevel() {
@@ -40,14 +48,6 @@ public class QuizLevelData {
 
     public void setThirdLevel(int thirdLevel) {
         this.thirdLevel = thirdLevel;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {

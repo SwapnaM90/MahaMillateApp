@@ -29,17 +29,11 @@ import java.util.concurrent.TimeUnit;
 
 public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewModel, MessageListener {
     public ActivityOtpCheckBinding mBinding;
-    private String loginUserId;
+    private String otp;
     private String phone_number;
     private OtpPresenter mPresenter;
     private GlobalHelper helper;
     private static final String TAG = "OtpCheckActivity";
-
-    PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
-    FirebaseAuth auth;
-    public String verificationCode = "1234";
-
-    //public String otp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,25 +43,15 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
             setContentView(mBinding.getRoot());
             Intent intent = getIntent();
             FirebaseApp.initializeApp(this);
-            if(intent.hasExtra(AppKeys.loginUserId)) {
-                loginUserId = intent.getStringExtra(AppKeys.loginUserId);
+            if(intent.hasExtra(AppKeys.OTP)) {
+                otp = intent.getStringExtra(AppKeys.OTP);
                 phone_number = intent.getStringExtra(AppKeys.PHONE_NUMBER);
             }
-            //mBinding.pinview.setValue("1111");
             helper = new GlobalHelper(this);
             mPresenter = new OtpPresenter(this,OtpCheckActivity.this);
             mPresenter.rootView = mBinding.getRoot();
-            mPresenter.loginId = loginUserId;
             mBinding.setPresenter(mPresenter);
-            //mPresenter.sendOtp(phone_number);
-
-            //StartFirebaseLogin();
-//            PhoneAuthProvider.getInstance().verifyPhoneNumber(
-//                    phone_number,                     // Phone number to verify
-//                    60,                           // Timeout duration
-//                    TimeUnit.SECONDS,                // Unit of timeout
-//                    OtpCheckActivity.this,        // Activity (for callback binding)
-//                    mCallback);
+            mPresenter.otp = otp;
         } catch (Exception e) {
             Log.e(TAG, "onCreate: "+e.getMessage());
         }
@@ -77,11 +61,6 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
     public void getOtp() {
         //save date to shared preference
         try {
-            Calendar calendar = Calendar.getInstance();
-            @SuppressLint("SimpleDateFormat")
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String dateTime = sdf.format(calendar.getTime());
-            helper.getSharedPreferencesHelper().setLoginDateTimeData(dateTime);
             if(isInternetConnected()) {
                 ScreenHelper.showGreenSnackBar(mBinding.getRoot(),getResources().getString(R.string.sucessfull_login));
                 goToDashboard();
@@ -98,17 +77,15 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
         }
     }
 
-    @Override
-    public void saveOtp(String otp) {
-        //this.otp = otp;
-    }
 
     /**
      * @date 3-3-2022
      * navigates to dashboard activity
      */
     private void goToDashboard() {
-        startActivityOnTop(MainActivity.class,false);
+        Intent intent = new Intent(OtpCheckActivity.this,RegistrationActivity.class);
+        intent.putExtra(AppKeys.PHONE_NUMBER,phone_number);
+        startActivityOnTop(false,intent);
     }
 
     @Override
@@ -129,30 +106,5 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
         } else {
             Log.i("OCA:","OTP not Received : ");
         }
-    }
-
-    private void StartFirebaseLogin() {
-
-        auth = FirebaseAuth.getInstance();
-        mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
-            @Override
-            public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-                Toast.makeText(OtpCheckActivity.this,"verification completed",Toast.LENGTH_SHORT).show();
-                //mViewModel.getOtp();
-            }
-
-            @Override
-            public void onVerificationFailed(FirebaseException e) {
-                Toast.makeText(OtpCheckActivity.this,"verification failed",Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                super.onCodeSent(s, forceResendingToken);
-                verificationCode = s;
-                Toast.makeText(OtpCheckActivity.this,"Code sent",Toast.LENGTH_SHORT).show();
-            }
-        };
     }
 }

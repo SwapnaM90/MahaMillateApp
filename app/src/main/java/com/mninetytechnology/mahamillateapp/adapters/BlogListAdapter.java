@@ -109,6 +109,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
                 if (mListener!= null) {
                     mListener.updateShare(share);
                 }
+                holder.binding.imgShare.setEnabled(false);
             }
         });
         holder.binding.imgView.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +122,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
                 if (mListener!= null) {
                     mListener.updateView(views);
                 }
+                holder.binding.imgView.setEnabled(false);
             }
         });
     }

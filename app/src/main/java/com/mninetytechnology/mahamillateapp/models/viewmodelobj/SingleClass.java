@@ -3,11 +3,11 @@ package com.mninetytechnology.mahamillateapp.models.viewmodelobj;
 import java.util.Date;
 
 public class SingleClass {
-    private String _id;
-    private String title;
-    private String description;
-    private Date createdAt;
-    private Date updatedAt;
+    public String _id;
+    public String title;
+    public String description;
+    public Date createdAt;
+    public Date updatedAt;
 
     public String get_id() {
         return _id;

@@ -10,6 +10,7 @@ import androidx.databinding.ObservableField;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.MobileCheckActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.RegistrationActivity;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.LoginContract;
@@ -77,7 +78,6 @@ public class LoginPresenter implements LoginContract.Presenter {
                 mActivity.startProgressDialog(mActivity);
 
                 if (isEmailOrNot()) {
-
                     RetrofitClientLogin.getApiService().getLoginResponse(userId.get(),"",password.get()).enqueue(new Callback<LoginResponseModel>() {
                         @Override
                         public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
@@ -157,6 +157,6 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     public void goToRegister() {
-        mActivity.startActivityOnTop(RegistrationActivity.class,true);
+        mActivity.startActivityOnTop(MobileCheckActivity.class,true);
     }
 }

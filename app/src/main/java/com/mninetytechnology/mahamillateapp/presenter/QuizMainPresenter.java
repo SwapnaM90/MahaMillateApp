@@ -6,6 +6,7 @@ import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizLevelsActivi
 import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizMainActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizMainContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizLevelResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
 
@@ -31,22 +32,20 @@ public class QuizMainPresenter implements QuizMainContract.Presenter {
             mActivity.startProgressDialog(mActivity);
 
             String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();
-            String score = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLastFirstLevelScore();
-
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
-            RetrofitClient.getApiService().getAllQuizData(userId,score).enqueue(new Callback<QuizLevelData>() {
+            RetrofitClient.getApiService().getAllQuizData(userId).enqueue(new Callback<QuizLevelResponseModel>() {
                 @Override
-                public void onResponse(Call<QuizLevelData> call, Response<QuizLevelData> response) {
+                public void onResponse(Call<QuizLevelResponseModel> call, Response<QuizLevelResponseModel> response) {
                     mActivity.dismissProgressDialog();
                     if (response.code() == 200 && response.body() != null) {
-                        mViewModel.setQuiz(response.body());
+                        mViewModel.setQuiz(response.body().getData());
                     } else {
                         mViewModel.showFailed(mActivity.getResources().getString(R.string.invalid_response));
                     }
                 }
 
                 @Override
-                public void onFailure(Call<QuizLevelData> call, Throwable t) {
+                public void onFailure(Call<QuizLevelResponseModel> call, Throwable t) {
                     mActivity.dismissProgressDialog();
                     mViewModel.showFailed(mActivity.getResources().getString(R.string.invalid_response));
                 }

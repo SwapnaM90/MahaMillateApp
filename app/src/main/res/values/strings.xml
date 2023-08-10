@@ -65,7 +65,7 @@
     <string name="state">State</string>
     <string name="district">District</string>
     <string name="taluka">Taluka</string>
-    <string name="village">Village/City</string>
+    <string name="village">Village / City</string>
     <string name="class_text">Class</string>
     <string name="name">Name</string>
     <string name="empty_field">Empty Field</string>
@@ -103,6 +103,16 @@
     <string name="designed_and_developed_by_m90_in">Designed and Developed by M90.in</string>
     <string name="participate_in_all_the_activities">Participate in all the activities</string>
     <string name="donate_as_per_your_wishes">Donate as per your wishes</string>
+    <string name="invalid_mobile_number">Invalid Mobile Number</string>
+    <string name="welcome_to_millet_india">Welcome to Millet India</string>
+    <string name="full_name">Full Name</string>
+    <string name="division">Division</string>
+    <string name="done">Done</string>
+    <string name="please_select_division">Please select division</string>
+    <string name="please_select_district">Please select district</string>
+    <string name="please_select_taluka">Please select taluka</string>
+    <string name="please_select_village">Please select village</string>
+    <string name="maharashtra">Maharashtra</string>
     <array name="arr_class">
         <item>Class 1-4</item>
         <item>Class 5-7</item>

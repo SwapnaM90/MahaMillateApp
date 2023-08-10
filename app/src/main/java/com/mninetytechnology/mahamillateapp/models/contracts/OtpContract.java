@@ -6,15 +6,10 @@ package com.mninetytechnology.mahamillateapp.models.contracts;
 public interface OtpContract {
 
     interface ViewModel {
-//        void getOtp(OtpCheckResponseModel otpCheckResponseModel);
         void getOtp();
-
-        void saveOtp(String otp);
         void showOtpFailed(String error);
     }
     interface Presenter {
-        void sendOtp(String phone_number);
-
         void verifyOtp();
     }
 }
