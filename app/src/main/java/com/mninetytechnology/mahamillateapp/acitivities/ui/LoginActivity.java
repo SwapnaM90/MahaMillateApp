@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
 import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
@@ -52,6 +53,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
     public void login(UserLoginObject userLoginObject,String token) {
         try {
             //save user id and role in shared preference
+            Gson gson = new Gson();
+            String user = gson.toJson(userLoginObject,UserLoginObject.class);
+            helper.getSharedPreferencesHelper().setPrefLoginUser(user);
             helper.getSharedPreferencesHelper().setLoginServerUserId(userLoginObject.get_id());
             helper.getSharedPreferencesHelper().setLoginServerUserClass(userLoginObject.getClass_text());
             helper.getSharedPreferencesHelper().setLoginKey(token);

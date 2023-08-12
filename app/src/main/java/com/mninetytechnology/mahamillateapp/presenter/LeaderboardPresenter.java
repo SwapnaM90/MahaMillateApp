@@ -1,6 +1,7 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
 import com.mninetytechnology.mahamillateapp.R;
+import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.LeaderboardActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.LeaderboardContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
@@ -17,10 +18,10 @@ import retrofit2.Response;
  * Created by Swapna Thakur on 19/7/2023.
  */
 public class LeaderboardPresenter implements LeaderboardContract.Presenter {
-    private final LeaderboardActivity mActivity;
+    private final BaseActivity mActivity;
     private final LeaderboardContract.ViewModel mViewModel;
 
-    public LeaderboardPresenter(LeaderboardActivity mActivity, LeaderboardContract.ViewModel mViewModel) {
+    public LeaderboardPresenter(BaseActivity mActivity, LeaderboardContract.ViewModel mViewModel) {
         this.mActivity = mActivity;
         this.mViewModel = mViewModel;
     }

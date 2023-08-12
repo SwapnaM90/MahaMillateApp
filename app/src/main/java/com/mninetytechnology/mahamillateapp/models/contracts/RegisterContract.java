@@ -22,7 +22,7 @@ public interface RegisterContract {
 
         void setUpClass(List<SingleClass> classes);
         void setUpAddress();
-        void setUpDivision(List<Division> divisions);
+        //void setUpDivision(List<Division> divisions);
         void setUpDistrict(List<District> district);
         void setUpTaluka(List<Taluka> talukas);
         void setUpVillage(List<Village> village);
@@ -32,8 +32,9 @@ public interface RegisterContract {
 
         void getClassData();
 
-        void getDivision();
-        void getDistrict(String divisionCode);
+        //void getDivision();
+        //void getDistrict(String divisionCode);
+        void getDistrict();
         void getTaluka(String districtCode);
         void getVillage(String talukaCode);
     }

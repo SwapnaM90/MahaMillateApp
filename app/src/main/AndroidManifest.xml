@@ -32,6 +32,15 @@
         android:theme="@style/Theme.MahaMillateApp"
         tools:replace="android:appComponentFactory,allowBackup">
         <activity
+            android:name=".acitivities.ui.profile.HelpAndSupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.profile.AboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.profile.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
             android:name=".acitivities.ui.MobileCheckActivity"
             android:exported="false" />
         <activity

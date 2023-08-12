@@ -90,4 +90,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:21.1.1'
     implementation 'com.google.firebase:firebase-auth:22.1.1'
     implementation 'com.tbuonomo:dotsindicator:4.3'
+    implementation 'net.glxn:qrgen:1.4'
 }

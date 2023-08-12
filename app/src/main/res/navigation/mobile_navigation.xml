@@ -17,11 +17,17 @@
         android:label="@string/title_donate"
         tools:layout="@layout/fragment_donate" />
 
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_history"-->
+<!--        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.history.HistoryFragment"-->
+<!--        android:label="@string/title_history"-->
+<!--        tools:layout="@layout/fragment_history" />-->
+
     <fragment
-        android:id="@+id/navigation_history"
-        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.history.HistoryFragment"
-        android:label="@string/title_history"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/navigation_leaderboard"
+        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.leaderboard.LeaderboardFragment"
+        android:label="@string/title_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
 
     <fragment
         android:id="@+id/navigation_profile"

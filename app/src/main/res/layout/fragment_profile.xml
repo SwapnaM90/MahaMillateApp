@@ -35,7 +35,7 @@
                     app:civ_border_width="4dp" />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/tv_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -74,7 +74,8 @@
                     android:background="@drawable/ic_radio_background"
                     android:drawableRight="@drawable/ic_forward_arrow"
                     android:padding="10dp"
-                    android:text="@string/privacy_policy" />
+                    android:text="@string/privacy_policy"
+                    android:onClick="@{()->presenter.goToPrivacyPolicy()}"/>
 
                 <TextView
                     android:id="@+id/textView21"
@@ -84,7 +85,8 @@
                     android:background="@drawable/ic_radio_background"
                     android:drawableRight="@drawable/ic_forward_arrow"
                     android:padding="10dp"
-                    android:text="@string/help_and_support" />
+                    android:text="@string/help_and_support"
+                    android:onClick="@{()->presenter.goToHelpAndSupport()}"/>
 
                 <TextView
                     android:id="@+id/textView2"
@@ -94,7 +96,8 @@
                     android:background="@drawable/ic_radio_background"
                     android:drawableRight="@drawable/ic_forward_arrow"
                     android:padding="10dp"
-                    android:text="@string/about_us" />
+                    android:text="@string/about_us"
+                    android:onClick="@{()->presenter.goToAboutUs()}"/>
             </LinearLayout>
 
 

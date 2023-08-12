@@ -25,7 +25,7 @@ public class Contants {
     public static final String GET_VILLAGE = "village/villagecode";
     public static final String APP_ADDRESS = "com.mninetytechnology.mahamillateapp.SYNC_ADDRESS";
 
-    public static String PREF_IS_LOGIN = "PREF_IS_LOGIN";
+    public static String PREF_LOGIN = "PREF_LOGIN";
     public static String PREF_AUTH_TOKEN = "PREF_AUTH_TOKEN";
 
     public static final String LAST_FIRST_LEVEL_SCORE = "com.mninetytechnology.mahamillateapp.SYNC_LAST_FIRST_LEVEL_SCORE";

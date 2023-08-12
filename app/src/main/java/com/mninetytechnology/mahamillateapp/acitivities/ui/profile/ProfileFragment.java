@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.gson.Gson;
 import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
@@ -24,6 +25,7 @@ import com.mninetytechnology.mahamillateapp.models.contracts.ProfileContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.District;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Division;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Taluka;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Village;
 import com.mninetytechnology.mahamillateapp.presenter.ProfilePresenter;
 
@@ -52,6 +54,12 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
         if (!mActivity.getGlobalHelper().getSharedPreferencesHelper().getAddress().trim().isEmpty()) {
             presenter.address.set(mActivity.getGlobalHelper().getSharedPreferencesHelper().getAddress());
         }
+        Gson gson = new Gson();
+        String userStr = mActivity.getGlobalHelper().getSharedPreferencesHelper().getPrefLoginUser();
+        UserLoginObject obj = gson.fromJson(userStr,UserLoginObject.class);
+        if (obj != null) {
+            binding.tvUserName.setText(obj.getName());
+        }
         binding.setPresenter(presenter);
 
         return binding.getRoot();
@@ -73,24 +81,24 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
         dialog.show();
     }
 
-    @Override
-    public void setUpDivision(List<Division> divisions) {
-        ArrayAdapter<Division> adapter = new ArrayAdapter<>(mActivity, android.R.layout.simple_spinner_dropdown_item,divisions);
-        addressBinding.sprDivision.setAdapter(adapter);
-        addressBinding.sprDivision.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Division selectedDivision = divisions.get(i);
-                presenter.division.set(selectedDivision.divname11);
-                presenter.getDistrict(selectedDivision.dvncode);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-    }
+//    @Override
+//    public void setUpDivision(List<Division> divisions) {
+//        ArrayAdapter<Division> adapter = new ArrayAdapter<>(mActivity, android.R.layout.simple_spinner_dropdown_item,divisions);
+//        addressBinding.sprDivision.setAdapter(adapter);
+//        addressBinding.sprDivision.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                Division selectedDivision = divisions.get(i);
+//                presenter.division.set(selectedDivision.divname11);
+//                presenter.getDistrict(selectedDivision.dvncode);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
+//    }
 
     @Override
     public void setUpDistrict(List<District> district) {
@@ -152,22 +160,24 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
         addressBinding.btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (presenter.division.get().isEmpty()) {
-                    Toast.makeText(mActivity, getResources().getString(R.string.please_select_division), Toast.LENGTH_SHORT).show();
-                }else if (presenter.district.get().isEmpty()) {
+//                if (presenter.division.get().isEmpty()) {
+//                    Toast.makeText(mActivity, getResources().getString(R.string.please_select_division), Toast.LENGTH_SHORT).show();
+//                }else
+                if (presenter.district.get().isEmpty()) {
                     Toast.makeText(mActivity, getResources().getString(R.string.please_select_district), Toast.LENGTH_SHORT).show();
                 }else if (presenter.taluka.get().isEmpty()) {
                     Toast.makeText(mActivity, getResources().getString(R.string.please_select_taluka), Toast.LENGTH_SHORT).show();
                 }else if (presenter.village.get().isEmpty()) {
                     Toast.makeText(mActivity, getResources().getString(R.string.please_select_village), Toast.LENGTH_SHORT).show();
                 } else {
-                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+presenter.division.get()+","+getResources().getString(R.string.maharashtra));
+                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+getResources().getString(R.string.maharashtra));
+//                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+presenter.division.get()+","+getResources().getString(R.string.maharashtra));
                     mActivity.getGlobalHelper().getSharedPreferencesHelper().setAddress(presenter.address.get());
                     dialog.dismiss();
                 }
             }
         });
-        presenter.getDivision();
+        presenter.getDistrict();
     }
 
     @Override

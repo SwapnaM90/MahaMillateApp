@@ -26,14 +26,14 @@ public class SharedPreferencesHelper extends GlobalHelper {
         editor.apply();
     }
 
-    public void setPrefIsLogin(boolean isLogin) {
+    public void setPrefLoginUser(String user) {
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(Contants.PREF_IS_LOGIN, isLogin);
+        editor.putString(Contants.PREF_LOGIN, user);
         editor.apply();
     }
 
-    public boolean getPrefIsLogin() {
-        return preferences.getBoolean(Contants.PREF_IS_LOGIN, false);
+    public String getPrefLoginUser() {
+        return preferences.getString(Contants.PREF_LOGIN, "");
     }
 
     public void setPrefAuthToken(String auth_token) {

@@ -113,10 +113,21 @@
     <string name="please_select_taluka">Please select taluka</string>
     <string name="please_select_village">Please select village</string>
     <string name="maharashtra">Maharashtra</string>
+    <string name="title_leaderboard">Leaderboard</string>
+    <string name="please_select_amount">Please select amount</string>
     <array name="arr_class">
         <item>Class 1-4</item>
         <item>Class 5-7</item>
         <item>Class 8-10</item>
         <item>More than 10</item>
     </array>
+    <string name="title_activity_privacy_policy">PrivacyPolicyActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="call_or_whatsapp_us_on">Call or WhatsApp us on :</string>
+    <string name="_91_82754_41808">+91 82754 41808</string>
+    <string name="_91_9028995999">+91 9028995999</string>
+    <string name="_91_9545960254">+91 9545960254</string>
+    <string name="mail_us_on">Mail us on</string>
+    <string name="tifanfoundation_gmail_com">tifanfoundation@gmail.com</string>
 </resources>

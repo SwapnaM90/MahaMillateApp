@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
 import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
@@ -71,6 +72,9 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
             helper.getSharedPreferencesHelper().setLoginDateTimeData(dateTime);
 
             //save user id and role in shared preference
+            Gson gson = new Gson();
+            String user = gson.toJson(userLoginObject,UserLoginObject.class);
+            helper.getSharedPreferencesHelper().setPrefLoginUser(user);
             helper.getSharedPreferencesHelper().setLoginServerUserId(userLoginObject.get_id());
             helper.getSharedPreferencesHelper().setLoginServerUserClass(userLoginObject.getClass_text());
             helper.getSharedPreferencesHelper().setLoginKey(token);
@@ -118,24 +122,24 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
         dialog.show();
     }
 
-    @Override
-    public void setUpDivision(List<Division> divisions) {
-        ArrayAdapter<Division> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,divisions);
-        addressBinding.sprDivision.setAdapter(adapter);
-        addressBinding.sprDivision.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Division selectedDivision = divisions.get(i);
-                presenter.division.set(selectedDivision.divname11);
-                presenter.getDistrict(selectedDivision.dvncode);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-    }
+//    @Override
+//    public void setUpDivision(List<Division> divisions) {
+//        ArrayAdapter<Division> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,divisions);
+//        addressBinding.sprDivision.setAdapter(adapter);
+//        addressBinding.sprDivision.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                Division selectedDivision = divisions.get(i);
+//                presenter.division.set(selectedDivision.divname11);
+//                presenter.getDistrict(selectedDivision.dvncode);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
+//    }
 
     @Override
     public void setUpDistrict(List<District> district) {
@@ -197,22 +201,24 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
         addressBinding.btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (presenter.division.get().isEmpty()) {
-                    Toast.makeText(RegistrationActivity.this, getResources().getString(R.string.please_select_division), Toast.LENGTH_SHORT).show();
-                }else if (presenter.district.get().isEmpty()) {
+//                if (presenter.division.get().isEmpty()) {
+//                    Toast.makeText(RegistrationActivity.this, getResources().getString(R.string.please_select_division), Toast.LENGTH_SHORT).show();
+//                }else
+                if (presenter.district.get().isEmpty()) {
                     Toast.makeText(RegistrationActivity.this, getResources().getString(R.string.please_select_district), Toast.LENGTH_SHORT).show();
                 }else if (presenter.taluka.get().isEmpty()) {
                     Toast.makeText(RegistrationActivity.this, getResources().getString(R.string.please_select_taluka), Toast.LENGTH_SHORT).show();
                 }else if (presenter.village.get().isEmpty()) {
                     Toast.makeText(RegistrationActivity.this, getResources().getString(R.string.please_select_village), Toast.LENGTH_SHORT).show();
                 } else {
-                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+presenter.division.get()+","+getResources().getString(R.string.maharashtra));
+                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+getResources().getString(R.string.maharashtra));
+//                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+presenter.division.get()+","+getResources().getString(R.string.maharashtra));
                     getGlobalHelper().getSharedPreferencesHelper().setAddress(presenter.address.get());
                     dialog.dismiss();
                 }
             }
         });
-        presenter.getDivision();
+        presenter.getDistrict();
     }
 
     @Override

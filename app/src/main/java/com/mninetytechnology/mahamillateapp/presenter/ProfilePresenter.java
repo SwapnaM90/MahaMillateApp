@@ -7,6 +7,9 @@ import androidx.databinding.ObservableField;
 
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.MainActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.profile.AboutUsActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.profile.HelpAndSupportActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.profile.PrivacyPolicyActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.ProfileContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
@@ -29,7 +32,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     private final ProfileContract.ViewModel mViewModel;
 
     //Address fields
-    public ObservableField<String> division;
+//    public ObservableField<String> division;
     public ObservableField<String> district;
     public ObservableField<String> taluka;
     public ObservableField<String> village;
@@ -42,46 +45,46 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     }
 
     private void initFields() {
-        division = new ObservableField<>();
+//        division = new ObservableField<>();
         district = new ObservableField<>();
         taluka = new ObservableField<>();
         village = new ObservableField<>();
         address = new ObservableField<>();
     }
 
+//    @Override
+//    public void getDivision() {
+//        if(mActivity.isInternetConnected()) {
+//            mActivity.startProgressDialog(mActivity);
+//            RetrofitClientLogin.getApiService().getDivisions().enqueue(new Callback<DivisionResponseModel>() {
+//                @Override
+//                public void onResponse(@NonNull Call<DivisionResponseModel> call, @NonNull Response<DivisionResponseModel> response) {
+//                    if (response.code() == 200 || response.code() == 201) {
+//                        assert response.body() != null;
+//                        mActivity.dismissProgressDialog();
+//                        mViewModel.setUpDivision(response.body().getData());
+//                    } else {
+//                        mActivity.dismissProgressDialog();
+//                        mViewModel.showProfileFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+//                    }
+//                }
+//                @Override
+//                public void onFailure(@NonNull Call<DivisionResponseModel> call, @NonNull Throwable t) {
+//                    mActivity.dismissProgressDialog();
+//                    mViewModel.showProfileFailed(t.getMessage());
+//                }
+//            });
+//
+//        } else {
+//            mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
+//        }
+//    }
+
     @Override
-    public void getDivision() {
+    public void getDistrict() {
         if(mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
-            RetrofitClientLogin.getApiService().getDivisions().enqueue(new Callback<DivisionResponseModel>() {
-                @Override
-                public void onResponse(@NonNull Call<DivisionResponseModel> call, @NonNull Response<DivisionResponseModel> response) {
-                    if (response.code() == 200 || response.code() == 201) {
-                        assert response.body() != null;
-                        mActivity.dismissProgressDialog();
-                        mViewModel.setUpDivision(response.body().getData());
-                    } else {
-                        mActivity.dismissProgressDialog();
-                        mViewModel.showProfileFailed(""+mActivity.getResources().getString(R.string.invalid_response));
-                    }
-                }
-                @Override
-                public void onFailure(@NonNull Call<DivisionResponseModel> call, @NonNull Throwable t) {
-                    mActivity.dismissProgressDialog();
-                    mViewModel.showProfileFailed(t.getMessage());
-                }
-            });
-
-        } else {
-            mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
-        }
-    }
-
-    @Override
-    public void getDistrict(String divisionCode) {
-        if(mActivity.isInternetConnected()) {
-            mActivity.startProgressDialog(mActivity);
-            RetrofitClientLogin.getApiService().getDistricts(divisionCode).enqueue(new Callback<DistrictResponseModel>() {
+            RetrofitClientLogin.getApiService().getDistricts().enqueue(new Callback<DistrictResponseModel>() {
                 @Override
                 public void onResponse(@NonNull Call<DistrictResponseModel> call, @NonNull Response<DistrictResponseModel> response) {
                     if (response.code() == 200 || response.code() == 201) {
@@ -163,5 +166,17 @@ public class ProfilePresenter implements ProfileContract.Presenter {
 
     public void populateAddress() {
         mViewModel.setUpAddress();
+    }
+
+    public void goToPrivacyPolicy() {
+        mActivity.startActivityOnTop(PrivacyPolicyActivity.class,false);
+    }
+
+    public void goToHelpAndSupport() {
+        mActivity.startActivityOnTop(HelpAndSupportActivity.class,false);
+    }
+
+    public void goToAboutUs() {
+        mActivity.startActivityOnTop(AboutUsActivity.class,false);
     }
 }

@@ -181,11 +181,11 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/edt_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:hint="@string/any_other_amount" />
 
         <Button

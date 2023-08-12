@@ -215,9 +215,9 @@ public interface ApiService {
      * gets all district
      * @return
      */
-    @GET(Contants.GET_DISTRICT+"/{division}")
+    @GET(Contants.GET_DISTRICT)
     Call<DistrictResponseModel> getDistricts(
-            @Path("division") String division
+            //@Path("division") String division
     );
 
     /**
