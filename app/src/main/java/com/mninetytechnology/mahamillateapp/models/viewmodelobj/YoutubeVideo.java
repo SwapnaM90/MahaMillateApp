@@ -9,6 +9,7 @@ public class YoutubeVideo {
     public String url;
     public Date createdAt;
     public Date updatedAt;
+    public boolean isSpecial;
 
     public String get_id() {
         return _id;
@@ -56,5 +57,13 @@ public class YoutubeVideo {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public boolean isSpecial() {
+        return isSpecial;
+    }
+
+    public void setSpecial(boolean special) {
+        isSpecial = special;
     }
 }
