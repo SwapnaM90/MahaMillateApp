@@ -25,15 +25,11 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:titleTextColor="@color/white">
+            app:titleTextColor="@color/white"
+            app:title="@string/quiz"
+            app:navigationIcon="@drawable/ic_back_arrow">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quiz"
-                android:textColor="@color/white" />
-
-            <ImageView
+        <ImageView
                 android:id="@+id/img_leaderboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

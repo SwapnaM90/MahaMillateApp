@@ -27,13 +27,9 @@
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
-                app:titleTextColor="@color/white">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/levels"
-                    android:textColor="@color/white" />
+                app:titleTextColor="@color/white"
+                app:title="@string/levels"
+                app:navigationIcon="@drawable/ic_back_arrow">
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -73,16 +69,12 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/tv_rules"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:text="Each question will be allotted 60 seconds.
-There are 100 questions for a total of 100 points.
-1 point for each correct answer.
-A certificate will be awarded if at least 50 questions are answered.
-Final decision will be with the organizers." />
+                android:textSize="15sp"
+                android:text="@={presenter.rules}"/>
 
         </LinearLayout>
 

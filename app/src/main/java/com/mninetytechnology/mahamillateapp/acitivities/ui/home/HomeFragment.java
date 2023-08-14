@@ -191,7 +191,7 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onResponse(Call<VideoResponseModel> call, Response<VideoResponseModel> response) {
                     mActivity.dismissProgressDialog();
-                    if (response.code() == 200 && response.body() != null) {
+                    if (response.code() == 200 && response.body() != null && response.body().getData() != null) {
                         for (int i = 0; i < response.body().getData().size(); i++) {
                             YoutubeVideo video = response.body().getData().get(i);
                             if(video.isSpecial) {
@@ -231,6 +231,7 @@ public class HomeFragment extends Fragment {
                             @Override
                             public void onReady() {
                                 initializedYouTubePlayer.loadVideo(video_id, 0);
+                                initializedYouTubePlayer.pause();
                             }
                         }), true);
     }

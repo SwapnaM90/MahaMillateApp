@@ -30,6 +30,12 @@ public class QuizMainActivity extends BaseActivity implements QuizMainContract.V
         mPresenter.getQuizData();
         mBinding.pbLevel.setProgress(30);
         mBinding.llPoints.setVisibility(View.GONE);
+        mBinding.toolbar2.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
 

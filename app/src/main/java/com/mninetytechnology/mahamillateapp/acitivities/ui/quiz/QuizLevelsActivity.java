@@ -3,6 +3,7 @@ package com.mninetytechnology.mahamillateapp.acitivities.ui.quiz;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
@@ -21,6 +22,13 @@ public class QuizLevelsActivity extends BaseActivity implements QuizLevelContrac
         mBinding = DataBindingUtil.setContentView(this,R.layout.activity_quiz_levels);
         mPresenter = new QuizLevelPresenter(this,this);
         mBinding.setPresenter(mPresenter);
+        mPresenter.getLevelData();
+        mBinding.toolbar2.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override

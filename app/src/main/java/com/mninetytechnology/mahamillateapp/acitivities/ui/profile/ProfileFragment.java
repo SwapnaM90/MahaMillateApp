@@ -59,6 +59,9 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
         UserLoginObject obj = gson.fromJson(userStr,UserLoginObject.class);
         if (obj != null) {
             binding.tvUserName.setText(obj.getName());
+            presenter.address.set(""+obj.getVillage()+","+obj.getDistrict()+","+obj.getState());
+            presenter.district.set(obj.getDistrict());
+            presenter.village.set(obj.getVillage());
         }
         binding.setPresenter(presenter);
 

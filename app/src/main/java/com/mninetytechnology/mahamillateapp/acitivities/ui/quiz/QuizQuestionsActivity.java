@@ -206,7 +206,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
 
     @Override
     public void changeQuestion(){
-        if (quesNum<questionsList.size()-1) {
+        //if (quesNum<questionsList.size()-1) {
             if (!selectedQuestion.trim().isEmpty()) {
                 if (selectedQuestion.equalsIgnoreCase(questionsList.get(quesNum).getAnswer())) {
                     score++;
@@ -215,6 +215,10 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
                 }
             }
             quesNum++;
+        if (quesNum < questionsList.size()) {
+            if (quesNum == questionsList.size() -1) {
+                binding.btnNext.setText(getString(R.string.finish));
+            }
             if (isImage) {
                 setImageQuestion(quesNum);
             } else {
@@ -233,13 +237,16 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
             selectedQuestion = "";
             starttimer();
         }else{
+            int tot_questions = questionsList.size();
+            int answered = score + incorrect;
+            int not_answered = tot_questions - answered;
             quizScore.setScore(score);
             quizScore.setIncorrect_questions(incorrect);
-            quizScore.setTot_questions(questionsList.size());
-            quizScore.setNot_answered_questions(questionsList.size()-(score+incorrect));
+            quizScore.setTot_questions(tot_questions);
+            quizScore.setNot_answered_questions(not_answered);
             //go to score activity
-            Intent intent=new Intent(QuizQuestionsActivity.this,QuizScoreActivity.class);
-            intent.putExtra(AppKeys.SCORE,quizScore);
+            Intent intent = new Intent(QuizQuestionsActivity.this, QuizScoreActivity.class);
+            intent.putExtra(AppKeys.SCORE, quizScore);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             this.finish();

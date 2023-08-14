@@ -39,11 +39,8 @@ public class LeaderboardActivity extends BaseActivity implements LeaderboardCont
 
     @Override
     public void setUpLeaderboardAdapter(List<Leaderboard> leaderboard) {
-        mAdapter = new LeaderboardListAdapter(this, leaderboard, new LeaderboardListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClicked(Leaderboard listModel, int position) {
+        mAdapter = new LeaderboardListAdapter(this, leaderboard, (listModel, position) -> {
 
-            }
         });
         binding.rvLeaderboard.setLayoutManager(new LinearLayoutManager(LeaderboardActivity.this));
         binding.rvLeaderboard.setAdapter(mAdapter);

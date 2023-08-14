@@ -20,13 +20,8 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:titleTextColor="@color/white">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cetificate"
-                android:textColor="@color/white" />
+            app:titleTextColor="@color/white"
+            app:title="@string/cetificate">
 
         </androidx.appcompat.widget.Toolbar>
 
