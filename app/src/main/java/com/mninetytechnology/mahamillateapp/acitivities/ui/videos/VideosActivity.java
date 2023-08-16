@@ -15,6 +15,7 @@ import com.mninetytechnology.mahamillateapp.models.contracts.YoutubeVideoContrac
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.YoutubeVideo;
 import com.mninetytechnology.mahamillateapp.presenter.YoutubeVideoPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VideosActivity extends BaseActivity implements YoutubeVideoContract.ViewModel {
@@ -46,7 +47,13 @@ public class VideosActivity extends BaseActivity implements YoutubeVideoContract
 
     @Override
     public void setUpYoutubeVideoAdapter(List<YoutubeVideo> youtubeVideos) {
-        adapter = new YoutubeVideoListAdapter(VideosActivity.this, youtubeVideos, new YoutubeVideoListAdapter.OnItemClickListener() {
+        List<YoutubeVideo> youtubeVideoList = new ArrayList<>();
+        for (int i = 0; i < youtubeVideos.size(); i++) {
+            if (!youtubeVideos.get(i).isSpecial) {
+                youtubeVideoList.add(youtubeVideos.get(i));
+            }
+        }
+        adapter = new YoutubeVideoListAdapter(VideosActivity.this, youtubeVideoList, new YoutubeVideoListAdapter.OnItemClickListener() {
             @Override
             public void onItemClicked(YoutubeVideo listModel, int position) {
 

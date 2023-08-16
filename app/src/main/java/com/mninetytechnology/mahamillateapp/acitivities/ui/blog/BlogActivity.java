@@ -47,24 +47,25 @@ public class BlogActivity extends BaseActivity implements BlogContract.ViewModel
             }
 
             @Override
-            public void updateLike(boolean isAdd, int like) {
-                mPresenter.updateLike(isAdd);
+            public void updateLike(Blog listModel, boolean isAdd, int like) {
+                mPresenter.updateLike(isAdd,listModel._id);
             }
 
             @Override
-            public void updateDislike(boolean isAdd, int dislike) {
-                mPresenter.updateDislike(isAdd);
+            public void updateDislike(Blog listModel, boolean isAdd, int dislike) {
+                mPresenter.updateDislike(isAdd,listModel._id);
             }
 
             @Override
-            public void updateShare(int share) {
-                mPresenter.updateShare();
+            public void updateShare(Blog listModel, int share) {
+                mPresenter.updateShare(listModel._id);
             }
 
             @Override
-            public void updateView(int view) {
-                mPresenter.updateView();
+            public void updateView(Blog listModel, int view) {
+                mPresenter.updateView(listModel._id);
             }
+
         });
         mBinding.rvBlog.setLayoutManager(new LinearLayoutManager(BlogActivity.this));
         mBinding.rvBlog.setAdapter(adapter);

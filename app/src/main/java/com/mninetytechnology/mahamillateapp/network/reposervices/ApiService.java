@@ -2,6 +2,7 @@ package com.mninetytechnology.mahamillateapp.network.reposervices;
 
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
 import com.mninetytechnology.mahamillateapp.network.Contants;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogLikeResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictResponseModel;
@@ -100,9 +101,10 @@ public interface ApiService {
      * @return
      */
     @FormUrlEncoded
-    @POST(Contants.UPDATE_LIKE)
-    Call<BlogResponseModel> updateLike(
-            @Field("type") String type
+    @POST(Contants.UPDATE_LIKE+"/{blogId}")
+    Call<BlogLikeResponseModel> updateLike(
+            @Field("type") String type,
+            @Path("blogId") String blogId
     );
 
     /**
@@ -111,9 +113,10 @@ public interface ApiService {
      * @return
      */
     @FormUrlEncoded
-    @POST(Contants.UPDATE_DISLIKE)
-    Call<BlogResponseModel> updateDislike(
-            @Field("type") String type
+    @POST(Contants.UPDATE_DISLIKE+"/{blogId}")
+    Call<BlogLikeResponseModel> updateDislike(
+            @Field("type") String type,
+            @Path("blogId") String blogId
     );
 
     /**
@@ -121,16 +124,22 @@ public interface ApiService {
      * update view
      * @return
      */
-    @GET(Contants.UPDATE_VIEW)
-    Call<BlogResponseModel> updateView();
+    //@FormUrlEncoded
+    @POST(Contants.UPDATE_VIEW+"/{blogId}")
+    Call<BlogLikeResponseModel> updateView(
+            @Path("blogId") String blogId
+    );
 
     /**
      * @date 3-8-2023
      * update share
      * @return
      */
-    @GET(Contants.UPDATE_SHARE)
-    Call<BlogResponseModel> updateShare();
+    //@FormUrlEncoded
+    @POST(Contants.UPDATE_SHARE+"/{blogId}")
+    Call<BlogLikeResponseModel> updateShare(
+            @Path("blogId") String blogId
+    );
 
     /**
      * @date 3-8-2023

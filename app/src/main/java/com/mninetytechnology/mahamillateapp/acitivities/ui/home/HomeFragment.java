@@ -43,26 +43,6 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         mActivity = (MainActivity) getActivity();
 
-       /* Pie pie = AnyChart.pie();
-
-        pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
-            @Override
-            public void onClick(Event event) {
-                Toast.makeText(getContext(), event.getData().get("x") + ":" + event.getData().get("value"), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("Grain", 100));
-        data.add(new ValueDataEntry("Money", 200));
-
-        pie.data(data);
-
-        pie.palette().itemAt(0,new SolidFill("#D7AF19",1));
-        pie.palette().itemAt(1,new SolidFill("#AE5D57",1));
-
-        pie.title("Total donations made");*/
-
         binding.pieChart.addPieSlice(
                 new PieModel(
                         "Grain",
@@ -77,21 +57,14 @@ public class HomeFragment extends Fragment {
         // To animate the pie chart
         binding.pieChart.startAnimation();
 
-        binding.llVideos.setOnClickListener(new View.OnClickListener() {
+        binding.imgVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openVideosActivity();
             }
         });
 
-        binding.imgVideos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openVideosActivity();
-            }
-        });
-
-        binding.tvVideos.setOnClickListener(new View.OnClickListener() {
+        binding.tvVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openVideosActivity();
@@ -139,20 +112,6 @@ public class HomeFragment extends Fragment {
                 openQuizActivity();
             }
         });
-//
-//        pie.labels().position("outside");
-//
-//        pie.legend().title().enabled(true);
-//        pie.legend().title()
-//                .text("Retail channels")
-//                .padding(0d, 0d, 10d, 0d);
-//
-//        pie.legend()
-//                .position("center-bottom")
-//                .itemsLayout(LegendLayout.HORIZONTAL)
-//                .align(Align.CENTER);
-
-//        binding.pieChart.setChart(pie);
 
         getVideos();
 
@@ -224,6 +183,7 @@ public class HomeFragment extends Fragment {
 
         String video_id = StringUtil.getYoutubeID(youtubeVideo.getUrl());
         mActivity.getLifecycle().addObserver(binding.youtubeView);
+        binding.textViewTitle.setText(youtubeVideo.title);
         binding.youtubeView.getPlayerUIController();
         binding.youtubeView.initialize(
                 initializedYouTubePlayer -> initializedYouTubePlayer.addListener(

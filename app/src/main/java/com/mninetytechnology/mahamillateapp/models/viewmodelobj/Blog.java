@@ -10,6 +10,7 @@ public class Blog {
     public int dislike;
     public int share;
     public int views;
+    public String image;
     public Date createdAt;
     public Date updatedAt;
     public int __v;
@@ -92,5 +93,13 @@ public class Blog {
 
     public void set__v(int __v) {
         this.__v = __v;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

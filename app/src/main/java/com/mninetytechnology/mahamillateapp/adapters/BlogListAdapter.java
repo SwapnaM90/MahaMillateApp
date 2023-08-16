@@ -9,6 +9,7 @@ import android.widget.CompoundButton;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.mninetytechnology.mahamillateapp.databinding.SingleBlogBinding;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Blog;
 
@@ -36,6 +37,9 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
     public void onBindViewHolder(@NonNull BlogHolder holder, int position) {
         Blog listItem = stateList.get(position);
         holder.binding.setBlog(listItem);
+        Glide.with(context)
+                .load(listItem.image)
+                .into(holder.binding.imgBlog);
         holder.binding.imgBlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +65,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
                     stateList.get(holder.getAdapterPosition()).setLike(like);
                     notifyDataSetChanged();
                     if (mListener!= null) {
-                        mListener.updateLike(true,like);
+                        mListener.updateLike(listItem,true,like);
                     }
                 } else {
                     int like = stateList.get(holder.getAdapterPosition()).getLike();
@@ -69,7 +73,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
                     stateList.get(holder.getAdapterPosition()).setLike(like);
                     notifyDataSetChanged();
                     if (mListener!= null) {
-                        mListener.updateLike(false,like);
+                        mListener.updateLike(listItem,false,like);
                     }
                 }
             }
@@ -84,7 +88,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
                     stateList.get(holder.getAdapterPosition()).setDislike(dislike);
                     notifyDataSetChanged();
                     if (mListener!= null) {
-                        mListener.updateDislike(true,dislike);
+                        mListener.updateDislike(listItem,true,dislike);
                     }
                 } else {
                     int dislike = stateList.get(holder.getAdapterPosition()).getDislike();
@@ -92,7 +96,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
                     stateList.get(holder.getAdapterPosition()).setDislike(dislike);
                     notifyDataSetChanged();
                     if (mListener!= null) {
-                        mListener.updateDislike(false,dislike);
+                        mListener.updateDislike(listItem,false,dislike);
                     }
                 }
             }
@@ -107,7 +111,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
                 stateList.get(holder.getAdapterPosition()).setShare(share);
                 notifyDataSetChanged();
                 if (mListener!= null) {
-                    mListener.updateShare(share);
+                    mListener.updateShare(listItem,share);
                 }
                 holder.binding.imgShare.setEnabled(false);
             }
@@ -120,7 +124,7 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
                 stateList.get(holder.getAdapterPosition()).setViews(views);
                 notifyDataSetChanged();
                 if (mListener!= null) {
-                    mListener.updateView(views);
+                    mListener.updateView(listItem,views);
                 }
                 holder.binding.imgView.setEnabled(false);
             }
@@ -143,9 +147,9 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
 
     public interface OnItemClickListener {
         void onItemClicked(Blog listModel, int position);
-        void updateLike(boolean isAdd,int like);
-        void updateDislike(boolean isAdd,int dislike);
-        void updateShare(int share);
-        void updateView(int view);
+        void updateLike(Blog listModel,boolean isAdd,int like);
+        void updateDislike(Blog listModel,boolean isAdd,int dislike);
+        void updateShare(Blog listModel,int share);
+        void updateView(Blog listModel,int view);
     }
 }

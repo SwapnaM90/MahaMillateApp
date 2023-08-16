@@ -42,7 +42,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
             mPresenter = new LoginPresenter(this,this);
             mPresenter.rootView = mBinding.getRoot();
             //mPresenter.userId.set("00001");
-            askPermission();
+            //askPermission();
             mBinding.setPresenter(mPresenter);
         } catch (Exception e) {
             Log.e(TAG, "onCreate: "+e.getMessage());

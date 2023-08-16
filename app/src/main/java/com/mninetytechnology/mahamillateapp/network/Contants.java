@@ -12,7 +12,7 @@ public class Contants {
     public static final String VIDEOS = "media";
     public static final String UPDATE_LIKE = "blog/like";
     public static final String UPDATE_DISLIKE = "blog/dislike";
-    public static final String UPDATE_VIEW = "blog/view";
+    public static final String UPDATE_VIEW = "blog/views";
     public static final String UPDATE_SHARE = "blog/share";
     public static final String QUIZ = "quiz/class";
     public static final String GET_QUIZ_DATA = "score";

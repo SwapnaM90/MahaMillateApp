@@ -18,9 +18,9 @@ public interface BlogContract {
     }
     interface Presenter {
         void getBlogs();
-        void updateLike(boolean isAdd);
-        void updateDislike(boolean isAdd);
-        void updateShare();
-        void updateView();
+        void updateLike(boolean isAdd,String blogId);
+        void updateDislike(boolean isAdd,String blogId);
+        void updateShare(String blogId);
+        void updateView(String blogId);
     }
 }
