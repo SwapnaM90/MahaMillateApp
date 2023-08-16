@@ -17,6 +17,9 @@
         android:theme="@style/Theme.MahaMillateApp"
         tools:replace="android:appComponentFactory,allowBackup">
         <activity
+            android:name=".acitivities.ui.news.NewsActivity"
+            android:exported="false" />
+        <activity
             android:name=".acitivities.ui.profile.HelpAndSupportActivity"
             android:exported="false" />
         <activity

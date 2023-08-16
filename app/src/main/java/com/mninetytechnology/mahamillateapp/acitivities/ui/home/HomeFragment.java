@@ -16,6 +16,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.blog.BlogActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.news.NewsActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizMainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.videos.VideosActivity;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentHomeBinding;
@@ -113,6 +114,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        binding.imgNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openNewsActivity();
+            }
+        });
+
+        binding.tvNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openNewsActivity();
+            }
+        });
+
         getVideos();
 
         return binding.getRoot();
@@ -132,6 +147,12 @@ public class HomeFragment extends Fragment {
 
     private void openQuizActivity() {
         Intent intent = new Intent(getActivity(), QuizMainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        getActivity().startActivity(intent);
+    }
+
+    private void openNewsActivity() {
+        Intent intent = new Intent(getActivity(), NewsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         getActivity().startActivity(intent);
     }

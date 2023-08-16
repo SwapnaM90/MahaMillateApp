@@ -1,45 +1,34 @@
-package com.mninetytechnology.mahamillateapp.acitivities.ui.profile;
+package com.mninetytechnology.mahamillateapp.acitivities.ui.news;
 
-import android.annotation.SuppressLint;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.WindowInsets;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
-import com.mninetytechnology.mahamillateapp.databinding.ActivityPrivacyPolicyBinding;
 import com.mninetytechnology.mahamillateapp.R;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.profile.PrivacyPolicyActivity;
+import com.mninetytechnology.mahamillateapp.databinding.ActivityNewsBinding;
+import com.mninetytechnology.mahamillateapp.databinding.ActivityPrivacyPolicyBinding;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- */
-public class PrivacyPolicyActivity extends BaseActivity {
-    private ActivityPrivacyPolicyBinding binding;
+public class NewsActivity extends AppCompatActivity {
+    private ActivityNewsBinding binding;
     private ProgressDialog progressDialog;
     private String url_Api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityPrivacyPolicyBinding.inflate(getLayoutInflater());
+        binding = ActivityNewsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         try {
             progressDialog = new ProgressDialog(this);
-            url_Api = "https://milletsindia.org/privacy_policy/";
+            url_Api = "https://mahamillets.org/";
 
             progressDialog.setMessage(getString(R.string.loading));
             progressDialog.setIndeterminate(false);
@@ -55,15 +44,15 @@ public class PrivacyPolicyActivity extends BaseActivity {
 
     private void LoadUrlWebView(String url_api) {
         try {
-            binding.wvPrivacyPolicy.setWebViewClient(new WebViewClient());
-            binding.wvPrivacyPolicy.setWebChromeClient(new MyWebChromeClient(url_api));
-            binding.wvPrivacyPolicy.getSettings().setJavaScriptEnabled(true);
-            binding.wvPrivacyPolicy.getSettings().setSupportZoom(true);
-            binding.wvPrivacyPolicy.getSettings().setAllowContentAccess(true);
-            binding.wvPrivacyPolicy.getSettings().setBuiltInZoomControls(true);
-            binding.wvPrivacyPolicy.getSettings().setDisplayZoomControls(false);
+            binding.wvNews.setWebViewClient(new WebViewClient());
+            binding.wvNews.setWebChromeClient(new MyWebChromeClient(url_api));
+            binding.wvNews.getSettings().setJavaScriptEnabled(true);
+            binding.wvNews.getSettings().setSupportZoom(true);
+            binding.wvNews.getSettings().setAllowContentAccess(true);
+            binding.wvNews.getSettings().setBuiltInZoomControls(true);
+            binding.wvNews.getSettings().setDisplayZoomControls(false);
 
-            binding.wvPrivacyPolicy.loadUrl(url_api);
+            binding.wvNews.loadUrl(url_api);
         } catch (Exception e) {
             Log.w("TAG", "setUpNavigationView", e);
         }
