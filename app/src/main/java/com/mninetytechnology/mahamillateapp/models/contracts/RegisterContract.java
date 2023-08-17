@@ -23,9 +23,9 @@ public interface RegisterContract {
         void setUpClass(List<SingleClass> classes);
         void setUpAddress();
         //void setUpDivision(List<Division> divisions);
-        void setUpDistrict(List<District> district);
-        void setUpTaluka(List<Taluka> talukas);
-        void setUpVillage(List<Village> village);
+        void setUpDistrict(List<String> district);
+        void setUpTaluka(List<String> talukas);
+        void setUpVillage(List<String> village);
     }
     interface Presenter {
         void doRegistration();

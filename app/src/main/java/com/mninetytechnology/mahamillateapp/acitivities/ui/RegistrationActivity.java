@@ -142,15 +142,15 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
 //    }
 
     @Override
-    public void setUpDistrict(List<District> district) {
-        ArrayAdapter<District> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,district);
+    public void setUpDistrict(List<String> district) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,district);
         addressBinding.sprDistrict.setAdapter(adapter);
         addressBinding.sprDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                District selectedDistrict = district.get(i);
-                presenter.district.set(selectedDistrict.district);
-                presenter.getTaluka(selectedDistrict.district_code_2011);
+                String selectedDistrict = district.get(i);
+                presenter.district.set(selectedDistrict);
+                presenter.getTaluka(selectedDistrict);
             }
 
             @Override
@@ -161,15 +161,15 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
     }
 
     @Override
-    public void setUpTaluka(List<Taluka> talukas) {
-        ArrayAdapter<Taluka> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,talukas);
+    public void setUpTaluka(List<String> talukas) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,talukas);
         addressBinding.sprTaluka.setAdapter(adapter);
         addressBinding.sprTaluka.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Taluka selectedTaluka = talukas.get(i);
-                presenter.taluka.set(selectedTaluka.taluka);
-                presenter.getVillage(selectedTaluka.taluka_code);
+                String selectedTaluka = talukas.get(i);
+                presenter.taluka.set(selectedTaluka);
+                presenter.getVillage(selectedTaluka);
             }
 
             @Override
@@ -180,14 +180,14 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
     }
 
     @Override
-    public void setUpVillage(List<Village> village) {
-        ArrayAdapter<Village> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,village);
+    public void setUpVillage(List<String> village) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,village);
         addressBinding.sprVillage.setAdapter(adapter);
         addressBinding.sprVillage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Village selectedVillage = village.get(i);
-                presenter.village.set(selectedVillage.village);
+                String selectedVillage = village.get(i);
+                presenter.village.set(selectedVillage);
             }
 
             @Override

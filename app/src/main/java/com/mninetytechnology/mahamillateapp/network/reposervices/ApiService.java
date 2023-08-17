@@ -6,6 +6,7 @@ import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogLikeRespon
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictTalukaVillageResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DivisionResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.LoginResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.OtpResponseModel;
@@ -200,7 +201,7 @@ public interface ApiService {
     @POST(Contants.UPDATE_SCORE)
     Call<QuizScoreResponseModel> updateScore(
             @Field("userId") String userId,
-            @Field("score") String firstLevel
+            @Field("firstLevel") String firstLevel
     );
 
     /**
@@ -224,7 +225,7 @@ public interface ApiService {
      * gets all district
      * @return
      */
-    @GET(Contants.GET_DISTRICT)
+    @GET(Contants.GET_DISTRICTCODE)
     Call<DistrictResponseModel> getDistricts(
             //@Path("division") String division
     );
@@ -234,7 +235,7 @@ public interface ApiService {
      * gets all taluka
      * @return
      */
-    @GET(Contants.GET_TALUKA+"/{district}")
+    @GET(Contants.GET_TALUKACODE+"/{district}")
     Call<TalukaResponseModel> getTaluka(
             @Path("district") String district
     );
@@ -244,8 +245,42 @@ public interface ApiService {
      * gets all village
      * @return
      */
-    @GET(Contants.GET_VILLAGE+"/{taluka}")
+    @GET(Contants.GET_VILLAGECODE+"/{taluka}")
     Call<VillageResponseModel> getVillage(
+            @Path("taluka") String taluka
+    );
+
+    /**
+     * @date 17-8-2023
+     * get district, taluka, village updated
+     */
+    /**
+     * @date 3-8-2023
+     * gets all district
+     * @return
+     */
+    @GET(Contants.GET_DISTRICT)
+    Call<DistrictTalukaVillageResponseModel> getUpdatedDistricts(
+            //@Path("division") String division
+    );
+
+    /**
+     * @date 3-8-2023
+     * gets all taluka
+     * @return
+     */
+    @GET(Contants.GET_TALUKA+"/{district}")
+    Call<DistrictTalukaVillageResponseModel> getUpdatedTaluka(
+            @Path("district") String district
+    );
+
+    /**
+     * @date 3-8-2023
+     * gets all village
+     * @return
+     */
+    @GET(Contants.GET_VILLAGE+"/{taluka}")
+    Call<DistrictTalukaVillageResponseModel> getUpdatedVillage(
             @Path("taluka") String taluka
     );
 }

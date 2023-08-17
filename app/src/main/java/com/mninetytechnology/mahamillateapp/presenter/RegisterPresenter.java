@@ -20,7 +20,7 @@ import com.mninetytechnology.mahamillateapp.models.contracts.RegisterContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.SingleClass;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictTalukaVillageResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DivisionResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.RegisterResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.TalukaResponseModel;
@@ -204,9 +204,9 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     public void getDistrict() {
         if(mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
-            RetrofitClientLogin.getApiService().getDistricts().enqueue(new Callback<DistrictResponseModel>() {
+            RetrofitClientLogin.getApiService().getUpdatedDistricts().enqueue(new Callback<DistrictTalukaVillageResponseModel>() {
                 @Override
-                public void onResponse(@NonNull Call<DistrictResponseModel> call, @NonNull Response<DistrictResponseModel> response) {
+                public void onResponse(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Response<DistrictTalukaVillageResponseModel> response) {
                     if (response.code() == 200 || response.code() == 201) {
                         assert response.body() != null;
                         mActivity.dismissProgressDialog();
@@ -217,7 +217,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                     }
                 }
                 @Override
-                public void onFailure(@NonNull Call<DistrictResponseModel> call, @NonNull Throwable t) {
+                public void onFailure(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
                     mViewModel.showRegisterFailed(t.getMessage());
                 }
@@ -232,9 +232,9 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     public void getTaluka(String districtCode) {
         if(mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
-            RetrofitClientLogin.getApiService().getTaluka(districtCode).enqueue(new Callback<TalukaResponseModel>() {
+            RetrofitClientLogin.getApiService().getUpdatedTaluka(districtCode).enqueue(new Callback<DistrictTalukaVillageResponseModel>() {
                 @Override
-                public void onResponse(@NonNull Call<TalukaResponseModel> call, @NonNull Response<TalukaResponseModel> response) {
+                public void onResponse(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Response<DistrictTalukaVillageResponseModel> response) {
                     if (response.code() == 200 || response.code() == 201) {
                         assert response.body() != null;
                         mActivity.dismissProgressDialog();
@@ -245,7 +245,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                     }
                 }
                 @Override
-                public void onFailure(@NonNull Call<TalukaResponseModel> call, @NonNull Throwable t) {
+                public void onFailure(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
                     mViewModel.showRegisterFailed(t.getMessage());
                 }
@@ -260,9 +260,9 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     public void getVillage(String talukaCode) {
         if(mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
-            RetrofitClientLogin.getApiService().getVillage(talukaCode).enqueue(new Callback<VillageResponseModel>() {
+            RetrofitClientLogin.getApiService().getUpdatedVillage(talukaCode).enqueue(new Callback<DistrictTalukaVillageResponseModel>() {
                 @Override
-                public void onResponse(@NonNull Call<VillageResponseModel> call, @NonNull Response<VillageResponseModel> response) {
+                public void onResponse(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Response<DistrictTalukaVillageResponseModel> response) {
                     if (response.code() == 200 || response.code() == 201) {
                         assert response.body() != null;
                         mActivity.dismissProgressDialog();
@@ -273,7 +273,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                     }
                 }
                 @Override
-                public void onFailure(@NonNull Call<VillageResponseModel> call, @NonNull Throwable t) {
+                public void onFailure(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
                     mViewModel.showRegisterFailed(t.getMessage());
                 }

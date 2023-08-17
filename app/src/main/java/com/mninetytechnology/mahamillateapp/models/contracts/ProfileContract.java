@@ -18,9 +18,9 @@ public interface ProfileContract {
     interface ViewModel {
         void setUpAddress();
        // void setUpDivision(List<Division> divisions);
-        void setUpDistrict(List<District> district);
-        void setUpTaluka(List<Taluka> talukas);
-        void setUpVillage(List<Village> village);
+        void setUpDistrict(List<String> district);
+        void setUpTaluka(List<String> talukas);
+        void setUpVillage(List<String> village);
         void showProfileFailed(String error);
     }
     interface Presenter {

@@ -33,7 +33,9 @@ public class QuizScorePresenter implements QuizScoreContract.Presenter {
             String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();
 
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
-            RetrofitClient.getApiService().updateScore(userId,String.valueOf(score.getScore())).enqueue(new Callback<QuizScoreResponseModel>() {
+
+            String userScore = String.valueOf(score.getScore());
+            RetrofitClient.getApiService().updateScore(userId,userScore).enqueue(new Callback<QuizScoreResponseModel>() {
                 @Override
                 public void onResponse(Call<QuizScoreResponseModel> call, Response<QuizScoreResponseModel> response) {
                     mActivity.dismissProgressDialog();

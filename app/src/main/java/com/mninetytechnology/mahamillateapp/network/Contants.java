@@ -20,9 +20,14 @@ public class Contants {
     public static final String UPDATE_SCORE = "score";
     public static final String GET_CLASS = "class";
     public static final String GET_DIVISION = "village/dvncode";
-    public static final String GET_DISTRICT = "village/districtcode";
+    public static final String GET_DISTRICTCODE = "village/districtcode";
+    public static final String GET_TALUKACODE = "village/taluka";
+    public static final String GET_VILLAGECODE = "village/villagecode";
+
+    //Updated api
+    public static final String GET_DISTRICT = "village/district";
     public static final String GET_TALUKA = "village/taluka";
-    public static final String GET_VILLAGE = "village/villagecode";
+    public static final String GET_VILLAGE = "village/villageName";
     public static final String APP_ADDRESS = "com.mninetytechnology.mahamillateapp.SYNC_ADDRESS";
 
     public static String PREF_LOGIN = "PREF_LOGIN";
