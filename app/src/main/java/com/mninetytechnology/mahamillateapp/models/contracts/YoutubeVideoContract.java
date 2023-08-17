@@ -13,8 +13,10 @@ public interface YoutubeVideoContract {
 
     interface ViewModel {
         void setUpYoutubeVideoAdapter(List<YoutubeVideo> youtubeVideos);
+
         void showYoutubeVideoFailed(String error);
     }
+
     interface Presenter {
         void getYoutubeVideos();
     }

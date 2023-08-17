@@ -22,19 +22,19 @@ public class QuizScoreActivity extends BaseActivity implements QuizScoreContract
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_quiz_score);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_quiz_score);
         Intent intent = getIntent();
         if (intent.hasExtra(AppKeys.SCORE)) {
             score = intent.getParcelableExtra(AppKeys.SCORE);
             if (score != null) {
-                mPresenter = new QuizScorePresenter(this,this);
+                mPresenter = new QuizScorePresenter(this, this);
                 mPresenter.uploadScore(score);
             }
         }
         binding.saDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityOnTop(QuizCertificateActivity.class,true);
+                startActivityOnTop(QuizCertificateActivity.class, true);
             }
         });
     }
@@ -47,11 +47,11 @@ public class QuizScoreActivity extends BaseActivity implements QuizScoreContract
 
     @Override
     public void showScoreFailed(String error) {
-        showErrorSnackBar(binding.getRoot(),error);
+        showErrorSnackBar(binding.getRoot(), error);
     }
 
     @Override
     public void onBackPressed() {
-        startActivityOnTop(QuizMainActivity.class,true);
+        startActivityOnTop(QuizMainActivity.class, true);
     }
 }

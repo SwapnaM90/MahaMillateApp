@@ -28,7 +28,7 @@ public class DonateFragment extends Fragment {
     private MainActivity mActivity;
     private String amount;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDonateBinding.inflate(inflater, container, false);
         mActivity = (MainActivity) getActivity();
         binding.grpAmount.setOnCheckedChangeListener(new RadioGridGroup.OnCheckedChangeListener() {
@@ -37,15 +37,15 @@ public class DonateFragment extends Fragment {
                 binding.edtAmount.setText("");
                 if (checkedId == R.id.rb_fifty) {
                     amount = "50.00";
-                }else if (checkedId == R.id.rb_hundred) {
+                } else if (checkedId == R.id.rb_hundred) {
                     amount = "100.00";
-                }else if (checkedId == R.id.rb_twofifty) {
+                } else if (checkedId == R.id.rb_twofifty) {
                     amount = "250.00";
-                }else if (checkedId == R.id.rb_fivehundred) {
+                } else if (checkedId == R.id.rb_fivehundred) {
                     amount = "500.00";
-                }else if (checkedId == R.id.rb_thousand) {
+                } else if (checkedId == R.id.rb_thousand) {
                     amount = "1000.00";
-                }else if (checkedId == R.id.rb_onethousandfivehundred) {
+                } else if (checkedId == R.id.rb_onethousandfivehundred) {
                     amount = "1500.00";
                 }
             }
@@ -61,9 +61,9 @@ public class DonateFragment extends Fragment {
                         }
                     } else {
                         if (!binding.edtAmount.getText().toString().trim().isEmpty()) {
-                           amount = binding.edtAmount.getText().toString();
+                            amount = binding.edtAmount.getText().toString();
                         }
-                        String paymentAddress = generateUrl("tifanfoundation@upi","TIFAN FOUNDATION",amount);
+                        String paymentAddress = generateUrl("tifanfoundation@upi", "TIFAN FOUNDATION", amount);
                         Bitmap bitmap = generateQRCodeBitmap(paymentAddress);
                         AlertDialog dialog = new AlertDialog.Builder(mActivity).create();
                         ImageView imageView = new ImageView(mActivity);
@@ -79,7 +79,7 @@ public class DonateFragment extends Fragment {
                         dialog.show();
                     }
                 } else {
-                    mActivity.showErrorSnackBar(binding.getRoot(),getString(R.string.please_select_amount));
+                    mActivity.showErrorSnackBar(binding.getRoot(), getString(R.string.please_select_amount));
                 }
             }
         });
@@ -109,8 +109,8 @@ public class DonateFragment extends Fragment {
         return bmp;
     }
 
-    private String generateUrl(String upi,String merchant_name,String amount) {
-        return "upi://pay?pa="+upi+"&pn="+merchant_name+"&am="+amount+"&cu=INR&url=https://merchant.com";
+    private String generateUrl(String upi, String merchant_name, String amount) {
+        return "upi://pay?pa=" + upi + "&pn=" + merchant_name + "&am=" + amount + "&cu=INR&url=https://merchant.com";
     }
 
     @Override

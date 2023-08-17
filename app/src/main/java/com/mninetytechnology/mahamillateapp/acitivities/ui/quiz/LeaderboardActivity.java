@@ -24,8 +24,8 @@ public class LeaderboardActivity extends BaseActivity implements LeaderboardCont
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_leaderboard);
-        presenter = new LeaderboardPresenter(this,this);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_leaderboard);
+        presenter = new LeaderboardPresenter(this, this);
         binding.setPresenter(presenter);
         presenter.getLeaderboards();
         binding.toolbar2.setNavigationOnClickListener(new View.OnClickListener() {
@@ -47,11 +47,11 @@ public class LeaderboardActivity extends BaseActivity implements LeaderboardCont
 
     @Override
     public void showLeaderboardFailed(String error) {
-        showErrorSnackBar(binding.getRoot(),error);
+        showErrorSnackBar(binding.getRoot(), error);
     }
 
     @Override
     public void onBackPressed() {
-        startActivityOnTop(QuizMainActivity.class,true);
+        startActivityOnTop(QuizMainActivity.class, true);
     }
 }

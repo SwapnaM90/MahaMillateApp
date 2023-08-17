@@ -20,8 +20,8 @@ public class QuizMainActivity extends BaseActivity implements QuizMainContract.V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_quiz_main);
-        mPresenter = new QuizMainPresenter(this,this);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_quiz_main);
+        mPresenter = new QuizMainPresenter(this, this);
         mBinding.setPresenter(mPresenter);
         mPresenter.getQuizData();
         mBinding.pbLevel.setProgress(30);
@@ -45,11 +45,11 @@ public class QuizMainActivity extends BaseActivity implements QuizMainContract.V
 
     @Override
     public void showFailed(String error) {
-        showErrorSnackBar(mBinding.getRoot(),error);
+        showErrorSnackBar(mBinding.getRoot(), error);
     }
 
     @Override
     public void onBackPressed() {
-        startActivityOnTop(MainActivity.class,true);
+        startActivityOnTop(MainActivity.class, true);
     }
 }

@@ -46,11 +46,11 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_registration);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_registration);
         helper = new GlobalHelper(this);
-        presenter = new RegisterPresenter(this,this);
+        presenter = new RegisterPresenter(this, this);
         Intent intent = getIntent();
-        if(intent.hasExtra(AppKeys.PHONE_NUMBER)) {
+        if (intent.hasExtra(AppKeys.PHONE_NUMBER)) {
             phone_number = intent.getStringExtra(AppKeys.PHONE_NUMBER);
             presenter.phone_number.set(phone_number);
         }
@@ -59,7 +59,7 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
     }
 
     @Override
-    public void register(UserLoginObject userLoginObject,String token) {
+    public void register(UserLoginObject userLoginObject, String token) {
         try {
             Calendar calendar = Calendar.getInstance();
             @SuppressLint("SimpleDateFormat")
@@ -69,7 +69,7 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
 
             //save user id and role in shared preference
             Gson gson = new Gson();
-            String user = gson.toJson(userLoginObject,UserLoginObject.class);
+            String user = gson.toJson(userLoginObject, UserLoginObject.class);
             helper.getSharedPreferencesHelper().setPrefLoginUser(user);
             helper.getSharedPreferencesHelper().setLoginServerUserId(userLoginObject.get_id());
             helper.getSharedPreferencesHelper().setLoginServerUserClass(userLoginObject.getClass_text());
@@ -77,23 +77,23 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
 
             //start otp check activity
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra(AppKeys.loginUserId,userLoginObject.get_id());
+            intent.putExtra(AppKeys.loginUserId, userLoginObject.get_id());
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivityOnTop(false,intent);
+            startActivityOnTop(false, intent);
         } catch (Exception e) {
-            Log.d(TAG, "login: "+e.getMessage());
-            ScreenHelper.showErrorSnackBar(binding.getRoot(),e.getMessage());
+            Log.d(TAG, "login: " + e.getMessage());
+            ScreenHelper.showErrorSnackBar(binding.getRoot(), e.getMessage());
         }
     }
 
     @Override
     public void showRegisterFailed(String error) {
-        ScreenHelper.showErrorSnackBar(binding.getRoot(),error);
+        ScreenHelper.showErrorSnackBar(binding.getRoot(), error);
     }
 
     @Override
     public void setUpClass(List<SingleClass> classes) {
-        ArrayAdapter<SingleClass> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,android.R.id.text1,classes);
+        ArrayAdapter<SingleClass> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item, android.R.id.text1, classes);
         binding.sprClassText.setAdapter(adapter);
         binding.sprClassText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -139,7 +139,7 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
 
     @Override
     public void setUpDistrict(List<String> district) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,district);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item, district);
         addressBinding.sprDistrict.setAdapter(adapter);
         addressBinding.sprDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -158,7 +158,7 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
 
     @Override
     public void setUpTaluka(List<String> talukas) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,talukas);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item, talukas);
         addressBinding.sprTaluka.setAdapter(adapter);
         addressBinding.sprTaluka.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -177,7 +177,7 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
 
     @Override
     public void setUpVillage(List<String> village) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item,village);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_spinner_dropdown_item, village);
         addressBinding.sprVillage.setAdapter(adapter);
         addressBinding.sprVillage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -202,12 +202,12 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
 //                }else
                 if (presenter.district.get().isEmpty()) {
                     Toast.makeText(RegistrationActivity.this, getResources().getString(R.string.please_select_district), Toast.LENGTH_SHORT).show();
-                }else if (presenter.taluka.get().isEmpty()) {
+                } else if (presenter.taluka.get().isEmpty()) {
                     Toast.makeText(RegistrationActivity.this, getResources().getString(R.string.please_select_taluka), Toast.LENGTH_SHORT).show();
-                }else if (presenter.village.get().isEmpty()) {
+                } else if (presenter.village.get().isEmpty()) {
                     Toast.makeText(RegistrationActivity.this, getResources().getString(R.string.please_select_village), Toast.LENGTH_SHORT).show();
                 } else {
-                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+getResources().getString(R.string.maharashtra));
+                    presenter.address.set(presenter.village.get() + "," + presenter.taluka.get() + "," + presenter.district.get() + "," + getResources().getString(R.string.maharashtra));
 //                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+presenter.division.get()+","+getResources().getString(R.string.maharashtra));
                     getGlobalHelper().getSharedPreferencesHelper().setAddress(presenter.address.get());
                     dialog.dismiss();
@@ -219,6 +219,6 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
 
     @Override
     public void onBackPressed() {
-        startActivityOnTop(LoginActivity.class,true);
+        startActivityOnTop(LoginActivity.class, true);
     }
 }

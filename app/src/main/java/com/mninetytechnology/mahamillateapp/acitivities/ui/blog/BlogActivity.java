@@ -25,7 +25,7 @@ public class BlogActivity extends BaseActivity implements BlogContract.ViewModel
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_blog);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_blog);
         setSupportActionBar(mBinding.toolbar2);
         mBinding.toolbar2.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +33,7 @@ public class BlogActivity extends BaseActivity implements BlogContract.ViewModel
                 onBackPressed();
             }
         });
-        mPresenter = new BlogPresenter(this,this);
+        mPresenter = new BlogPresenter(this, this);
         mBinding.setPresenter(mPresenter);
         mPresenter.getBlogs();
     }
@@ -48,12 +48,12 @@ public class BlogActivity extends BaseActivity implements BlogContract.ViewModel
 
             @Override
             public void updateLike(Blog listModel, boolean isAdd, int like) {
-                mPresenter.updateLike(isAdd,listModel._id);
+                mPresenter.updateLike(isAdd, listModel._id);
             }
 
             @Override
             public void updateDislike(Blog listModel, boolean isAdd, int dislike) {
-                mPresenter.updateDislike(isAdd,listModel._id);
+                mPresenter.updateDislike(isAdd, listModel._id);
             }
 
             @Override
@@ -73,11 +73,11 @@ public class BlogActivity extends BaseActivity implements BlogContract.ViewModel
 
     @Override
     public void showBlogFailed(String error) {
-        showErrorSnackBar(mBinding.getRoot(),error);
+        showErrorSnackBar(mBinding.getRoot(), error);
     }
 
     @Override
     public void onBackPressed() {
-        startActivityOnTop(MainActivity.class,true);
+        startActivityOnTop(MainActivity.class, true);
     }
 }

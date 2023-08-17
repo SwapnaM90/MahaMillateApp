@@ -32,17 +32,17 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
             setContentView(mBinding.getRoot());
             Intent intent = getIntent();
             FirebaseApp.initializeApp(this);
-            if(intent.hasExtra(AppKeys.OTP)) {
+            if (intent.hasExtra(AppKeys.OTP)) {
                 otp = intent.getStringExtra(AppKeys.OTP);
                 phone_number = intent.getStringExtra(AppKeys.PHONE_NUMBER);
             }
             helper = new GlobalHelper(this);
-            mPresenter = new OtpPresenter(this,OtpCheckActivity.this);
+            mPresenter = new OtpPresenter(this, OtpCheckActivity.this);
             mPresenter.rootView = mBinding.getRoot();
             mBinding.setPresenter(mPresenter);
             mPresenter.otp = otp;
         } catch (Exception e) {
-            Log.e(TAG, "onCreate: "+e.getMessage());
+            Log.e(TAG, "onCreate: " + e.getMessage());
         }
     }
 
@@ -50,8 +50,8 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
     public void getOtp() {
         //save date to shared preference
         try {
-            if(isInternetConnected()) {
-                ScreenHelper.showGreenSnackBar(mBinding.getRoot(),getResources().getString(R.string.sucessfull_login));
+            if (isInternetConnected()) {
+                ScreenHelper.showGreenSnackBar(mBinding.getRoot(), getResources().getString(R.string.sucessfull_login));
                 goToDashboard();
             } else {
                 showNotInternetConnected(new OnInternetConnectedListener() {
@@ -62,7 +62,7 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
                 });
             }
         } catch (Exception e) {
-            Log.e(TAG, "getOtp: "+e.getMessage());
+            Log.e(TAG, "getOtp: " + e.getMessage());
         }
     }
 
@@ -72,14 +72,14 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
      * navigates to dashboard activity
      */
     private void goToDashboard() {
-        Intent intent = new Intent(OtpCheckActivity.this,RegistrationActivity.class);
-        intent.putExtra(AppKeys.PHONE_NUMBER,phone_number);
-        startActivityOnTop(false,intent);
+        Intent intent = new Intent(OtpCheckActivity.this, RegistrationActivity.class);
+        intent.putExtra(AppKeys.PHONE_NUMBER, phone_number);
+        startActivityOnTop(false, intent);
     }
 
     @Override
     public void showOtpFailed(String error) {
-        ScreenHelper.showErrorSnackBar(mBinding.getRoot(),error);
+        ScreenHelper.showErrorSnackBar(mBinding.getRoot(), error);
     }
 
     @Override
@@ -91,9 +91,9 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
                 message = data[1];
                 mBinding.pinview.setValue(message);
             }
-            Log.i("OCA:","OTP Received : " + message);
+            Log.i("OCA:", "OTP Received : " + message);
         } else {
-            Log.i("OCA:","OTP not Received : ");
+            Log.i("OCA:", "OTP not Received : ");
         }
     }
 }

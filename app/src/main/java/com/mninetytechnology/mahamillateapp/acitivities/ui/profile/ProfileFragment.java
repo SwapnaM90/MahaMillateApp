@@ -33,15 +33,15 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
 
     private AlertDialog dialog;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         mActivity = (MainActivity) getActivity();
-        presenter = new ProfilePresenter(mActivity,this);
+        presenter = new ProfilePresenter(mActivity, this);
         binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mActivity.getGlobalHelper().getSharedPreferencesHelper().clear();
-                mActivity.startActivityOnTop(LoginActivity.class,true);
+                mActivity.startActivityOnTop(LoginActivity.class, true);
             }
         });
         if (!mActivity.getGlobalHelper().getSharedPreferencesHelper().getAddress().trim().isEmpty()) {
@@ -49,10 +49,10 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
         }
         Gson gson = new Gson();
         String userStr = mActivity.getGlobalHelper().getSharedPreferencesHelper().getPrefLoginUser();
-        UserLoginObject obj = gson.fromJson(userStr,UserLoginObject.class);
+        UserLoginObject obj = gson.fromJson(userStr, UserLoginObject.class);
         if (obj != null) {
             binding.tvUserName.setText(obj.getName());
-            presenter.address.set(""+obj.getVillage()+","+obj.getDistrict()+","+obj.getState());
+            presenter.address.set("" + obj.getVillage() + "," + obj.getDistrict() + "," + obj.getState());
             presenter.district.set(obj.getDistrict());
             presenter.village.set(obj.getVillage());
         }
@@ -98,7 +98,7 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
 
     @Override
     public void setUpDistrict(List<String> district) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(mActivity, android.R.layout.simple_spinner_dropdown_item,district);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(mActivity, android.R.layout.simple_spinner_dropdown_item, district);
         addressBinding.sprDistrict.setAdapter(adapter);
         addressBinding.sprDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -117,7 +117,7 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
 
     @Override
     public void setUpTaluka(List<String> talukas) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(mActivity, android.R.layout.simple_spinner_dropdown_item,talukas);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(mActivity, android.R.layout.simple_spinner_dropdown_item, talukas);
         addressBinding.sprTaluka.setAdapter(adapter);
         addressBinding.sprTaluka.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -136,7 +136,7 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
 
     @Override
     public void setUpVillage(List<String> village) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(mActivity, android.R.layout.simple_spinner_dropdown_item,village);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(mActivity, android.R.layout.simple_spinner_dropdown_item, village);
         addressBinding.sprVillage.setAdapter(adapter);
         addressBinding.sprVillage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -161,12 +161,12 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
 //                }else
                 if (presenter.district.get().isEmpty()) {
                     Toast.makeText(mActivity, getResources().getString(R.string.please_select_district), Toast.LENGTH_SHORT).show();
-                }else if (presenter.taluka.get().isEmpty()) {
+                } else if (presenter.taluka.get().isEmpty()) {
                     Toast.makeText(mActivity, getResources().getString(R.string.please_select_taluka), Toast.LENGTH_SHORT).show();
-                }else if (presenter.village.get().isEmpty()) {
+                } else if (presenter.village.get().isEmpty()) {
                     Toast.makeText(mActivity, getResources().getString(R.string.please_select_village), Toast.LENGTH_SHORT).show();
                 } else {
-                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+getResources().getString(R.string.maharashtra));
+                    presenter.address.set(presenter.village.get() + "," + presenter.taluka.get() + "," + presenter.district.get() + "," + getResources().getString(R.string.maharashtra));
 //                    presenter.address.set(presenter.village.get()+","+presenter.taluka.get()+","+presenter.district.get()+","+presenter.division.get()+","+getResources().getString(R.string.maharashtra));
                     mActivity.getGlobalHelper().getSharedPreferencesHelper().setAddress(presenter.address.get());
                     dialog.dismiss();

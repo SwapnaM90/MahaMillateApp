@@ -25,7 +25,7 @@ public class QuizScorePresenter implements QuizScoreContract.Presenter {
 
     @Override
     public void uploadScore(QuizScore score) {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
 
             String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();
@@ -33,7 +33,7 @@ public class QuizScorePresenter implements QuizScoreContract.Presenter {
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
 
             String userScore = String.valueOf(score.getScore());
-            RetrofitClient.getApiService().updateScore(userId,userScore).enqueue(new Callback<QuizScoreResponseModel>() {
+            RetrofitClient.getApiService().updateScore(userId, userScore).enqueue(new Callback<QuizScoreResponseModel>() {
                 @Override
                 public void onResponse(Call<QuizScoreResponseModel> call, Response<QuizScoreResponseModel> response) {
                     mActivity.dismissProgressDialog();

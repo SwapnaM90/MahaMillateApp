@@ -30,6 +30,7 @@ public class LeaderboardListAdapter extends RecyclerView.Adapter<LeaderboardList
         return new LeaderboardHolder(SingleLeaderBinding.inflate(LayoutInflater.from(parent.getContext()),
                 parent, false));
     }
+
     @Override
     public void onBindViewHolder(@NonNull LeaderboardHolder holder, int position) {
         Leaderboard listItem = stateList.get(position);

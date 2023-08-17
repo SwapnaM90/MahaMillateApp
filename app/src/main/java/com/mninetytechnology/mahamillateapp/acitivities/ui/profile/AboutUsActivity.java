@@ -21,7 +21,7 @@ public class AboutUsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_about_us);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_about_us);
         try {
             progressDialog = new ProgressDialog(this);
             url_Api = "https://milletsindia.org/about-us2/";

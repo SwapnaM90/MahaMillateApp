@@ -15,13 +15,19 @@ public interface QuizQuestionContract {
 
     interface ViewModel {
         void changeQuestion();
-        void checkAnswer(String selectedOption,View view);
+
+        void checkAnswer(String selectedOption, View view);
+
         void setQuestions(List<Questions> questions);
+
         void showFailed(String error);
     }
+
     interface Presenter {
         void loadQuiz();
-        void buttonClick(View view,int button);
+
+        void buttonClick(View view, int button);
+
         void goToNext();
     }
 }

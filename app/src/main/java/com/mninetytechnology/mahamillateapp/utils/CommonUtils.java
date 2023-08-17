@@ -43,7 +43,7 @@ public class CommonUtils {
     // function to generate a random string of length n
     public static String getRandomAlphaNumericString() {
 
-     return UUID.randomUUID().toString();
+        return UUID.randomUUID().toString();
 
         // chose a Character random from this String
        /* String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -66,14 +66,14 @@ public class CommonUtils {
                     .charAt(index));
         }*/
 
-      //  return sb.toString();
+        //  return sb.toString();
     }
 
-    public static String getCurrentDate(){
+    public static String getCurrentDate() {
         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
-            Log.e(TAG, "getCurrentDate: "+dateFormat.format(date) );
+            Log.e(TAG, "getCurrentDate: " + dateFormat.format(date));
             return dateFormat.format(date);
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,11 +82,11 @@ public class CommonUtils {
 
     }
 
-    public static String getCurrentDateWithDateOnly(){
+    public static String getCurrentDateWithDateOnly() {
         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
             Date date = new Date();
-           // Log.e(TAG, "getCurrentDate: "+dateFormat.format(date) );
+            // Log.e(TAG, "getCurrentDate: "+dateFormat.format(date) );
             return dateFormat.format(date);
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,16 +94,16 @@ public class CommonUtils {
         }
     }
 
-    public static String getCurrentDateOnly(){
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-            Date date = new Date();
-            date.getTime();
-           // Log.e(TAG, "getCurrentDate: "+dateFormat.format(date) );
-            return dateFormat.format(date);
+    public static String getCurrentDateOnly() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        date.getTime();
+        // Log.e(TAG, "getCurrentDate: "+dateFormat.format(date) );
+        return dateFormat.format(date);
     }
 
 
-    public static int getDaysDifference(String startDate, String endDate ){
+    public static int getDaysDifference(String startDate, String endDate) {
         String dateStart = "01/14/2012 09:29:58";
         String dateStop = "01/15/2012 10:31:48";
 
@@ -122,11 +122,11 @@ public class CommonUtils {
             long diffSeconds = diff / 1000 % 60;
             long diffMinutes = diff / (60 * 1000) % 60;
             long diffHours = diff / (60 * 60 * 1000) % 24;
-            long diffDays = diff / (24 * 60 * 60 * 1000) ;
+            long diffDays = diff / (24 * 60 * 60 * 1000);
             return (int) diffDays;
         } catch (Exception e) {
             e.printStackTrace();
-            return  0;
+            return 0;
         }
     }
 

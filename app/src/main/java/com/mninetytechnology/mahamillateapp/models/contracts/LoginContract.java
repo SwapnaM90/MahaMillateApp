@@ -10,9 +10,11 @@ import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 public interface LoginContract {
 
     interface ViewModel {
-        void login(UserLoginObject userLoginObject,String token);
+        void login(UserLoginObject userLoginObject, String token);
+
         void showLoginFailed(String error);
     }
+
     interface Presenter {
         void doLogin();
     }

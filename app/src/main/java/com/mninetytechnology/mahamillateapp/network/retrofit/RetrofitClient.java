@@ -50,7 +50,7 @@ public class RetrofitClient {
                     Request original = chain.request();
 
                     Request request = original.newBuilder()
-                            .addHeader("Authorization","Bearer "+key)
+                            .addHeader("Authorization", "Bearer " + key)
                             .method(original.method(), original.body())
                             .build();
 

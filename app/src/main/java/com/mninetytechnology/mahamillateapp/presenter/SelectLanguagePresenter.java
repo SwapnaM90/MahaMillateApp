@@ -21,6 +21,6 @@ public class SelectLanguagePresenter implements SelectLanguageContract.Presenter
 
     @Override
     public void continueNext() {
-        mViewModel.startAnotherActivity(MainActivity.class,true);
+        mViewModel.startAnotherActivity(MainActivity.class, true);
     }
 }

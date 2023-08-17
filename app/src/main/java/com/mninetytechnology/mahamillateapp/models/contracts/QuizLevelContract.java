@@ -13,8 +13,10 @@ public interface QuizLevelContract {
         void setUpLevel(QuizLevelData quizLevelDataData);
 
         void goToNext();
+
         void showFailed(String error);
     }
+
     interface Presenter {
         void getLevelData();
     }

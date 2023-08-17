@@ -9,11 +9,15 @@ public interface MobileCheckContract {
 
     interface ViewModel {
         void sendOtp();
+
         void goToNextPage(String otp);
+
         void showResponseFailed(String error);
     }
+
     interface Presenter {
         void validateData();
+
         void getOtp();
     }
 }

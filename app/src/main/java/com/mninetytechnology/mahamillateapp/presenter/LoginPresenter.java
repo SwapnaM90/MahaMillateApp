@@ -73,18 +73,18 @@ public class LoginPresenter implements LoginContract.Presenter {
             ScreenHelper.hideKeyboard(mActivity);
 //            UserLoginObject obj = new UserLoginObject();
 //            mViewModel.login(obj,"token");
-            if(mActivity.isInternetConnected()) {
+            if (mActivity.isInternetConnected()) {
                 mActivity.startProgressDialog(mActivity);
 
                 if (isEmailOrNot()) {
-                    RetrofitClientLogin.getApiService().getLoginResponse(userId.get(),"",password.get()).enqueue(new Callback<LoginResponseModel>() {
+                    RetrofitClientLogin.getApiService().getLoginResponse(userId.get(), "", password.get()).enqueue(new Callback<LoginResponseModel>() {
                         @Override
                         public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
                             if (response.code() == 200 || response.code() == 201) {
                                 if (response.body() != null) {
                                     UserLoginObject obj = response.body().getData();
                                     mActivity.dismissProgressDialog();
-                                    mViewModel.login(obj,response.body().getToken());
+                                    mViewModel.login(obj, response.body().getToken());
                                 } else {
                                     mActivity.dismissProgressDialog();
                                     mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
@@ -102,14 +102,14 @@ public class LoginPresenter implements LoginContract.Presenter {
                         }
                     });
                 } else {
-                    RetrofitClientLogin.getApiService().getLoginResponse("",userId.get(),password.get()).enqueue(new Callback<LoginResponseModel>() {
+                    RetrofitClientLogin.getApiService().getLoginResponse("", userId.get(), password.get()).enqueue(new Callback<LoginResponseModel>() {
                         @Override
                         public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
                             if (response.code() == 200 || response.code() == 201) {
                                 if (response.body() != null) {
                                     UserLoginObject obj = response.body().getData();
                                     mActivity.dismissProgressDialog();
-                                    mViewModel.login(obj,response.body().getToken());
+                                    mViewModel.login(obj, response.body().getToken());
                                 } else {
                                     mActivity.dismissProgressDialog();
                                     mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
@@ -156,6 +156,6 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     public void goToRegister() {
-        mActivity.startActivityOnTop(MobileCheckActivity.class,true);
+        mActivity.startActivityOnTop(MobileCheckActivity.class, true);
     }
 }

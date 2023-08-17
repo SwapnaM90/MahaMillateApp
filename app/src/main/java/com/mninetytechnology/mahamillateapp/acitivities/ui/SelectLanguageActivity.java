@@ -23,7 +23,7 @@ public class SelectLanguageActivity extends BaseActivity implements SelectLangua
 
     @Override
     public void startAnotherActivity(Class<?> cls, boolean finishCurrent) {
-        startActivityOnTop(cls,finishCurrent);
+        startActivityOnTop(cls, finishCurrent);
     }
 
 }

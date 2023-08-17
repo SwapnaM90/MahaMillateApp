@@ -27,10 +27,10 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_intro);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_intro);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         if (!getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId().trim().isEmpty()) {
-            startActivityOnTop(MainActivity.class,true);
+            startActivityOnTop(MainActivity.class, true);
         }
         binding.vpPager.setAdapter(adapterViewPager);
         DotsIndicator extensiblePageIndicator = (DotsIndicator) findViewById(R.id.flexibleIndicator);
@@ -49,7 +49,7 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
 //
 //                    binding.btnNext.setText("Next");
 //                } else
-                    if (position == 0) {
+                if (position == 0) {
 
                     binding.btnNext.setText("Finish");
                 }
@@ -73,9 +73,9 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
 //            } else
             if (selectPage == 0) {
                 if (getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId().trim().isEmpty()) {
-                    startActivityOnTop(LoginActivity.class,true);
+                    startActivityOnTop(LoginActivity.class, true);
                 } else {
-                    startActivityOnTop(MainActivity.class,true);
+                    startActivityOnTop(MainActivity.class, true);
                 }
             }
         }

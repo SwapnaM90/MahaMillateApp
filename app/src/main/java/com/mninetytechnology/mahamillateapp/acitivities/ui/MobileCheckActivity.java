@@ -19,8 +19,8 @@ public class MobileCheckActivity extends BaseActivity implements MobileCheckCont
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_mobile_check);
-        presenter = new MobileCheckPresenter(this,this);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_mobile_check);
+        presenter = new MobileCheckPresenter(this, this);
         binding.setPresenter(presenter);
     }
 
@@ -31,10 +31,10 @@ public class MobileCheckActivity extends BaseActivity implements MobileCheckCont
 
     @Override
     public void goToNextPage(String otp) {
-        Intent intent = new Intent(MobileCheckActivity.this,OtpCheckActivity.class);
-        intent.putExtra(AppKeys.OTP,otp);
-        intent.putExtra(AppKeys.PHONE_NUMBER,binding.edtMobileNumber.getText().toString());
-        startActivityOnTop(true,intent);
+        Intent intent = new Intent(MobileCheckActivity.this, OtpCheckActivity.class);
+        intent.putExtra(AppKeys.OTP, otp);
+        intent.putExtra(AppKeys.PHONE_NUMBER, binding.edtMobileNumber.getText().toString());
+        startActivityOnTop(true, intent);
     }
 
     @Override

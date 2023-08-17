@@ -26,7 +26,7 @@ public class QuizMainPresenter implements QuizMainContract.Presenter {
 
     @Override
     public void getQuizData() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
 
             String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();
@@ -56,11 +56,11 @@ public class QuizMainPresenter implements QuizMainContract.Presenter {
 
     @Override
     public void goToQuiz() {
-        mActivity.startActivityOnTop(QuizLevelsActivity.class,true);
+        mActivity.startActivityOnTop(QuizLevelsActivity.class, true);
     }
 
     @Override
     public void goToLeaderBoard() {
-        mActivity.startActivityOnTop(LeaderboardActivity.class,true);
+        mActivity.startActivityOnTop(LeaderboardActivity.class, true);
     }
 }

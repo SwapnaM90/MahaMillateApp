@@ -50,8 +50,8 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_quiz_questions);
-        presenter = new QuizQuestionsPresenter(this,this);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_quiz_questions);
+        presenter = new QuizQuestionsPresenter(this, this);
         binding.setPresenter(presenter);
         presenter.loadQuiz();
 
@@ -77,10 +77,10 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
 
     private void starttimer() {
 //        binding.progressBar.setMax(tot_timer_time);
-        countDown =new CountDownTimer(tot_timer_time,1000) {
+        countDown = new CountDownTimer(tot_timer_time, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                if (millisUntilFinished<tot_timer_time) {
+                if (millisUntilFinished < tot_timer_time) {
                     binding.textViewProgress.setText(String.valueOf(millisUntilFinished / 1000));
                     binding.progressBar.setProgress((int) (millisUntilFinished / 1000));
                 }
@@ -95,7 +95,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
     }
 
     @Override
-    public void checkAnswer(String selectedOption, View view){
+    public void checkAnswer(String selectedOption, View view) {
         if (countDown != null) {
             countDown.cancel();
         }
@@ -129,7 +129,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
         binding.tvTotalQuestion.setText(String.valueOf(questionsList.size()));
         binding.pbLevel.setMax(questionsList.size());
         starttimer();
-        quesNum=0;
+        quesNum = 0;
     }
 
     /**
@@ -143,7 +143,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
                 .load(questionsList.get(position).getQuestion())
                 .into(binding.imgQuestion);
 
-        setUpOptions(questionsList.get(position).getOptions().isImage(),position);
+        setUpOptions(questionsList.get(position).getOptions().isImage(), position);
     }
 
     /**
@@ -195,38 +195,38 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
     private void setTextQuestion(int position) {
         binding.tvQuestion.setVisibility(View.VISIBLE);
         binding.imgQuestion.setVisibility(View.GONE);
-        setUpOptions(questionsList.get(position).getOptions().isImage(),position);
+        setUpOptions(questionsList.get(position).getOptions().isImage(), position);
     }
 
 
     @Override
     public void showFailed(String error) {
-        showErrorSnackBar(binding.getRoot(),error);
+        showErrorSnackBar(binding.getRoot(), error);
     }
 
     @Override
-    public void changeQuestion(){
+    public void changeQuestion() {
         //if (quesNum<questionsList.size()-1) {
-            if (!selectedQuestion.trim().isEmpty()) {
-                if (selectedQuestion.equalsIgnoreCase(questionsList.get(quesNum).getAnswer())) {
-                    score++;
-                } else {
-                    incorrect++;
-                }
+        if (!selectedQuestion.trim().isEmpty()) {
+            if (selectedQuestion.equalsIgnoreCase(questionsList.get(quesNum).getAnswer())) {
+                score++;
+            } else {
+                incorrect++;
             }
-            quesNum++;
+        }
+        quesNum++;
         if (quesNum < questionsList.size()) {
-            if (quesNum == questionsList.size() -1) {
+            if (quesNum == questionsList.size() - 1) {
                 binding.btnNext.setText(getString(R.string.finish));
             }
             if (isImage) {
                 setImageQuestion(quesNum);
             } else {
-                playAnim(binding.tvQuestion,0,0);
-                playAnim(binding.txtOption1,0,1);
-                playAnim(binding.txtOption2,0,2);
-                playAnim(binding.txtOption3,0,3);
-                playAnim(binding.txtOption4,0,4);
+                playAnim(binding.tvQuestion, 0, 0);
+                playAnim(binding.txtOption1, 0, 1);
+                playAnim(binding.txtOption2, 0, 2);
+                playAnim(binding.txtOption3, 0, 3);
+                playAnim(binding.txtOption4, 0, 4);
             }
 
             int quesNumFinal = quesNum + 1;
@@ -236,7 +236,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
             binding.textViewProgress.setText(String.valueOf(36));
             selectedQuestion = "";
             starttimer();
-        }else{
+        } else {
             int tot_questions = questionsList.size();
             int answered = score + incorrect;
             int not_answered = tot_questions - answered;
@@ -252,7 +252,8 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
             this.finish();
         }
     }
-    private void playAnim(View view,final int value, int viewNum){
+
+    private void playAnim(View view, final int value, int viewNum) {
         view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500)
                 .setStartDelay(100).setInterpolator(new DecelerateInterpolator())
                 .setListener(new Animator.AnimatorListener() {
@@ -263,33 +264,32 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
 
                     @Override
                     public void onAnimationEnd(Animator animator) {
-                        if (value==0)
-                        {
-                            switch (viewNum){
+                        if (value == 0) {
+                            switch (viewNum) {
                                 case 0:
-                                    ((TextView)view).setText(questionsList.get(quesNum).getQuestion());
+                                    ((TextView) view).setText(questionsList.get(quesNum).getQuestion());
                                     break;
                                 case 1:
-                                    ((TextView)view).setText(questionsList.get(quesNum).getOptions().getA());
+                                    ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA());
                                     break;
                                 case 2:
-                                    ((TextView)view).setText(questionsList.get(quesNum).getOptions().getB());
+                                    ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB());
                                     break;
                                 case 3:
-                                    ((TextView)view).setText(questionsList.get(quesNum).getOptions().getC());
+                                    ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC());
                                     break;
                                 case 4:
-                                    ((TextView)view).setText(questionsList.get(quesNum).getOptions().getD());
+                                    ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD());
                                     break;
                             }
 
-                            if (viewNum!=0) {
+                            if (viewNum != 0) {
                                 view.setBackgroundResource(R.drawable.round_corner);
                                 ((TextView) view).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
-                                GradientDrawable myGrad = (GradientDrawable)((TextView) view).getBackground();
+                                GradientDrawable myGrad = (GradientDrawable) ((TextView) view).getBackground();
                                 myGrad.setStroke(convertDpToPx(3), Color.BLACK);
                             }
-                            playAnim(view,1,viewNum);
+                            playAnim(view, 1, viewNum);
                         }
 
                     }
@@ -306,12 +306,12 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
                 });
     }
 
-    private int convertDpToPx(int dp){
+    private int convertDpToPx(int dp) {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Really Exit?")
                 .setMessage("Are you sure you want to exit?")

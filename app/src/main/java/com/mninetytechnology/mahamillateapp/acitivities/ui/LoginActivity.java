@@ -39,22 +39,22 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
             mBinding = ActivityLoginBinding.inflate(getLayoutInflater());
             setContentView(mBinding.getRoot());
             helper = new GlobalHelper(this);
-            mPresenter = new LoginPresenter(this,this);
+            mPresenter = new LoginPresenter(this, this);
             mPresenter.rootView = mBinding.getRoot();
             //mPresenter.userId.set("00001");
             //askPermission();
             mBinding.setPresenter(mPresenter);
         } catch (Exception e) {
-            Log.e(TAG, "onCreate: "+e.getMessage());
+            Log.e(TAG, "onCreate: " + e.getMessage());
         }
     }
 
     @Override
-    public void login(UserLoginObject userLoginObject,String token) {
+    public void login(UserLoginObject userLoginObject, String token) {
         try {
             //save user id and role in shared preference
             Gson gson = new Gson();
-            String user = gson.toJson(userLoginObject,UserLoginObject.class);
+            String user = gson.toJson(userLoginObject, UserLoginObject.class);
             helper.getSharedPreferencesHelper().setPrefLoginUser(user);
             helper.getSharedPreferencesHelper().setLoginServerUserId(userLoginObject.get_id());
             helper.getSharedPreferencesHelper().setLoginServerUserClass(userLoginObject.getClass_text());
@@ -62,19 +62,19 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
 
             //start otp check activity
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra(AppKeys.loginUserId,userLoginObject.get_id());
+            intent.putExtra(AppKeys.loginUserId, userLoginObject.get_id());
             intent.putExtra(AppKeys.PHONE_NUMBER, mBinding.edtPhoneNumber.getText().toString());
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivityOnTop(false,intent);
+            startActivityOnTop(false, intent);
         } catch (Exception e) {
-            Log.d(TAG, "login: "+e.getMessage());
-            ScreenHelper.showErrorSnackBar(mBinding.getRoot(),e.getMessage());
+            Log.d(TAG, "login: " + e.getMessage());
+            ScreenHelper.showErrorSnackBar(mBinding.getRoot(), e.getMessage());
         }
     }
 
     @Override
     public void showLoginFailed(String error) {
-        ScreenHelper.showErrorSnackBar(mBinding.getRoot(),error);
+        ScreenHelper.showErrorSnackBar(mBinding.getRoot(), error);
     }
 
     private void askPermission() {
@@ -83,8 +83,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
             String[] PERMISSIONS = {Manifest.permission.INTERNET,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS,
-                    Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS,
+                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,
             };
 
             if (!hasPermissions(this, PERMISSIONS)) {

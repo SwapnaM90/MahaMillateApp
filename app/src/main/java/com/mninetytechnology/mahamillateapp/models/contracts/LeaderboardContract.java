@@ -13,8 +13,10 @@ public interface LeaderboardContract {
 
     interface ViewModel {
         void setUpLeaderboardAdapter(List<Leaderboard> leaderboards);
+
         void showLeaderboardFailed(String error);
     }
+
     interface Presenter {
         void getLeaderboards();
     }

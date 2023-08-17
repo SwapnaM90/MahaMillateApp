@@ -15,17 +15,17 @@ public class QuizCertificateActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_quiz_certificate);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_quiz_certificate);
         binding.btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityOnTop(QuizShareActivity.class,true);
+                startActivityOnTop(QuizShareActivity.class, true);
             }
         });
     }
 
     @Override
     public void onBackPressed() {
-        startActivityOnTop(QuizMainActivity.class,true);
+        startActivityOnTop(QuizMainActivity.class, true);
     }
 }

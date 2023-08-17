@@ -30,13 +30,13 @@ import retrofit2.http.Path;
 public interface ApiService {
 
     /**
-     * @date 1-3-2022
-     * Gets Login Response from server
-     * Response has status, key, user_id and user_role
      * @param email
      * @param phone_number
      * @param password
      * @return
+     * @date 1-3-2022
+     * Gets Login Response from server
+     * Response has status, key, user_id and user_role
      */
     @FormUrlEncoded
     @POST(Contants.GET_LOGIN)
@@ -48,9 +48,6 @@ public interface ApiService {
 
 
     /**
-     * @date 1-8-2023
-     * Register User
-     * Response has data and code
      * @param name
      * @param email
      * @param phone_number
@@ -60,6 +57,9 @@ public interface ApiService {
      * @param village
      * @param classText
      * @return
+     * @date 1-8-2023
+     * Register User
+     * Response has data and code
      */
     @FormUrlEncoded
     @POST(Contants.REGISTER_USER)
@@ -76,11 +76,11 @@ public interface ApiService {
     );
 
     /**
+     * @param zip_code
+     * @return
      * @date 2-8-2023
      * get State, district, village etc from zip code
      * Response has data and code
-     * @param zip_code
-     * @return
      */
     @FormUrlEncoded
     @POST(Contants.REGISTER_USER)
@@ -89,101 +89,101 @@ public interface ApiService {
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all blogs
-     * @return
      */
     @GET(Contants.BLOG)
     Call<BlogResponseModel> getBlogs();
 
     /**
+     * @return
      * @date 3-8-2023
      * update like
-     * @return
      */
     @FormUrlEncoded
-    @POST(Contants.UPDATE_LIKE+"/{blogId}")
+    @POST(Contants.UPDATE_LIKE + "/{blogId}")
     Call<BlogLikeResponseModel> updateLike(
             @Field("type") String type,
             @Path("blogId") String blogId
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * update dislike
-     * @return
      */
     @FormUrlEncoded
-    @POST(Contants.UPDATE_DISLIKE+"/{blogId}")
+    @POST(Contants.UPDATE_DISLIKE + "/{blogId}")
     Call<BlogLikeResponseModel> updateDislike(
             @Field("type") String type,
             @Path("blogId") String blogId
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * update view
-     * @return
      */
     //@FormUrlEncoded
-    @POST(Contants.UPDATE_VIEW+"/{blogId}")
+    @POST(Contants.UPDATE_VIEW + "/{blogId}")
     Call<BlogLikeResponseModel> updateView(
             @Path("blogId") String blogId
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * update share
-     * @return
      */
     //@FormUrlEncoded
-    @POST(Contants.UPDATE_SHARE+"/{blogId}")
+    @POST(Contants.UPDATE_SHARE + "/{blogId}")
     Call<BlogLikeResponseModel> updateShare(
             @Path("blogId") String blogId
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all video
-     * @return
      */
     @GET(Contants.VIDEOS)
     Call<VideoResponseModel> getVideos();
 
-     /**
+    /**
+     * @return
      * @date 3-8-2023
      * gets all quiz
-     * @return
      */
-    @GET(Contants.QUIZ+"/{id}")
+    @GET(Contants.QUIZ + "/{id}")
     Call<QuizResponseModel> getAllQuiz(
             @Path("id") String userId
     );
 
     /**
+     * @return
      * @date 7-8-2023
      * gets leaderboard user list
-     * @return
      */
-    @GET(Contants.LEADERBORAD+"/{id}")
+    @GET(Contants.LEADERBORAD + "/{id}")
     Call<List<Leaderboard>> getLeaderboards(
             @Path("id") String userId
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all quiz data
-     * @return
      */
-    @GET(Contants.GET_QUIZ_DATA+"/{userId}")
+    @GET(Contants.GET_QUIZ_DATA + "/{userId}")
     Call<QuizLevelResponseModel> getAllQuizData(
             @Path("userId") String userId
     );
 
     /**
+     * @return
      * @date 8-8-2023
      * gets otp
-     * @return
      */
     @FormUrlEncoded
     @POST(Contants.GET_VERIFY_OTP)
@@ -193,9 +193,9 @@ public interface ApiService {
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all quiz data
-     * @return
      */
     @FormUrlEncoded
     @POST(Contants.UPDATE_SCORE)
@@ -205,25 +205,25 @@ public interface ApiService {
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all class
-     * @return
      */
     @GET(Contants.GET_CLASS)
     Call<ClassResponseModel> getClassData();
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all division
-     * @return
      */
     @GET(Contants.GET_DIVISION)
     Call<DivisionResponseModel> getDivisions();
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all district
-     * @return
      */
     @GET(Contants.GET_DISTRICTCODE)
     Call<DistrictResponseModel> getDistricts(
@@ -231,21 +231,21 @@ public interface ApiService {
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all taluka
-     * @return
      */
-    @GET(Contants.GET_TALUKACODE+"/{district}")
+    @GET(Contants.GET_TALUKACODE + "/{district}")
     Call<TalukaResponseModel> getTaluka(
             @Path("district") String district
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all village
-     * @return
      */
-    @GET(Contants.GET_VILLAGECODE+"/{taluka}")
+    @GET(Contants.GET_VILLAGECODE + "/{taluka}")
     Call<VillageResponseModel> getVillage(
             @Path("taluka") String taluka
     );
@@ -255,9 +255,9 @@ public interface ApiService {
      * get district, taluka, village updated
      */
     /**
+     * @return
      * @date 3-8-2023
      * gets all district
-     * @return
      */
     @GET(Contants.GET_DISTRICT)
     Call<DistrictTalukaVillageResponseModel> getUpdatedDistricts(
@@ -265,21 +265,21 @@ public interface ApiService {
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all taluka
-     * @return
      */
-    @GET(Contants.GET_TALUKA+"/{district}")
+    @GET(Contants.GET_TALUKA + "/{district}")
     Call<DistrictTalukaVillageResponseModel> getUpdatedTaluka(
             @Path("district") String district
     );
 
     /**
+     * @return
      * @date 3-8-2023
      * gets all village
-     * @return
      */
-    @GET(Contants.GET_VILLAGE+"/{taluka}")
+    @GET(Contants.GET_VILLAGE + "/{taluka}")
     Call<DistrictTalukaVillageResponseModel> getUpdatedVillage(
             @Path("taluka") String taluka
     );

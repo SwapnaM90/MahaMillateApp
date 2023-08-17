@@ -74,7 +74,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
 
     @Override
     public void getDistrict() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
             RetrofitClientLogin.getApiService().getUpdatedDistricts().enqueue(new Callback<DistrictTalukaVillageResponseModel>() {
                 @Override
@@ -85,9 +85,10 @@ public class ProfilePresenter implements ProfileContract.Presenter {
                         mViewModel.setUpDistrict(response.body().getData());
                     } else {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showProfileFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                        mViewModel.showProfileFailed("" + mActivity.getResources().getString(R.string.invalid_response));
                     }
                 }
+
                 @Override
                 public void onFailure(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
@@ -102,7 +103,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
 
     @Override
     public void getTaluka(String district) {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
             RetrofitClientLogin.getApiService().getUpdatedTaluka(district).enqueue(new Callback<DistrictTalukaVillageResponseModel>() {
                 @Override
@@ -113,9 +114,10 @@ public class ProfilePresenter implements ProfileContract.Presenter {
                         mViewModel.setUpTaluka(response.body().getData());
                     } else {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showProfileFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                        mViewModel.showProfileFailed("" + mActivity.getResources().getString(R.string.invalid_response));
                     }
                 }
+
                 @Override
                 public void onFailure(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
@@ -130,7 +132,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
 
     @Override
     public void getVillage(String talukaCode) {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
             RetrofitClientLogin.getApiService().getUpdatedVillage(talukaCode).enqueue(new Callback<DistrictTalukaVillageResponseModel>() {
                 @Override
@@ -141,9 +143,10 @@ public class ProfilePresenter implements ProfileContract.Presenter {
                         mViewModel.setUpVillage(response.body().getData());
                     } else {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showProfileFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                        mViewModel.showProfileFailed("" + mActivity.getResources().getString(R.string.invalid_response));
                     }
                 }
+
                 @Override
                 public void onFailure(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
@@ -161,14 +164,14 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     }
 
     public void goToPrivacyPolicy() {
-        mActivity.startActivityOnTop(PrivacyPolicyActivity.class,false);
+        mActivity.startActivityOnTop(PrivacyPolicyActivity.class, false);
     }
 
     public void goToHelpAndSupport() {
-        mActivity.startActivityOnTop(HelpAndSupportActivity.class,false);
+        mActivity.startActivityOnTop(HelpAndSupportActivity.class, false);
     }
 
     public void goToAboutUs() {
-        mActivity.startActivityOnTop(AboutUsActivity.class,false);
+        mActivity.startActivityOnTop(AboutUsActivity.class, false);
     }
 }

@@ -11,11 +11,15 @@ public interface QuizMainContract {
 
     interface ViewModel {
         void setQuiz(QuizLevelData quizLevelData);
+
         void showFailed(String error);
     }
+
     interface Presenter {
         void getQuizData();
+
         void goToQuiz();
+
         void goToLeaderBoard();
     }
 }

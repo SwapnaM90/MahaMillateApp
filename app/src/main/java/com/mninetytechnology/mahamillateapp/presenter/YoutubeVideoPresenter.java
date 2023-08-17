@@ -24,7 +24,7 @@ public class YoutubeVideoPresenter implements YoutubeVideoContract.Presenter {
 
     @Override
     public void getYoutubeVideos() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
 
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();

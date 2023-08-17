@@ -48,26 +48,27 @@ public class QuizLevelPresenter implements QuizLevelContract.Presenter {
         }
 
         SpannableStringBuilder builder = new SpannableStringBuilder();
-        builder.append(getBulletString("Each question will be allotted "+seconds+" seconds",false));
-        builder.append(getBulletString("There are "+tot_questions+" questions for a total of "+tot_questions+" points",true));
-        builder.append(getBulletString("1 point for each correct answer.",true));
-        builder.append(getBulletString("A certificate will be awarded if at least 50 questions are answered.",true));
-        builder.append(getBulletString("Final decision will be with the organizers.",true));
+        builder.append(getBulletString("Each question will be allotted " + seconds + " seconds", false));
+        builder.append(getBulletString("There are " + tot_questions + " questions for a total of " + tot_questions + " points", true));
+        builder.append(getBulletString("1 point for each correct answer.", true));
+        builder.append(getBulletString("A certificate will be awarded if at least 50 questions are answered.", true));
+        builder.append(getBulletString("Final decision will be with the organizers.", true));
 
         rules.set(builder.toString());
     }
 
     /**
      * generates string having bullet points
+     *
      * @param normalText
      * @return
      */
-    private SpannableString getBulletString(String normalText,boolean nextLine) {
+    private SpannableString getBulletString(String normalText, boolean nextLine) {
         if (nextLine) {
-            SpannableString string = new SpannableString("\n\u2022 "+normalText);
+            SpannableString string = new SpannableString("\n\u2022 " + normalText);
             return string;
         } else {
-            SpannableString string = new SpannableString("\u2022 "+normalText);
+            SpannableString string = new SpannableString("\u2022 " + normalText);
             return string;
         }
     }

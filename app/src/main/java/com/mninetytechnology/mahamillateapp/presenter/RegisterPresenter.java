@@ -62,22 +62,22 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         if (email == null || TextUtils.isEmpty(email.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_email));
             return false;
-        }else if (name == null || TextUtils.isEmpty(name.get())) {
+        } else if (name == null || TextUtils.isEmpty(name.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
-        }else if (password == null || TextUtils.isEmpty(password.get())) {
+        } else if (password == null || TextUtils.isEmpty(password.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_password));
             return false;
-        }else if (re_enter_password == null || TextUtils.isEmpty(re_enter_password.get())) {
+        } else if (re_enter_password == null || TextUtils.isEmpty(re_enter_password.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_password));
             return false;
-        }else if (!password.get().trim().equalsIgnoreCase(re_enter_password.get().trim())) {
+        } else if (!password.get().trim().equalsIgnoreCase(re_enter_password.get().trim())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.password_not_match));
             return false;
-        }else if (user_class == null || TextUtils.isEmpty(user_class.get())) {
+        } else if (user_class == null || TextUtils.isEmpty(user_class.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
-        }else if (address == null || TextUtils.isEmpty(address.get())) {
+        } else if (address == null || TextUtils.isEmpty(address.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
         }
@@ -88,10 +88,10 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         else if (district == null || TextUtils.isEmpty(district.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
-        }else if (taluka == null || TextUtils.isEmpty(taluka.get())) {
+        } else if (taluka == null || TextUtils.isEmpty(taluka.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
-        }else if (village == null || TextUtils.isEmpty(village.get())) {
+        } else if (village == null || TextUtils.isEmpty(village.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
         }
@@ -101,23 +101,24 @@ public class RegisterPresenter implements RegisterContract.Presenter {
 
     @Override
     public void doRegistration() {
-        if(validate()) {
-            if(mActivity.isInternetConnected()) {
+        if (validate()) {
+            if (mActivity.isInternetConnected()) {
                 mActivity.startProgressDialog(mActivity);
 
-                RetrofitClientLogin.getApiService().registerUser(name.get(), email.get(),phone_number.get(),password.get(),"Maharashtra",district.get(),village.get(),village.get(),user_class.get()).enqueue(new Callback<RegisterResponseModel>() {
+                RetrofitClientLogin.getApiService().registerUser(name.get(), email.get(), phone_number.get(), password.get(), "Maharashtra", district.get(), village.get(), village.get(), user_class.get()).enqueue(new Callback<RegisterResponseModel>() {
                     @Override
                     public void onResponse(@NonNull Call<RegisterResponseModel> call, @NonNull Response<RegisterResponseModel> response) {
                         if (response.code() == 200 || response.code() == 201) {
                             assert response.body() != null;
                             UserLoginObject obj = response.body().getData();
                             mActivity.dismissProgressDialog();
-                            mViewModel.register(obj,response.body().getToken());
+                            mViewModel.register(obj, response.body().getToken());
                         } else {
                             mActivity.dismissProgressDialog();
-                            mViewModel.showRegisterFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                            mViewModel.showRegisterFailed("" + mActivity.getResources().getString(R.string.invalid_response));
                         }
                     }
+
                     @Override
                     public void onFailure(@NonNull Call<RegisterResponseModel> call, @NonNull Throwable t) {
                         mActivity.dismissProgressDialog();
@@ -133,7 +134,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
 
     @Override
     public void getClassData() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
             RetrofitClientLogin.getApiService().getClassData().enqueue(new Callback<ClassResponseModel>() {
                 @Override
@@ -144,9 +145,10 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                         mViewModel.setUpClass(response.body().getData());
                     } else {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showRegisterFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                        mViewModel.showRegisterFailed("" + mActivity.getResources().getString(R.string.invalid_response));
                     }
                 }
+
                 @Override
                 public void onFailure(@NonNull Call<ClassResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
@@ -189,7 +191,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
 
     @Override
     public void getDistrict() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
             RetrofitClientLogin.getApiService().getUpdatedDistricts().enqueue(new Callback<DistrictTalukaVillageResponseModel>() {
                 @Override
@@ -200,9 +202,10 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                         mViewModel.setUpDistrict(response.body().getData());
                     } else {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showRegisterFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                        mViewModel.showRegisterFailed("" + mActivity.getResources().getString(R.string.invalid_response));
                     }
                 }
+
                 @Override
                 public void onFailure(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
@@ -217,7 +220,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
 
     @Override
     public void getTaluka(String districtCode) {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
             RetrofitClientLogin.getApiService().getUpdatedTaluka(districtCode).enqueue(new Callback<DistrictTalukaVillageResponseModel>() {
                 @Override
@@ -228,9 +231,10 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                         mViewModel.setUpTaluka(response.body().getData());
                     } else {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showRegisterFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                        mViewModel.showRegisterFailed("" + mActivity.getResources().getString(R.string.invalid_response));
                     }
                 }
+
                 @Override
                 public void onFailure(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
@@ -245,7 +249,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
 
     @Override
     public void getVillage(String talukaCode) {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
             RetrofitClientLogin.getApiService().getUpdatedVillage(talukaCode).enqueue(new Callback<DistrictTalukaVillageResponseModel>() {
                 @Override
@@ -256,9 +260,10 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                         mViewModel.setUpVillage(response.body().getData());
                     } else {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showRegisterFailed(""+mActivity.getResources().getString(R.string.invalid_response));
+                        mViewModel.showRegisterFailed("" + mActivity.getResources().getString(R.string.invalid_response));
                     }
                 }
+
                 @Override
                 public void onFailure(@NonNull Call<DistrictTalukaVillageResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();

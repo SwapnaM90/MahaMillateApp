@@ -144,7 +144,7 @@ public class ScreenHelper {
                             + difference_In_Seconds
                             + " seconds");
             return String.valueOf(difference_In_Days);
-        }catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return String.valueOf(0);
@@ -161,21 +161,21 @@ public class ScreenHelper {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public static void showGreenSnackBar(View view,String text) {
-        Snackbar snackbar = Snackbar.make(view,""+text, BaseTransientBottomBar.LENGTH_LONG);
+    public static void showGreenSnackBar(View view, String text) {
+        Snackbar snackbar = Snackbar.make(view, "" + text, BaseTransientBottomBar.LENGTH_LONG);
         View snackBarView = snackbar.getView();
         snackBarView.setBackgroundColor(Color.GREEN);
         snackbar.show();
     }
 
-    public static void showErrorSnackBar(View view,String text) {
+    public static void showErrorSnackBar(View view, String text) {
         try {
-            Snackbar snackbar = Snackbar.make(view,""+text, BaseTransientBottomBar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(view, "" + text, BaseTransientBottomBar.LENGTH_LONG);
             View snackBarView = snackbar.getView();
             snackBarView.setBackgroundColor(Color.RED);
             snackbar.show();
         } catch (Exception e) {
-            Log.e(TAG, "showErrorSnackBar: "+e.getMessage());
+            Log.e(TAG, "showErrorSnackBar: " + e.getMessage());
         }
     }
 }

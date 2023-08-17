@@ -19,8 +19,8 @@ public class QuizLevelsActivity extends BaseActivity implements QuizLevelContrac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_quiz_levels);
-        mPresenter = new QuizLevelPresenter(this,this);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_quiz_levels);
+        mPresenter = new QuizLevelPresenter(this, this);
         mBinding.setPresenter(mPresenter);
         mPresenter.getLevelData();
         mBinding.toolbar2.setNavigationOnClickListener(new View.OnClickListener() {
@@ -33,7 +33,7 @@ public class QuizLevelsActivity extends BaseActivity implements QuizLevelContrac
 
     @Override
     public void goToNext() {
-        startActivityOnTop(QuizQuestionsActivity.class,true);
+        startActivityOnTop(QuizQuestionsActivity.class, true);
     }
 
     @Override
@@ -43,11 +43,11 @@ public class QuizLevelsActivity extends BaseActivity implements QuizLevelContrac
 
     @Override
     public void showFailed(String error) {
-        showErrorSnackBar(mBinding.getRoot(),error);
+        showErrorSnackBar(mBinding.getRoot(), error);
     }
 
     @Override
     public void onBackPressed() {
-        startActivityOnTop(QuizMainActivity.class,true);
+        startActivityOnTop(QuizMainActivity.class, true);
     }
 }

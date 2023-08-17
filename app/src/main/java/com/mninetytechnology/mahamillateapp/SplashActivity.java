@@ -11,7 +11,7 @@ import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.SplashContract;
 import com.mninetytechnology.mahamillateapp.presenter.SplashPresenter;
 
-public class SplashActivity extends BaseActivity implements SplashContract.ViewModel  {
+public class SplashActivity extends BaseActivity implements SplashContract.ViewModel {
     private ActivitySplashBinding mBinding;
     private SplashPresenter mPresenter;
     private Runnable mRunnable;
@@ -45,7 +45,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ViewM
 
     @Override
     public void startAnotherActivity(Class<?> cls, boolean finishCurrent) {
-        startActivityOnTop(cls,finishCurrent);
+        startActivityOnTop(cls, finishCurrent);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ViewM
         try {
             mHandler.postDelayed(mRunnable, SPLASH_INTERVAL_IN_MILLIS);
         } catch (Exception e) {
-            Toast.makeText(mActivity, "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(mActivity, "Error : " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -64,7 +64,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ViewM
         try {
             mHandler.removeCallbacks(mRunnable);
         } catch (Exception e) {
-            Toast.makeText(mActivity, "Error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(mActivity, "Error : " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

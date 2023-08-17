@@ -38,6 +38,7 @@ public class YoutubeVideoListAdapter extends RecyclerView.Adapter<YoutubeVideoLi
         return new YoutubeVideoHolder(SingleVideoBinding.inflate(LayoutInflater.from(parent.getContext()),
                 parent, false));
     }
+
     @Override
     public void onBindViewHolder(@NonNull YoutubeVideoHolder holder, int position) {
         YoutubeVideo listItem = stateList.get(position);
@@ -88,6 +89,6 @@ public class YoutubeVideoListAdapter extends RecyclerView.Adapter<YoutubeVideoLi
     }
 
     public interface OnItemClickListener {
-        void  onItemClicked(YoutubeVideo listModel, int position);
+        void onItemClicked(YoutubeVideo listModel, int position);
     }
 }

@@ -13,16 +13,22 @@ import java.util.List;
 public interface RegisterContract {
 
     interface ViewModel {
-        void register(UserLoginObject userLoginObject,String token);
+        void register(UserLoginObject userLoginObject, String token);
+
         void showRegisterFailed(String error);
 
         void setUpClass(List<SingleClass> classes);
+
         void setUpAddress();
+
         //void setUpDivision(List<Division> divisions);
         void setUpDistrict(List<String> district);
+
         void setUpTaluka(List<String> talukas);
+
         void setUpVillage(List<String> village);
     }
+
     interface Presenter {
         void doRegistration();
 
@@ -31,7 +37,9 @@ public interface RegisterContract {
         //void getDivision();
         //void getDistrict(String divisionCode);
         void getDistrict();
+
         void getTaluka(String districtCode);
+
         void getVillage(String talukaCode);
     }
 }

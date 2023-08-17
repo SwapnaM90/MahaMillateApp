@@ -11,8 +11,10 @@ public interface QuizScoreContract {
 
     interface ViewModel {
         void setUpScore();
+
         void showScoreFailed(String error);
     }
+
     interface Presenter {
         void uploadScore(QuizScore score);
     }

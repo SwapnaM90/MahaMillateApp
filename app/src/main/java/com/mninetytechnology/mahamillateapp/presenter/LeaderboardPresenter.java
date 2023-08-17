@@ -26,7 +26,7 @@ public class LeaderboardPresenter implements LeaderboardContract.Presenter {
 
     @Override
     public void getLeaderboards() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
 
             String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();

@@ -14,6 +14,6 @@ public class QuizShareActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        startActivityOnTop(QuizMainActivity.class,true);
+        startActivityOnTop(QuizMainActivity.class, true);
     }
 }

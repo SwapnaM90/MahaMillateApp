@@ -27,7 +27,7 @@ public class BlogPresenter implements BlogContract.Presenter {
 
     @Override
     public void getBlogs() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
 
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
@@ -55,16 +55,16 @@ public class BlogPresenter implements BlogContract.Presenter {
     }
 
     @Override
-    public void updateLike(boolean isAdd,String blogId) {
-       String type = "REMOVE";
+    public void updateLike(boolean isAdd, String blogId) {
+        String type = "REMOVE";
         if (isAdd) {
             type = "ADD";
         }
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
 //            mActivity.startProgressDialog(mActivity);
 
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
-            RetrofitClient.getApiService().updateLike(type,blogId).enqueue(new Callback<BlogLikeResponseModel>() {
+            RetrofitClient.getApiService().updateLike(type, blogId).enqueue(new Callback<BlogLikeResponseModel>() {
                 @Override
                 public void onResponse(Call<BlogLikeResponseModel> call, Response<BlogLikeResponseModel> response) {
 //                    mActivity.dismissProgressDialog();
@@ -73,12 +73,12 @@ public class BlogPresenter implements BlogContract.Presenter {
 //                    } else {
 //                        mViewModel.showBlogFailed(mActivity.getResources().getString(R.string.invalid_response));
 //                    }
-                    Log.e("TAG", "onResponse: "+ response);
+                    Log.e("TAG", "onResponse: " + response);
                 }
 
                 @Override
                 public void onFailure(Call<BlogLikeResponseModel> call, Throwable t) {
-                    Log.e("TAG", "onFailure: "+t.getMessage());
+                    Log.e("TAG", "onFailure: " + t.getMessage());
                 }
             });
 
@@ -88,22 +88,22 @@ public class BlogPresenter implements BlogContract.Presenter {
     }
 
     @Override
-    public void updateDislike(boolean isAdd,String blogId) {
+    public void updateDislike(boolean isAdd, String blogId) {
         String type = "REMOVE";
         if (isAdd) {
             type = "ADD";
         }
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
-            RetrofitClient.getApiService().updateDislike(type,blogId).enqueue(new Callback<BlogLikeResponseModel>() {
+            RetrofitClient.getApiService().updateDislike(type, blogId).enqueue(new Callback<BlogLikeResponseModel>() {
                 @Override
                 public void onResponse(Call<BlogLikeResponseModel> call, Response<BlogLikeResponseModel> response) {
-                    Log.e("TAG", "onResponse: "+ response);
+                    Log.e("TAG", "onResponse: " + response);
                 }
 
                 @Override
                 public void onFailure(Call<BlogLikeResponseModel> call, Throwable t) {
-                    Log.e("TAG", "onFailure: "+t.getMessage());
+                    Log.e("TAG", "onFailure: " + t.getMessage());
                 }
             });
 
@@ -114,17 +114,17 @@ public class BlogPresenter implements BlogContract.Presenter {
 
     @Override
     public void updateShare(String blogId) {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
             RetrofitClient.getApiService().updateShare(blogId).enqueue(new Callback<BlogLikeResponseModel>() {
                 @Override
                 public void onResponse(Call<BlogLikeResponseModel> call, Response<BlogLikeResponseModel> response) {
-                    Log.e("TAG", "onResponse: "+ response);
+                    Log.e("TAG", "onResponse: " + response);
                 }
 
                 @Override
                 public void onFailure(Call<BlogLikeResponseModel> call, Throwable t) {
-                    Log.e("TAG", "onFailure: "+t.getMessage());
+                    Log.e("TAG", "onFailure: " + t.getMessage());
                 }
             });
 
@@ -135,17 +135,17 @@ public class BlogPresenter implements BlogContract.Presenter {
 
     @Override
     public void updateView(String blogId) {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
             RetrofitClient.getApiService().updateView(blogId).enqueue(new Callback<BlogLikeResponseModel>() {
                 @Override
                 public void onResponse(Call<BlogLikeResponseModel> call, Response<BlogLikeResponseModel> response) {
-                    Log.e("TAG", "onResponse: "+ response);
+                    Log.e("TAG", "onResponse: " + response);
                 }
 
                 @Override
                 public void onFailure(Call<BlogLikeResponseModel> call, Throwable t) {
-                    Log.e("TAG", "onFailure: "+t.getMessage());
+                    Log.e("TAG", "onFailure: " + t.getMessage());
                 }
             });
 

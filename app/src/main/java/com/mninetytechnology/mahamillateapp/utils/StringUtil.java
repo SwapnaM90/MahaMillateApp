@@ -24,6 +24,7 @@ public class StringUtil {
 
     /**
      * Returns id of any type of youtube url
+     *
      * @param youtubeUrl
      * @return
      */
@@ -44,12 +45,12 @@ public class StringUtil {
                 video_id = groupIndex1;
         }
         if (TextUtils.isEmpty(video_id)) {
-            if (youtubeUrl.contains("youtu.be/")  ) {
+            if (youtubeUrl.contains("youtu.be/")) {
                 String spl = youtubeUrl.split("youtu.be/")[1];
                 if (spl.contains("\\?")) {
                     video_id = spl.split("\\?")[0];
-                }else {
-                    video_id =spl;
+                } else {
+                    video_id = spl;
                 }
 
             }

@@ -28,7 +28,7 @@ public class LeaderboardFragment extends Fragment implements LeaderboardContract
         binding = FragmentLeaderboardBinding.inflate(inflater, container, false);
         mActivity = (MainActivity) getActivity();
 
-        presenter = new LeaderboardPresenter(mActivity,this);
+        presenter = new LeaderboardPresenter(mActivity, this);
         binding.setPresenter(presenter);
         presenter.getLeaderboards();
 
@@ -49,7 +49,7 @@ public class LeaderboardFragment extends Fragment implements LeaderboardContract
 
     @Override
     public void showLeaderboardFailed(String error) {
-        mActivity.showErrorSnackBar(binding.getRoot(),error);
+        mActivity.showErrorSnackBar(binding.getRoot(), error);
     }
 
 }

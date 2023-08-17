@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
     private YoutubeVideo youtubeVideo;
     private final DisplayMetrics displayMetrics = new DisplayMetrics();
 
-    public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         mActivity = (MainActivity) getActivity();
@@ -160,8 +160,9 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
     public void getVideos() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
 
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
@@ -172,21 +173,21 @@ public class HomeFragment extends Fragment {
                     if (response.code() == 200 && response.body() != null && response.body().getData() != null) {
                         for (int i = 0; i < response.body().getData().size(); i++) {
                             YoutubeVideo video = response.body().getData().get(i);
-                            if(video.isSpecial) {
+                            if (video.isSpecial) {
                                 youtubeVideo = video;
                                 break;
                             }
                         }
                         setUpVideo();
                     } else {
-                        mActivity.showErrorSnackBar(binding.getRoot(),mActivity.getResources().getString(R.string.invalid_response));
+                        mActivity.showErrorSnackBar(binding.getRoot(), mActivity.getResources().getString(R.string.invalid_response));
                     }
                 }
 
                 @Override
                 public void onFailure(Call<VideoResponseModel> call, Throwable t) {
                     mActivity.dismissProgressDialog();
-                    mActivity.showErrorSnackBar(binding.getRoot(),mActivity.getResources().getString(R.string.invalid_response));
+                    mActivity.showErrorSnackBar(binding.getRoot(), mActivity.getResources().getString(R.string.invalid_response));
                 }
             });
 

@@ -27,7 +27,7 @@ public class VideosActivity extends BaseActivity implements YoutubeVideoContract
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_videos);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_videos);
         setSupportActionBar(mBinding.toolbar2);
         mBinding.toolbar2.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,14 +35,14 @@ public class VideosActivity extends BaseActivity implements YoutubeVideoContract
                 onBackPressed();
             }
         });
-        mPresenter = new YoutubeVideoPresenter(this,this);
+        mPresenter = new YoutubeVideoPresenter(this, this);
         mBinding.setPresenter(mPresenter);
         mPresenter.getYoutubeVideos();
     }
 
     @Override
     public void onBackPressed() {
-        startActivityOnTop(MainActivity.class,true);
+        startActivityOnTop(MainActivity.class, true);
     }
 
     @Override
@@ -65,6 +65,6 @@ public class VideosActivity extends BaseActivity implements YoutubeVideoContract
 
     @Override
     public void showYoutubeVideoFailed(String error) {
-        showErrorSnackBar(mBinding.getRoot(),error);
+        showErrorSnackBar(mBinding.getRoot(), error);
     }
 }

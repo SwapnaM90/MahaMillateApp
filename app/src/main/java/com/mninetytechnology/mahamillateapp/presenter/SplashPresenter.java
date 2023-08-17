@@ -31,6 +31,7 @@ public class SplashPresenter implements SplashContract.Presenter {
 
     /**
      * Checks last login date
+     *
      * @param helper
      */
     @Override
@@ -41,26 +42,26 @@ public class SplashPresenter implements SplashContract.Presenter {
         String currentDate = getCurrentDateOnly();
         if (!loginDate.isEmpty()) {
             try {
-                    Date currentD = myFormat.parse(currentDate);
-                    Date loginD = myFormat.parse(loginDate);
-                    long difference = currentD.getTime() - loginD.getTime();
-                    float daysBetween = (difference / (1000 * 60 * 60 * 24));
-                    /* You can also convert the milliseconds to days using this method
-                     * float daysBetween = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS) */
-                    if (daysBetween < 15) {
-                        mViewModel.startAnotherActivity(MainActivity.class, true);
-                        Log.i("SplashActivity::", "direct start");
-                    } else {
-                        try {
-                            mViewModel.startAnotherActivity(LoginActivity.class, true);
-                        } catch (Exception e) {
-                            Log.e(TAG, "checkLastLoginDate: " + e.getMessage());
-                        }
-                        Log.i("SplashActivity::", "login expired start");
+                Date currentD = myFormat.parse(currentDate);
+                Date loginD = myFormat.parse(loginDate);
+                long difference = currentD.getTime() - loginD.getTime();
+                float daysBetween = (difference / (1000 * 60 * 60 * 24));
+                /* You can also convert the milliseconds to days using this method
+                 * float daysBetween = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS) */
+                if (daysBetween < 15) {
+                    mViewModel.startAnotherActivity(MainActivity.class, true);
+                    Log.i("SplashActivity::", "direct start");
+                } else {
+                    try {
+                        mViewModel.startAnotherActivity(LoginActivity.class, true);
+                    } catch (Exception e) {
+                        Log.e(TAG, "checkLastLoginDate: " + e.getMessage());
                     }
-                } catch (Exception e) {
-                    ScreenHelper.showErrorSnackBar(rootView, e.getMessage());
+                    Log.i("SplashActivity::", "login expired start");
                 }
+            } catch (Exception e) {
+                ScreenHelper.showErrorSnackBar(rootView, e.getMessage());
+            }
         } else {
             // todo direct login screen
             try {
@@ -70,7 +71,7 @@ public class SplashPresenter implements SplashContract.Presenter {
                     mViewModel.startAnotherActivity(MainActivity.class, true);
                 }
             } catch (Exception e) {
-                Log.e(TAG, "checkLastLoginDate: "+e.getMessage());
+                Log.e(TAG, "checkLastLoginDate: " + e.getMessage());
             }
             Log.i("SplashActivity::", "Freshly start");
         }

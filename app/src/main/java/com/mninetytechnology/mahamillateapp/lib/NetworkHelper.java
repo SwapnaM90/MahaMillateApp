@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 
 public class NetworkHelper {
 
-    public  static boolean hasNetworkAccess(Context context){
+    public static boolean hasNetworkAccess(Context context) {
 
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         try {

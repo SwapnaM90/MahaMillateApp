@@ -102,43 +102,43 @@ public class SharedPreferencesHelper extends GlobalHelper {
         editor.apply();
     }
 
-    public String getLoginDateTimeData(){
+    public String getLoginDateTimeData() {
         return preferences.getString(Contants.SYNC_LOGIN_DATE_TIME_DATA, "");
     }
 
-    public String getLoginUserId(){
+    public String getLoginUserId() {
         return preferences.getString(Contants.APP_LOGIN_USER_ID, "");
     }
 
-    public String getLoginServerUserId(){
+    public String getLoginServerUserId() {
         return preferences.getString(Contants.APP_SERVER_LOGIN_USER_ID, "");
     }
 
-    public String getLoginServerUserClass(){
+    public String getLoginServerUserClass() {
         return preferences.getString(Contants.APP_SERVER_LOGIN_USER_CLASS, "");
     }
 
-    public String getLoginKey(){
+    public String getLoginKey() {
         return preferences.getString(Contants.APP_LOGIN_USER_KEY, "");
     }
 
-    public String getAddress(){
+    public String getAddress() {
         return preferences.getString(Contants.APP_ADDRESS, "");
     }
 
-    public String getLoginUserRole(){
+    public String getLoginUserRole() {
         return preferences.getString(Contants.APP_LOGIN_USER_ROLE, "");
     }
 
-    public String getLastSyncAllDataTime(){
+    public String getLastSyncAllDataTime() {
         return preferences.getString(Contants.SYNC_DATE_TIME_ALL_DATA, "");
     }
 
-    public String getLastSyncCandidateDataTime(){
+    public String getLastSyncCandidateDataTime() {
         return preferences.getString(Contants.SYNC_DATE_TIME_CANDIDATE_DATA, "");
     }
 
-    public String getLastFirstLevelScore(){
+    public String getLastFirstLevelScore() {
         return preferences.getString(Contants.LAST_FIRST_LEVEL_SCORE, "0");
     }
 

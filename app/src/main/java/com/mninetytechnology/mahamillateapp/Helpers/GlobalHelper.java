@@ -19,11 +19,6 @@ public class GlobalHelper {
     private SharedPreferencesHelper sharedPreferencesHelper;
     private UIHelper uiHelper;
     private UserHelper userHelper;
-    //private ServerDataAccess serverDataAccess;
-    private ImageHelper imageHelper;
-//    private DataFields dataFields;
-//    private LocalDataAccess localDataAccess;
-    private GPSTracker gpsTracker;
 
     public GlobalHelper(Context context) {
         this.context = context;
@@ -36,22 +31,8 @@ public class GlobalHelper {
         return this.sharedPreferencesHelper;
     }
 
-//    public LocalDataAccess getLocalDataAccess() {
-//        if (localDataAccess == null) {
-//            localDataAccess = new LocalDataAccess(context);
-//        }
-//        return localDataAccess;
-//    }
-
-    public GPSTracker getGpsTracker() {
-        if (gpsTracker == null) {
-            gpsTracker = new GPSTracker(context);
-        }
-        return gpsTracker;
-    }
-
     public String getDevicesID() {
-        return Settings.Secure.getString(this.context.getContentResolver(),Settings.Secure.ANDROID_ID);
+        return Settings.Secure.getString(this.context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
     public String getCurrentDateTime() {
@@ -74,27 +55,6 @@ public class GlobalHelper {
         return this.userHelper;
     }
 
-    public ImageHelper getImageHelper() {
-        if (this.imageHelper == null) {
-            this.imageHelper = new ImageHelper(this.context);
-        }
-        return this.imageHelper;
-    }
-
-//    public ServerDataAccess getServerDataAccess() {
-//        if (this.serverDataAccess == null) {
-//            this.serverDataAccess = new ServerDataAccess(this.context);
-//        }
-//        return this.serverDataAccess;
-//    }
-//
-//    public DataFields getDataFields() {
-//        if (dataFields == null) {
-//            dataFields = new DataFields();
-//        }
-//        return dataFields;
-//    }
-
     public static String md5(final String s) {
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
@@ -108,8 +68,7 @@ public class GlobalHelper {
                 hexString.append(h);
             }
             return hexString.toString();
-        }
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return "";
@@ -121,8 +80,7 @@ public class GlobalHelper {
         try {
             pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             version = pInfo.versionName;
-        }
-        catch (PackageManager.NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
         return version;

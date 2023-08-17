@@ -34,7 +34,7 @@ public class BaseActivity extends AppCompatActivity {
     private Snackbar snackbar;
     private View view;
     public String key;
-//    public ApiService service;
+    //    public ApiService service;
     int status = 0;
     Handler handler = new Handler();
     private Dialog dialog;
@@ -232,7 +232,7 @@ public class BaseActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    public void showErrorSnackBar(View view,String error) {
+    public void showErrorSnackBar(View view, String error) {
         Snackbar snackbar = Snackbar.make(view, error, Snackbar.LENGTH_LONG);
         View sbView = snackbar.getView();
         sbView.setBackgroundResource(R.color.red);

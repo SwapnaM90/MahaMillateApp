@@ -13,13 +13,19 @@ public interface BlogContract {
 
     interface ViewModel {
         void setUpBlogAdapter(List<Blog> blogs);
+
         void showBlogFailed(String error);
     }
+
     interface Presenter {
         void getBlogs();
-        void updateLike(boolean isAdd,String blogId);
-        void updateDislike(boolean isAdd,String blogId);
+
+        void updateLike(boolean isAdd, String blogId);
+
+        void updateDislike(boolean isAdd, String blogId);
+
         void updateShare(String blogId);
+
         void updateView(String blogId);
     }
 }

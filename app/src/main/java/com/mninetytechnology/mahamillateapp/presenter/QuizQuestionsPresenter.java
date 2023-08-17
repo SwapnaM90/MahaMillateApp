@@ -27,7 +27,7 @@ public class QuizQuestionsPresenter implements QuizQuestionContract.Presenter {
 
     @Override
     public void loadQuiz() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
 
             String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();
@@ -56,19 +56,19 @@ public class QuizQuestionsPresenter implements QuizQuestionContract.Presenter {
     }
 
     @Override
-    public void buttonClick(View view,int button) {
+    public void buttonClick(View view, int button) {
         switch (button) {
             case 1:
-                mViewModel.checkAnswer("A",view);
+                mViewModel.checkAnswer("A", view);
                 break;
             case 2:
-                mViewModel.checkAnswer("B",view);
+                mViewModel.checkAnswer("B", view);
                 break;
             case 3:
-                mViewModel.checkAnswer("C",view);
+                mViewModel.checkAnswer("C", view);
                 break;
             case 4:
-                mViewModel.checkAnswer("D",view);
+                mViewModel.checkAnswer("D", view);
                 break;
         }
     }
@@ -76,12 +76,12 @@ public class QuizQuestionsPresenter implements QuizQuestionContract.Presenter {
     @Override
     public void goToNext() {
         mActivity.countDown.cancel();
-        Handler handler= new Handler();
+        Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mViewModel.changeQuestion();
             }
-        },500);
+        }, 500);
     }
 }

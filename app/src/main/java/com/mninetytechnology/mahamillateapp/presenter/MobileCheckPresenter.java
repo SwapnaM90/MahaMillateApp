@@ -44,10 +44,10 @@ public class MobileCheckPresenter implements MobileCheckContract.Presenter {
 
     @Override
     public void getOtp() {
-        if(mActivity.isInternetConnected()) {
+        if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
             String otp = generatePin();
-            RetrofitClient.getApiService().getOtp(mobile.get(),otp).enqueue(new Callback<OtpResponseModel>() {
+            RetrofitClient.getApiService().getOtp(mobile.get(), otp).enqueue(new Callback<OtpResponseModel>() {
                 @Override
                 public void onResponse(Call<OtpResponseModel> call, Response<OtpResponseModel> response) {
                     mActivity.dismissProgressDialog();
