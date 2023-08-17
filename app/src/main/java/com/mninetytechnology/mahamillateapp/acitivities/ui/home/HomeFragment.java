@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private MainActivity mActivity;
     private YoutubeVideo youtubeVideo;
-    private DisplayMetrics displayMetrics = new DisplayMetrics();
+    private final DisplayMetrics displayMetrics = new DisplayMetrics();
 
     public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
 

@@ -82,7 +82,7 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
     }
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
-        private int numItems = 1;
+        private final int numItems = 1;
 
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -96,16 +96,14 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
         @Override
         public Fragment getItem(int position) {
 
-            switch (position) {
-                case 0:
-                    return Info1Fragment.newInstance();
+            if (position == 0) {
+                return Info1Fragment.newInstance();
 //                case 1:
 //                    return Info2Fragment.newInstance();
 //                case 2:
 //                    return Info3Fragment.newInstance();
-                default:
-                    return null;
             }
+            return null;
 
         }
 

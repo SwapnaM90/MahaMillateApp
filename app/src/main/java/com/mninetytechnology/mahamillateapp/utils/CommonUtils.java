@@ -33,10 +33,8 @@ public class CommonUtils {
 
     public static String getFontName(int index) {
         String font = "fonts/Regular.ttf";
-        switch (index) {
-            case 2:
-                font = "fonts/Bold.ttf";
-                break;
+        if (index == 2) {
+            font = "fonts/Bold.ttf";
         }
         return font;
     }

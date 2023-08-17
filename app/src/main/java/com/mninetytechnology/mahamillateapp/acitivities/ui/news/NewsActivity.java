@@ -59,7 +59,7 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     private class MyWebChromeClient extends WebChromeClient {
-        private String urlAccount;
+        private final String urlAccount;
 
         public MyWebChromeClient(String urlAccount) {
             this.urlAccount = urlAccount;

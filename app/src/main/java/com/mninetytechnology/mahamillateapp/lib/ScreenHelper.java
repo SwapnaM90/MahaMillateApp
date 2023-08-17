@@ -127,7 +127,7 @@ public class ScreenHelper {
 
             long difference_In_Years
                     = (difference_In_Time
-                    / (1000l * 60 * 60 * 24 * 365));
+                    / (1000L * 60 * 60 * 24 * 365));
 
             long difference_In_Days
                     = (difference_In_Time

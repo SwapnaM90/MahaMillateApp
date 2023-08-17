@@ -8,10 +8,10 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class SnackbarUtils {
-    private int BACKGROUND_COLOR;
-    private int TEXT_COLOR;
-    private int BUTTON_COLOR;
-    private String TEXT;
+    private final int BACKGROUND_COLOR;
+    private final int TEXT_COLOR;
+    private final int BUTTON_COLOR;
+    private final String TEXT;
 
 
     public SnackbarUtils(String aText, int aBgColor, int aTextColor, int aButtonColor){

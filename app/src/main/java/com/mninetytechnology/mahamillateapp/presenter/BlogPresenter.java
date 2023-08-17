@@ -73,7 +73,7 @@ public class BlogPresenter implements BlogContract.Presenter {
 //                    } else {
 //                        mViewModel.showBlogFailed(mActivity.getResources().getString(R.string.invalid_response));
 //                    }
-                    Log.e("TAG", "onResponse: "+response.toString());
+                    Log.e("TAG", "onResponse: "+ response);
                 }
 
                 @Override
@@ -98,7 +98,7 @@ public class BlogPresenter implements BlogContract.Presenter {
             RetrofitClient.getApiService().updateDislike(type,blogId).enqueue(new Callback<BlogLikeResponseModel>() {
                 @Override
                 public void onResponse(Call<BlogLikeResponseModel> call, Response<BlogLikeResponseModel> response) {
-                    Log.e("TAG", "onResponse: "+response.toString());
+                    Log.e("TAG", "onResponse: "+ response);
                 }
 
                 @Override
@@ -119,7 +119,7 @@ public class BlogPresenter implements BlogContract.Presenter {
             RetrofitClient.getApiService().updateShare(blogId).enqueue(new Callback<BlogLikeResponseModel>() {
                 @Override
                 public void onResponse(Call<BlogLikeResponseModel> call, Response<BlogLikeResponseModel> response) {
-                    Log.e("TAG", "onResponse: "+response.toString());
+                    Log.e("TAG", "onResponse: "+ response);
                 }
 
                 @Override
@@ -140,7 +140,7 @@ public class BlogPresenter implements BlogContract.Presenter {
             RetrofitClient.getApiService().updateView(blogId).enqueue(new Callback<BlogLikeResponseModel>() {
                 @Override
                 public void onResponse(Call<BlogLikeResponseModel> call, Response<BlogLikeResponseModel> response) {
-                    Log.e("TAG", "onResponse: "+response.toString());
+                    Log.e("TAG", "onResponse: "+ response);
                 }
 
                 @Override
