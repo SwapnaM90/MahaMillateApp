@@ -7,26 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.gson.Gson;
 import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.RegistrationActivity;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentProfileBinding;
 import com.mninetytechnology.mahamillateapp.databinding.SingleAddressBinding;
 import com.mninetytechnology.mahamillateapp.models.contracts.ProfileContract;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.District;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Division;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Taluka;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Village;
 import com.mninetytechnology.mahamillateapp.presenter.ProfilePresenter;
 
 import java.util.List;

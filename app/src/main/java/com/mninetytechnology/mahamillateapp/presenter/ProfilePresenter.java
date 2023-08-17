@@ -1,24 +1,15 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
-import android.text.TextUtils;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.MainActivity;
+import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.profile.AboutUsActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.profile.HelpAndSupportActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.profile.PrivacyPolicyActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.ProfileContract;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictTalukaVillageResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.DivisionResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.RegisterResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.TalukaResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.VillageResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClientLogin;
 
 import retrofit2.Call;

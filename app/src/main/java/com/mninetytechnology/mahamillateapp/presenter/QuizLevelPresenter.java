@@ -1,23 +1,12 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.BulletSpan;
 
 import androidx.databinding.ObservableField;
 
-import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizLevelsActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizLevelContract;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData;
-import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Swapna Thakur on 19/7/2023.

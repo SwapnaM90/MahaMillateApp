@@ -1,7 +1,5 @@
 package com.mninetytechnology.mahamillateapp.acitivities.ui.quiz;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.mninetytechnology.mahamillateapp.R;

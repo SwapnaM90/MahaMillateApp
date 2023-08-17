@@ -1,11 +1,9 @@
 package com.mninetytechnology.mahamillateapp.acitivities.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.databinding.DataBindingUtil;
 
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;

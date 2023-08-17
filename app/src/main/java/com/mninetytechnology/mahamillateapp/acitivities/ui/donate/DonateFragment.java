@@ -3,18 +3,15 @@ package com.mninetytechnology.mahamillateapp.acitivities.ui.donate;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -24,10 +21,6 @@ import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.custom.RadioGridGroup;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentDonateBinding;
-
-import net.glxn.qrgen.QRCode;
-
-import java.io.File;
 
 
 public class DonateFragment extends Fragment {

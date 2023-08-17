@@ -1,8 +1,5 @@
 package com.mninetytechnology.mahamillateapp.acitivities.ui.news;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,10 +7,10 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.profile.PrivacyPolicyActivity;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityNewsBinding;
-import com.mninetytechnology.mahamillateapp.databinding.ActivityPrivacyPolicyBinding;
 
 public class NewsActivity extends AppCompatActivity {
     private ActivityNewsBinding binding;

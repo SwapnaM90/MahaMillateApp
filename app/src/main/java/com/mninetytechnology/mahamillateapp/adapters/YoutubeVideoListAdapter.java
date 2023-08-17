@@ -1,7 +1,5 @@
 package com.mninetytechnology.mahamillateapp.adapters;
 
-import android.app.Activity;
-import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +15,6 @@ import com.mninetytechnology.mahamillateapp.databinding.SingleVideoBinding;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.YoutubeVideo;
 import com.mninetytechnology.mahamillateapp.utils.StringUtil;
 import com.pierfrancescosoffritti.youtubeplayer.player.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.youtubeplayer.player.PlayerConstants;
-import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayer;
 
 import java.util.List;
 

@@ -1,8 +1,5 @@
 package com.mninetytechnology.mahamillateapp.network;
 
-import android.content.Context;
-import android.os.Environment;
-
 public class Contants {
     public static final String BASE_URL = "https://api.milletsindia.org/";
     public static final String GET_LOGIN = "auth/login";

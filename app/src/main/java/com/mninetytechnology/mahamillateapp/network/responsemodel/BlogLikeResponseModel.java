@@ -2,8 +2,6 @@ package com.mninetytechnology.mahamillateapp.network.responsemodel;
 
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Blog;
 
-import java.util.List;
-
 public class BlogLikeResponseModel {
 
     Blog Data;

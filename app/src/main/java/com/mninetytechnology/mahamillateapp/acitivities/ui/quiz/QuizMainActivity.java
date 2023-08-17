@@ -10,12 +10,8 @@ import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityQuizMainBinding;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizMainContract;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Blog;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizData;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData;
 import com.mninetytechnology.mahamillateapp.presenter.QuizMainPresenter;
-
-import java.util.List;
 
 public class QuizMainActivity extends BaseActivity implements QuizMainContract.ViewModel {
     private ActivityQuizMainBinding mBinding;

@@ -1,30 +1,17 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.BindingAdapter;
-import androidx.databinding.InverseBindingListener;
 import androidx.databinding.ObservableField;
-import androidx.databinding.adapters.AdapterViewBindingAdapter;
 
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.RegistrationActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
-import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.RegisterContract;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.SingleClass;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictTalukaVillageResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.DivisionResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.RegisterResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.TalukaResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.VillageResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClientLogin;
 
 import retrofit2.Call;

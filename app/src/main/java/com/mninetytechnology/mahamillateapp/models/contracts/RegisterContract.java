@@ -1,12 +1,8 @@
 package com.mninetytechnology.mahamillateapp.models.contracts;
 
 
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.District;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Division;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.SingleClass;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Taluka;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Village;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package com.mninetytechnology.mahamillateapp.models.viewmodelobj;
 
-import androidx.room.Ignore;
-
 public class Questions {
     private String question;
     private Options options;

@@ -4,8 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizData;
 
-import java.util.ArrayList;
-
 public class QuizResponseModel {
     @Expose
     @SerializedName("Data")

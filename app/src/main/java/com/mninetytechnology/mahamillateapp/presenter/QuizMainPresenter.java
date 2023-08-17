@@ -5,9 +5,7 @@ import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.LeaderboardActiv
 import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizLevelsActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizMainActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizMainContract;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizLevelResponseModel;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
 
 import retrofit2.Call;

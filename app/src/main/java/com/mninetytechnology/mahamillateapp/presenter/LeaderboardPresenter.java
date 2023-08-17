@@ -2,10 +2,8 @@ package com.mninetytechnology.mahamillateapp.presenter;
 
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.LeaderboardActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.LeaderboardContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.LeaderboardResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
 
 import java.util.List;

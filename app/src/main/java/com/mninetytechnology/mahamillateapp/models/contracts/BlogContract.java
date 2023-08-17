@@ -2,7 +2,6 @@ package com.mninetytechnology.mahamillateapp.models.contracts;
 
 
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Blog;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 
 import java.util.List;
 

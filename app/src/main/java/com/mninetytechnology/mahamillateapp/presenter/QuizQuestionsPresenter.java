@@ -6,12 +6,8 @@ import android.view.View;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizQuestionsActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizQuestionContract;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Questions;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

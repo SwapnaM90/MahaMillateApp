@@ -1,8 +1,5 @@
 package com.mninetytechnology.mahamillateapp.acitivities.ui.quiz;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.databinding.DataBindingUtil;
-
 import android.animation.Animator;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +12,9 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.databinding.DataBindingUtil;
 
 import com.bumptech.glide.Glide;
 import com.mninetytechnology.mahamillateapp.R;

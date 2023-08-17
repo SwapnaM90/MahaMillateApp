@@ -2,7 +2,6 @@ package com.mninetytechnology.mahamillateapp.network.responsemodel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Blog;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.YoutubeVideo;
 
 import java.util.List;

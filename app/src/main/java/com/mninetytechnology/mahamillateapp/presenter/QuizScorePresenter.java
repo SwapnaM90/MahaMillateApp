@@ -1,7 +1,5 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
-import android.util.Log;
-
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizScoreActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizScoreContract;

@@ -5,21 +5,7 @@
 package com.mninetytechnology.mahamillateapp.Helpers;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.media.ExifInterface;
-import android.os.Environment;
-
-
-import com.mninetytechnology.mahamillateapp.network.Contants;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class ImageHelper {
     private static final float maxHeight = 1280.0f;

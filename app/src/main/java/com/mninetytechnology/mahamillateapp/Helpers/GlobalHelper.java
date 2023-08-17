@@ -7,23 +7,12 @@ package com.mninetytechnology.mahamillateapp.Helpers;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.os.Environment;
 import android.provider.Settings;
 
-import com.mninetytechnology.mahamillateapp.network.Contants;
-
-import java.io.BufferedWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class GlobalHelper {
     public Context context;

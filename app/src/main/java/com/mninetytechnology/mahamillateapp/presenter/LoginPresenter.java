@@ -8,10 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.MobileCheckActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.RegistrationActivity;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.LoginContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;

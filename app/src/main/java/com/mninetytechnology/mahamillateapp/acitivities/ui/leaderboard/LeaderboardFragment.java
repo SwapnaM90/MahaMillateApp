@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.mninetytechnology.mahamillateapp.MainActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.LeaderboardActivity;
 import com.mninetytechnology.mahamillateapp.adapters.LeaderboardListAdapter;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentLeaderboardBinding;
 import com.mninetytechnology.mahamillateapp.models.contracts.LeaderboardContract;

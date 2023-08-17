@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.SingleClass;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ClassResponseModel {
     @Expose

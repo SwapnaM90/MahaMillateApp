@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.blog.BlogActivity;
 import com.mninetytechnology.mahamillateapp.adapters.LeaderboardListAdapter;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityLeaderboardBinding;
 import com.mninetytechnology.mahamillateapp.models.contracts.LeaderboardContract;

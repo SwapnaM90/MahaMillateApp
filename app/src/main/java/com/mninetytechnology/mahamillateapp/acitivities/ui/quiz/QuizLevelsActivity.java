@@ -1,9 +1,9 @@
 package com.mninetytechnology.mahamillateapp.acitivities.ui.quiz;
 
-import androidx.databinding.DataBindingUtil;
-
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.databinding.DataBindingUtil;
 
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;

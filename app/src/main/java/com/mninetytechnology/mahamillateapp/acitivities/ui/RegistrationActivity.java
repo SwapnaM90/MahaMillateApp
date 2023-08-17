@@ -2,8 +2,6 @@ package com.mninetytechnology.mahamillateapp.acitivities.ui;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import androidx.databinding.DataBindingUtil;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -13,6 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+
+import androidx.databinding.DataBindingUtil;
 
 import com.google.gson.Gson;
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
@@ -24,12 +24,8 @@ import com.mninetytechnology.mahamillateapp.databinding.SingleAddressBinding;
 import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.RegisterContract;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.District;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Division;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.SingleClass;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Taluka;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Village;
 import com.mninetytechnology.mahamillateapp.presenter.RegisterPresenter;
 
 import java.text.SimpleDateFormat;

@@ -1,8 +1,8 @@
 package com.mninetytechnology.mahamillateapp.acitivities.ui.profile;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mninetytechnology.mahamillateapp.R;
 

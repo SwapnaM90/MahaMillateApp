@@ -1,6 +1,5 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
-import android.database.Observable;
 import android.util.Log;
 
 import androidx.databinding.ObservableField;

@@ -1,19 +1,12 @@
 package com.mninetytechnology.mahamillateapp.acitivities.ui;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
-import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityOtpCheckBinding;
@@ -22,10 +15,6 @@ import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.listeners.MessageListener;
 import com.mninetytechnology.mahamillateapp.models.contracts.OtpContract;
 import com.mninetytechnology.mahamillateapp.presenter.OtpPresenter;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
 public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewModel, MessageListener {
     public ActivityOtpCheckBinding mBinding;

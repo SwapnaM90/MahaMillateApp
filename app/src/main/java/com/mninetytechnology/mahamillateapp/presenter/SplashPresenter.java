@@ -10,7 +10,6 @@ import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
 import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.base.IntroActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.RegistrationActivity;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.SplashContract;
 

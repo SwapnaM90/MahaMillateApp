@@ -1,25 +1,15 @@
 package com.mninetytechnology.mahamillateapp.acitivities.ui.profile;
 
-import android.annotation.SuppressLint;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.WindowInsets;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityPrivacyPolicyBinding;
-import com.mninetytechnology.mahamillateapp.R;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.

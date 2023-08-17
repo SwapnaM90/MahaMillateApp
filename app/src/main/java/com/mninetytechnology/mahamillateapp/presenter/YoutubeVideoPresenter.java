@@ -3,12 +3,8 @@ package com.mninetytechnology.mahamillateapp.presenter;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.videos.VideosActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.YoutubeVideoContract;
-import com.mninetytechnology.mahamillateapp.models.viewmodelobj.YoutubeVideo;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.VideoResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
