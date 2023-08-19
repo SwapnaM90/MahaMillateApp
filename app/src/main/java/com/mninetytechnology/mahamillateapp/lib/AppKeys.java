@@ -11,5 +11,9 @@ public class AppKeys {
     public static final String NOT_ANSWERED = "not_answered";
     public static final String PHONE_NUMBER = "phone_number";
     public static final String OTP = "otp";
+    public static final String HINDI = "hindi";
+    public static final String ENGLISH = "english";
+    public static final String MARATHI = "marathi";
+    public static final String QUIZ_LANGUAGE = "quiz_language";
     public static String loginUserId = "loginUserId";
 }

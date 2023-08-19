@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.mninetytechnology.mahamillateapp.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.SelectLanguageActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.blog.BlogActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.news.NewsActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizMainActivity;
@@ -144,7 +145,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void openQuizActivity() {
-        Intent intent = new Intent(getActivity(), QuizMainActivity.class);
+        Intent intent = new Intent(getActivity(), SelectLanguageActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         getActivity().startActivity(intent);
     }

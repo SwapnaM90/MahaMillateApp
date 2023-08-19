@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.network.Contants;
 
 
@@ -144,6 +145,16 @@ public class SharedPreferencesHelper extends GlobalHelper {
 
     public String getPrefAuthToken() {
         return preferences.getString(Contants.PREF_AUTH_TOKEN, "");
+    }
+
+    public void setQuizLanguage(String language) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(AppKeys.QUIZ_LANGUAGE, language);
+        editor.apply();
+    }
+
+    public String getQuizLanguage() {
+        return preferences.getString(AppKeys.QUIZ_LANGUAGE, AppKeys.ENGLISH);
     }
 
 

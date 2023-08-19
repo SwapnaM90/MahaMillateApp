@@ -34,18 +34,13 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
     public CountDownTimer countDown;
     private int score;
     private int incorrect;
-
-    private boolean isImage = false;
 //    private int unans;
-
     private QuizScore quizScore;
     private ActivityQuizQuestionsBinding binding;
-
     private QuizQuestionsPresenter presenter;
-
     String selectedQuestion = "";
-
     private int tot_timer_time;
+    private String language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +53,8 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
         score = 0;
         quizScore = new QuizScore();
         incorrect = 0;
+
+        language = getGlobalHelper().getSharedPreferencesHelper().getQuizLanguage();
 
         String user_class = getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserClass();
         if (!user_class.trim().isEmpty()) {
@@ -100,7 +97,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
             countDown.cancel();
         }
         this.selectedQuestion = selectedOption;
-        if (isImage) {
+        if (questionsList.get(quesNum).isImage()) {
             binding.imgOption1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
             binding.imgOption2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
             binding.imgOption3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
@@ -118,9 +115,8 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
     @Override
     public void setQuestions(List<Questions> questions) {
         questionsList = questions;
-        isImage = questions.get(0).isImage();
         binding.textViewProgress.setText(String.valueOf(10));
-        if (isImage) {
+        if (questionsList.get(0).isImage()) {
             setImageQuestion(0);
         } else {
             setTextQuestion(0);
@@ -137,13 +133,28 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
      */
     private void setImageQuestion(int position) {
         binding.tvQuestion.setVisibility(View.GONE);
-        binding.imgQuestion.setVisibility(View.GONE);
+        binding.imgQuestion.setVisibility(View.VISIBLE);
 
-        Glide.with(QuizQuestionsActivity.this)
-                .load(questionsList.get(position).getQuestion())
-                .into(binding.imgQuestion);
+        if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
+            Glide.with(QuizQuestionsActivity.this)
+                    .load(questionsList.get(position).getQuestion_en())
+                    .placeholder(R.drawable.ic_quiz)
+                    .into(binding.imgQuestion);
 
-        setUpOptions(questionsList.get(position).getOptions().isImage(), position);
+            setUpOptions(questionsList.get(position).isImage(), position);
+        } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
+            Glide.with(QuizQuestionsActivity.this)
+                    .load(questionsList.get(position).getQuestion_mr())
+                    .placeholder(R.drawable.ic_quiz)
+                    .into(binding.imgQuestion);
+            setUpOptions(questionsList.get(position).isImage(), position);
+        } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
+            Glide.with(QuizQuestionsActivity.this)
+                    .load(questionsList.get(position).getQuestion_hd())
+                    .placeholder(R.drawable.ic_quiz)
+                    .into(binding.imgQuestion);
+            setUpOptions(questionsList.get(position).isImage(), position);
+        }
     }
 
     /**
@@ -153,40 +164,111 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
      * @param position
      */
     private void setUpOptions(boolean image, int position) {
-        if (questionsList.get(position).getOptions().isImage()) {
+        if (image) {
             binding.llOptionText.setVisibility(View.GONE);
             binding.scvOptionImage.setVisibility(View.VISIBLE);
 
-            Glide.with(QuizQuestionsActivity.this)
-                    .load(questionsList.get(position).getOptions())
-                    .into(binding.imgQuestion);
+            if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getQuestion_en())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgQuestion);
 
-            Glide.with(QuizQuestionsActivity.this)
-                    .load(questionsList.get(position).getOptions().getA())
-                    .into(binding.imgOption1);
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getA_en())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption1);
 
-            Glide.with(QuizQuestionsActivity.this)
-                    .load(questionsList.get(position).getOptions().getB())
-                    .into(binding.imgOption2);
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getB_en())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption2);
 
-            Glide.with(QuizQuestionsActivity.this)
-                    .load(questionsList.get(position).getOptions().getC())
-                    .into(binding.imgOption3);
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getC_en())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption3);
 
-            Glide.with(QuizQuestionsActivity.this)
-                    .load(questionsList.get(position).getOptions().getD())
-                    .into(binding.imgOption4);
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getD_en())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption4);
+            } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getQuestion_mr())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgQuestion);
+
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getA_mr())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption1);
+
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getB_mr())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption2);
+
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getC_mr())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption3);
+
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getD_mr())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption4);
+            } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getQuestion_hd())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgQuestion);
+
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getA_hd())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption1);
+
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getB_hd())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption2);
+
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(position).getOptions().getC_hd())
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption3);
+
+                Glide.with(QuizQuestionsActivity.this)
+                        .load("http://api.milletsindia.org/quiz/image/1692431723886.jpg")
+                        .placeholder(R.drawable.ic_quiz)
+                        .into(binding.imgOption4);
+            }
 
 
         } else {
-            binding.llOptionText.setVisibility(View.VISIBLE);
             binding.scvOptionImage.setVisibility(View.GONE);
-            binding.tvQuestion.setText(questionsList.get(position).getQuestion());
-            binding.txtOption1.setText(questionsList.get(position).getOptions().getA());
-            binding.txtOption2.setText(questionsList.get(position).getOptions().getB());
-            binding.txtOption3.setText(questionsList.get(position).getOptions().getC());
-            binding.txtOption4.setText(questionsList.get(position).getOptions().getD());
+            binding.llOptionText.setVisibility(View.VISIBLE);
+        if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
+            binding.tvQuestion.setText(questionsList.get(position).getQuestion_en());
+            binding.txtOption1.setText(questionsList.get(position).getOptions().getA_en());
+            binding.txtOption2.setText(questionsList.get(position).getOptions().getB_en());
+            binding.txtOption3.setText(questionsList.get(position).getOptions().getC_en());
+            binding.txtOption4.setText(questionsList.get(position).getOptions().getD_en());
+        } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
+            binding.tvQuestion.setText(questionsList.get(position).getQuestion_mr());
+            binding.txtOption1.setText(questionsList.get(position).getOptions().getA_mr());
+            binding.txtOption2.setText(questionsList.get(position).getOptions().getB_mr());
+            binding.txtOption3.setText(questionsList.get(position).getOptions().getC_mr());
+            binding.txtOption4.setText(questionsList.get(position).getOptions().getD_mr());
+        } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
+            binding.tvQuestion.setText(questionsList.get(position).getQuestion_hd());
+            binding.txtOption1.setText(questionsList.get(position).getOptions().getA_hd());
+            binding.txtOption2.setText(questionsList.get(position).getOptions().getB_hd());
+            binding.txtOption3.setText(questionsList.get(position).getOptions().getC_hd());
+            binding.txtOption4.setText(questionsList.get(position).getOptions().getD_hd());
         }
+      }
     }
 
     /**
@@ -195,7 +277,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
     private void setTextQuestion(int position) {
         binding.tvQuestion.setVisibility(View.VISIBLE);
         binding.imgQuestion.setVisibility(View.GONE);
-        setUpOptions(questionsList.get(position).getOptions().isImage(), position);
+        setUpOptions(questionsList.get(position).isImage(), position);
     }
 
 
@@ -219,9 +301,13 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
             if (quesNum == questionsList.size() - 1) {
                 binding.btnNext.setText(getString(R.string.finish));
             }
-            if (isImage) {
+            if (questionsList.get(quesNum).isImage()) {
                 setImageQuestion(quesNum);
             } else {
+                binding.tvQuestion.setVisibility(View.VISIBLE);
+                binding.imgQuestion.setVisibility(View.GONE);
+                binding.llOptionText.setVisibility(View.VISIBLE);
+                binding.scvOptionImage.setVisibility(View.GONE);
                 playAnim(binding.tvQuestion, 0, 0);
                 playAnim(binding.txtOption1, 0, 1);
                 playAnim(binding.txtOption2, 0, 2);
@@ -267,19 +353,49 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
                         if (value == 0) {
                             switch (viewNum) {
                                 case 0:
-                                    ((TextView) view).setText(questionsList.get(quesNum).getQuestion());
+                                    if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getQuestion_en());
+                                    } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getQuestion_mr());
+                                    } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getQuestion_hd());
+                                    }
                                     break;
                                 case 1:
-                                    ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA());
+                                    if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA_en());
+                                    } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA_mr());
+                                    } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA_hd());
+                                    }
                                     break;
                                 case 2:
-                                    ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB());
+                                    if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB_en());
+                                    } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB_mr());
+                                    } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB_hd());
+                                    }
                                     break;
                                 case 3:
-                                    ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC());
+                                    if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC_en());
+                                    } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC_mr());
+                                    } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC_hd());
+                                    }
                                     break;
                                 case 4:
-                                    ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD());
+                                    if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD_en());
+                                    } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD_mr());
+                                    } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
+                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD_hd());
+                                    }
                                     break;
                             }
 
