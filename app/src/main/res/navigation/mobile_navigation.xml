@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.home.HomeFragment"
+        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.user.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_donate"
-        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.donate.DonateFragment"
+        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.user.donate.DonateFragment"
         android:label="@string/title_donate"
         tools:layout="@layout/fragment_donate" />
 
 <!--    <fragment-->
 <!--        android:id="@+id/navigation_history"-->
-<!--        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.history.HistoryFragment"-->
+<!--        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.history.HistoryFragment"-->
 <!--        android:label="@string/title_history"-->
 <!--        tools:layout="@layout/fragment_history" />-->
 
     <fragment
         android:id="@+id/navigation_leaderboard"
-        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.leaderboard.LeaderboardFragment"
+        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.user.leaderboard.LeaderboardFragment"
         android:label="@string/title_leaderboard"
         tools:layout="@layout/fragment_leaderboard" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.profile.ProfileFragment"
+        android:name="com.mninetytechnology.mahamillateapp.acitivities.ui.user.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -1,6 +1,7 @@
 package com.mninetytechnology.mahamillateapp.models.contracts;
 
 
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 
 /**
@@ -11,6 +12,7 @@ public interface LoginContract {
 
     interface ViewModel {
         void login(UserLoginObject userLoginObject, String token);
+        void organisationLogin(OrganisationLoginObject userLoginObject, String token);
 
         void showLoginFailed(String error);
     }

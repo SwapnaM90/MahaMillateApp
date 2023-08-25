@@ -12,7 +12,7 @@ public class Contants {
     public static final String UPDATE_VIEW = "blog/views";
     public static final String UPDATE_SHARE = "blog/share";
     public static final String QUIZ = "quiz/class";
-    public static final String GET_QUIZ_DATA = "score";
+    public static final String GET_QUIZ_DATA = "user";
     public static final String LEADERBORAD = "score/leaderboard";
     public static final String UPDATE_SCORE = "score";
     public static final String GET_CLASS = "class";
@@ -26,6 +26,10 @@ public class Contants {
     public static final String GET_TALUKA = "village/taluka";
     public static final String GET_VILLAGE = "village/villageName";
     public static final String APP_ADDRESS = "com.mninetytechnology.mahamillateapp.SYNC_ADDRESS";
+    public static final String GET_ORGANISATION_LOGIN = "organization/login";
+    public static final String ORGANISATION_USERS = "organization/users";
+    public static final String UPDATE_USER_DISTRICT = "user/update";
+    public static final String UPDATE_ORGANISATION_DISTRICT = "organization/update";
 
     public static String PREF_LOGIN = "PREF_LOGIN";
     public static String PREF_AUTH_TOKEN = "PREF_AUTH_TOKEN";

@@ -157,5 +157,15 @@ public class SharedPreferencesHelper extends GlobalHelper {
         return preferences.getString(AppKeys.QUIZ_LANGUAGE, AppKeys.ENGLISH);
     }
 
+    public void setUser(String user_type) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(AppKeys.USER_TYPE, user_type);
+        editor.apply();
+    }
+
+    public String getUser() {
+        return preferences.getString(AppKeys.USER_TYPE, AppKeys.USER);
+    }
+
 
 }

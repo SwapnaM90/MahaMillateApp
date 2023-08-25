@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".acitivities.ui.videos.VideosActivity"
+        tools:context=".acitivities.ui.user.videos.VideosActivity"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar

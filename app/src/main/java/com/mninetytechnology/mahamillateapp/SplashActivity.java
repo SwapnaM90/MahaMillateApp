@@ -25,7 +25,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ViewM
         super.onCreate(savedInstanceState);
         mBinding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
-        mPresenter = new SplashPresenter(this);
+        mPresenter = new SplashPresenter(this,this);
         mPresenter.rootView = mBinding.getRoot();
         mBinding.setPresenter(mPresenter);
         initObject();

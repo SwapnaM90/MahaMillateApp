@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.view.View;
 
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizQuestionsActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizQuestionsActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizQuestionContract;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;

@@ -1,10 +1,14 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.videos.VideosActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.videos.OrganisationVideosActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.videos.VideosActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.YoutubeVideoContract;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.VideoResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
+
+import java.util.Base64;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,10 +18,15 @@ import retrofit2.Response;
  * Created by Swapna Thakur on 19/7/2023.
  */
 public class YoutubeVideoPresenter implements YoutubeVideoContract.Presenter {
-    private final VideosActivity mActivity;
+    private final BaseActivity mActivity;
     private final YoutubeVideoContract.ViewModel mViewModel;
 
     public YoutubeVideoPresenter(VideosActivity mActivity, YoutubeVideoContract.ViewModel mViewModel) {
+        this.mActivity = mActivity;
+        this.mViewModel = mViewModel;
+    }
+
+    public YoutubeVideoPresenter(OrganisationVideosActivity mActivity, YoutubeVideoContract.ViewModel mViewModel) {
         this.mActivity = mActivity;
         this.mViewModel = mViewModel;
     }

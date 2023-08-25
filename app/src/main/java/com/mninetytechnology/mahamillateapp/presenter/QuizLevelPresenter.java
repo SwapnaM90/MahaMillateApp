@@ -5,7 +5,7 @@ import android.text.SpannableStringBuilder;
 
 import androidx.databinding.ObservableField;
 
-import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizLevelsActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizLevelsActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizLevelContract;
 
 /**

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".acitivities.ui.SelectLanguageActivity"
+        tools:context=".acitivities.ui.user.SelectLanguageActivity"
         android:padding="20dp"
         android:gravity="center_horizontal">
 
@@ -24,6 +24,7 @@
             android:layout_margin="10dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
+            android:visibility="gone"
             android:layout_height="140dp"
             android:src="@drawable/m_90_logo" />
 

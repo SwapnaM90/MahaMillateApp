@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.mninetytechnology.mahamillateapp.presenter.SelectUserPresenter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".acitivities.ui.user.SelectUserActivity">
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/who_is_using"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rg_select_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/rb_organisation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/ic_radio_text_color_selector"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="142dp"
+                android:background="@drawable/ic_radio_background_selector"
+                android:button="@null"
+                android:drawableTop="@drawable/ic_organisation_selector"
+                android:drawablePadding="10dp"
+                android:paddingTop="20dp"
+                android:elevation="10dp"
+                android:text="@string/organisation"
+                android:paddingBottom="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_margin="10dp" />
+
+            <RadioButton
+                android:id="@+id/rb_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/ic_radio_text_color_selector"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="142dp"
+                android:background="@drawable/ic_radio_background_selector"
+                android:button="@null"
+                android:drawableTop="@drawable/ic_single_user_selector"
+                android:drawablePadding="10dp"
+                android:paddingTop="20dp"
+                android:elevation="10dp"
+                android:text="@string/indivisual"
+                android:paddingBottom="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_margin="10dp" />
+
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_rounded_corner_rectangle"
+            android:text="@string/continue_text"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:textStyle="bold"
+            app:backgroundTint="@color/green"
+            android:layout_margin="10dp"
+            android:onClick="@{ () -> presenter.continueNext()}" />
+    </LinearLayout>
+</layout>

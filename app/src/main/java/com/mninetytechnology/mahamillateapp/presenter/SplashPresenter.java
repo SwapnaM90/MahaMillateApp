@@ -7,9 +7,12 @@ import android.util.Log;
 import android.view.View;
 
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
-import com.mninetytechnology.mahamillateapp.MainActivity;
+import com.mninetytechnology.mahamillateapp.SplashActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.OrganisationMainActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.base.IntroActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.SelectUserActivity;
+import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.SplashContract;
 
@@ -21,12 +24,14 @@ import java.util.Date;
  * Presenter for splash to check last login date
  */
 public class SplashPresenter implements SplashContract.Presenter {
+    private SplashActivity mActivity;
     private final SplashContract.ViewModel mViewModel;
     public View rootView;
     private static final String TAG = "SplashPresenter";
 
-    public SplashPresenter(SplashContract.ViewModel mViewModel) {
+    public SplashPresenter(SplashContract.ViewModel mViewModel,SplashActivity mActivity) {
         this.mViewModel = mViewModel;
+        this.mActivity = mActivity;
     }
 
     /**
@@ -53,7 +58,7 @@ public class SplashPresenter implements SplashContract.Presenter {
                     Log.i("SplashActivity::", "direct start");
                 } else {
                     try {
-                        mViewModel.startAnotherActivity(LoginActivity.class, true);
+                        mViewModel.startAnotherActivity(SelectUserActivity.class, true);
                     } catch (Exception e) {
                         Log.e(TAG, "checkLastLoginDate: " + e.getMessage());
                     }
@@ -68,7 +73,11 @@ public class SplashPresenter implements SplashContract.Presenter {
                 if (helper.getSharedPreferencesHelper().getLoginUserId().trim().isEmpty()) {
                     mViewModel.startAnotherActivity(IntroActivity.class, true);
                 } else {
-                    mViewModel.startAnotherActivity(MainActivity.class, true);
+                    if (mActivity.getGlobalHelper().getSharedPreferencesHelper().getUser().equalsIgnoreCase(AppKeys.ORGANISATION)) {
+                        mViewModel.startAnotherActivity(OrganisationMainActivity.class, true);
+                    } else {
+                        mViewModel.startAnotherActivity(MainActivity.class, true);
+                    }
                 }
             } catch (Exception e) {
                 Log.e(TAG, "checkLastLoginDate: " + e.getMessage());

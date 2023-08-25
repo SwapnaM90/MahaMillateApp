@@ -132,4 +132,13 @@
     <string name="tifanfoundation_gmail_com">tifanfoundation@gmail.com</string>
     <string name="finish">Finish</string>
     <string name="news">News</string>
+    <string name="who_is_using">Select User</string>
+    <string name="organisation">Organisation</string>
+    <string name="user">User</string>
+    <string name="title_user_list">Users</string>
+    <string name="indivisual">Indivisual</string>
+    <string name="score">Score</string>
+    <string name="type">Type</string>
+    <string name="organisational_point">Organisational Points</string>
+    <string name="referal_point">Referal Points</string>
 </resources>

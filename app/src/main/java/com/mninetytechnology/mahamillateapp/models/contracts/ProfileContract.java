@@ -30,5 +30,7 @@ public interface ProfileContract {
         void getTaluka(String districtCode);
 
         void getVillage(String talukaCode);
+
+        void updateAddress();
     }
 }

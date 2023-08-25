@@ -1,5 +1,6 @@
 package com.mninetytechnology.mahamillateapp.network.reposervices;
 
+import com.google.gson.JsonObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
 import com.mninetytechnology.mahamillateapp.network.Contants;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogLikeResponseModel;
@@ -9,6 +10,8 @@ import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictRespon
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictTalukaVillageResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DivisionResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.LoginResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.OrganisationLoginResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.OrganisationUserListResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.OtpResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizLevelResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizResponseModel;
@@ -41,6 +44,13 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(Contants.GET_LOGIN)
     Call<LoginResponseModel> getLoginResponse(
+            @Field("email") String email,
+            @Field("phone_number") String phone_number,
+            @Field("password") String password
+    );
+    @FormUrlEncoded
+    @POST(Contants.GET_ORGANISATION_LOGIN)
+    Call<OrganisationLoginResponseModel> getOrganisationLoginResponse(
             @Field("email") String email,
             @Field("phone_number") String phone_number,
             @Field("password") String password
@@ -172,6 +182,16 @@ public interface ApiService {
 
     /**
      * @return
+     * @date 7-8-2023
+     * gets organisation user list
+     */
+    @GET(Contants.ORGANISATION_USERS + "/{id}")
+    Call<OrganisationUserListResponseModel> getOrganisationUserList(
+            @Path("id") String userId
+    );
+
+    /**
+     * @return
      * @date 3-8-2023
      * gets all quiz data
      */
@@ -282,6 +302,34 @@ public interface ApiService {
     @GET(Contants.GET_VILLAGE + "/{taluka}")
     Call<DistrictTalukaVillageResponseModel> getUpdatedVillage(
             @Path("taluka") String taluka
+    );
+
+    /**
+     * @return
+     * @date 3-8-2023
+     * update user district
+     */
+    @FormUrlEncoded
+    @POST(Contants.UPDATE_USER_DISTRICT + "/{id}")
+    Call<LoginResponseModel> updateUserAddress(
+            @Path("id") String id,
+            @Field("district") String district,
+            @Field("taluka") String taluka,
+            @Field("village") String village
+    );
+
+    /**
+     * @return
+     * @date 3-8-2023
+     * update organisation district
+     */
+    @FormUrlEncoded
+    @POST(Contants.UPDATE_ORGANISATION_DISTRICT + "/{id}")
+    Call<OrganisationLoginResponseModel> updateOrganisationAddress(
+            @Path("id") String id,
+            @Field("district") String district,
+            @Field("taluka") String taluka,
+            @Field("village") String village
     );
 }
 

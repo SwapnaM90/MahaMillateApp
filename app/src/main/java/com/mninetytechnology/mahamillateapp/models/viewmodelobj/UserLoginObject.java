@@ -1,28 +1,36 @@
 package com.mninetytechnology.mahamillateapp.models.viewmodelobj;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.Date;
 
 /**
  * Created by Swapna Thakur on 3/1/2022.
  */
 public class UserLoginObject {
-    public String _id;
-    public String name;
-    public String email;
-    public String phone_number;
-    public String state;
-    public String district;
-    public String city;
-    public String village;
-    public String zip_code;
-    @Expose
+    private String _id;
+    private int organization_points;
+    private double referral_earn_points;
+    private int firstLevel;
+    private int secondLevel;
+    private int thirdLevel;
+    private String name;
+    private String email;
+    private String phone_number;
+    private String state;
+    private String division;
+    private String district;
+    private String taluka;
+    private String village;
     @SerializedName("class")
-    public String class_text;
-
-    public String password;
-    public String createdAt;
-    public String updatedAt;
+    private String class_text;
+    private String referral_code;
+    private int referral_points;
+    private Object referral_userId;
+    private String organization_id;
+    private String password;
+    private Date createdAt;
+    private Date updatedAt;
 
     public String get_id() {
         return _id;
@@ -72,28 +80,12 @@ public class UserLoginObject {
         this.district = district;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getVillage() {
         return village;
     }
 
     public void setVillage(String village) {
         this.village = village;
-    }
-
-    public String getZip_code() {
-        return zip_code;
-    }
-
-    public void setZip_code(String zip_code) {
-        this.zip_code = zip_code;
     }
 
     public String getClass_text() {
@@ -112,19 +104,143 @@ public class UserLoginObject {
         this.password = password;
     }
 
-    public String getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public int getOrganization_points() {
+        return organization_points;
+    }
+
+    public void setOrganization_points(int organization_points) {
+        this.organization_points = organization_points;
+    }
+
+    public double getReferral_earn_points() {
+        return referral_earn_points;
+    }
+
+    public void setReferral_earn_points(double referral_earn_points) {
+        this.referral_earn_points = referral_earn_points;
+    }
+
+    public int getFirstLevel() {
+        return firstLevel;
+    }
+
+    public void setFirstLevel(int firstLevel) {
+        this.firstLevel = firstLevel;
+    }
+
+    public int getSecondLevel() {
+        return secondLevel;
+    }
+
+    public void setSecondLevel(int secondLevel) {
+        this.secondLevel = secondLevel;
+    }
+
+    public int getThirdLevel() {
+        return thirdLevel;
+    }
+
+    public void setThirdLevel(int thirdLevel) {
+        this.thirdLevel = thirdLevel;
+    }
+
+    public String getDivision() {
+        return division;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
+    }
+
+    public String getTaluka() {
+        return taluka;
+    }
+
+    public void setTaluka(String taluka) {
+        this.taluka = taluka;
+    }
+
+    public String getReferral_code() {
+        return referral_code;
+    }
+
+    public void setReferral_code(String referral_code) {
+        this.referral_code = referral_code;
+    }
+
+    public int getReferral_points() {
+        return referral_points;
+    }
+
+    public void setReferral_points(int referral_points) {
+        this.referral_points = referral_points;
+    }
+
+    public Object getReferral_userId() {
+        return referral_userId;
+    }
+
+    public void setReferral_userId(Object referral_userId) {
+        this.referral_userId = referral_userId;
+    }
+
+    public String getOrganization_id() {
+        return organization_id;
+    }
+
+    public void setOrganization_id(String organization_id) {
+        this.organization_id = organization_id;
+    }
+
+    public String getUserLevel() {
+        if (firstLevel != 0 && secondLevel == 0 && thirdLevel == 0) {
+            return "Level1";
+        } else if (firstLevel != 0 && secondLevel != 0 && thirdLevel == 0) {
+            return "Level2";
+        } else if (firstLevel != 0 && secondLevel != 0 && thirdLevel != 0) {
+            return "Level3";
+        } else if (firstLevel != 0) {
+            return "Level1";
+        } else if (secondLevel != 0) {
+            return "Level2";
+        } else if (thirdLevel != 0) {
+            return "Level3";
+        } else {
+            return "Level1";
+        }
+    }
+
+    public String getScore() {
+        if (firstLevel != 0 && secondLevel == 0 && thirdLevel == 0) {
+            return String.valueOf(firstLevel);
+        } else if (firstLevel != 0 && secondLevel != 0 && thirdLevel == 0) {
+            return String.valueOf(secondLevel);
+        } else if (firstLevel != 0 && secondLevel != 0) {
+            return String.valueOf(thirdLevel);
+        } else if (firstLevel != 0) {
+            return String.valueOf(firstLevel);
+        } else if (secondLevel != 0) {
+            return String.valueOf(secondLevel);
+        } else if (thirdLevel != 0) {
+            return String.valueOf(thirdLevel);
+        } else {
+            return String.valueOf(firstLevel);
+        }
     }
 }

@@ -13,7 +13,10 @@ public class AppKeys {
     public static final String OTP = "otp";
     public static final String HINDI = "hindi";
     public static final String ENGLISH = "english";
+    public static final String ORGANISATION = "organisation";
+    public static final String USER = "user";
     public static final String MARATHI = "marathi";
     public static final String QUIZ_LANGUAGE = "quiz_language";
+    public static final String USER_TYPE = "user_type";
     public static String loginUserId = "loginUserId";
 }

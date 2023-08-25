@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.databinding.ObservableField;
 
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.MobileCheckActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MobileCheckActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.MobileCheckContract;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.OtpResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;

@@ -16,12 +16,14 @@ import androidx.core.app.ActivityCompat;
 
 import com.google.gson.Gson;
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
-import com.mninetytechnology.mahamillateapp.MainActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.OrganisationMainActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityLoginBinding;
 import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.LoginContract;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.presenter.LoginPresenter;
 
@@ -62,6 +64,28 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
 
             //start otp check activity
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra(AppKeys.loginUserId, userLoginObject.get_id());
+            intent.putExtra(AppKeys.PHONE_NUMBER, mBinding.edtPhoneNumber.getText().toString());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivityOnTop(false, intent);
+        } catch (Exception e) {
+            Log.d(TAG, "login: " + e.getMessage());
+            ScreenHelper.showErrorSnackBar(mBinding.getRoot(), e.getMessage());
+        }
+    }
+
+    @Override
+    public void organisationLogin(OrganisationLoginObject userLoginObject, String token) {
+        try {
+            //save user id and role in shared preference
+            Gson gson = new Gson();
+            String user = gson.toJson(userLoginObject, OrganisationLoginObject.class);
+            helper.getSharedPreferencesHelper().setPrefLoginUser(user);
+            helper.getSharedPreferencesHelper().setLoginServerUserId(userLoginObject.get_id());
+            helper.getSharedPreferencesHelper().setLoginKey(token);
+
+            //start otp check activity
+            Intent intent = new Intent(this, OrganisationMainActivity.class);
             intent.putExtra(AppKeys.loginUserId, userLoginObject.get_id());
             intent.putExtra(AppKeys.PHONE_NUMBER, mBinding.edtPhoneNumber.getText().toString());
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);

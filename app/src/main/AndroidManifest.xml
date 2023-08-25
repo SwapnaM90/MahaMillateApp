@@ -14,68 +14,92 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.MahaMillateApp"
+        android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory,allowBackup">
         <activity
-            android:name=".acitivities.ui.news.NewsActivity"
+            android:name=".acitivities.ui.organisation.OrganisationMainActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.profile.HelpAndSupportActivity"
+            android:name=".acitivities.ui.organisation.blog.OrganisationBlogActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.profile.AboutUsActivity"
+            android:name=".acitivities.ui.organisation.videos.OrganisationVideosActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.profile.PrivacyPolicyActivity"
+            android:name=".acitivities.ui.organisation.profile.OrganisationAboutUsActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.MobileCheckActivity"
+            android:name=".acitivities.ui.organisation.profile.OrganisationHelpAndSupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.organisation.profile.OrganisationPrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.organisation.news.OrganisationNewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.user.SelectUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.user.news.NewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.user.profile.HelpAndSupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.user.profile.AboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.user.profile.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.ui.user.MobileCheckActivity"
             android:exported="false" />
         <activity
             android:name=".acitivities.base.IntroActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.quiz.QuizScoreActivity"
+            android:name=".acitivities.ui.user.quiz.QuizScoreActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.quiz.QuizQuestionsActivity"
+            android:name=".acitivities.ui.user.quiz.QuizQuestionsActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.quiz.QuizShareActivity"
+            android:name=".acitivities.ui.user.quiz.QuizShareActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.quiz.QuizCertificateActivity"
+            android:name=".acitivities.ui.user.quiz.QuizCertificateActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.quiz.QuizLevelsActivity"
+            android:name=".acitivities.ui.user.quiz.QuizLevelsActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.quiz.LeaderboardActivity"
+            android:name=".acitivities.ui.user.quiz.LeaderboardActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.RegistrationActivity"
+            android:name=".acitivities.ui.user.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.quiz.QuizMainActivity"
+            android:name=".acitivities.ui.user.quiz.QuizMainActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.videos.VideosActivity"
+            android:name=".acitivities.ui.user.videos.VideosActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.blog.BlogActivity"
+            android:name=".acitivities.ui.user.blog.BlogActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.SelectLanguageActivity"
+            android:name=".acitivities.ui.user.SelectLanguageActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.ui.OtpCheckActivity"
+            android:name=".acitivities.ui.user.OtpCheckActivity"
             android:exported="false" />
         <activity
             android:name=".acitivities.ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".acitivities.ui.user.MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main" />
         <activity

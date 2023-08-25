@@ -1,7 +1,7 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizScoreActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizScoreActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizScoreContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizScore;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizScoreResponseModel;

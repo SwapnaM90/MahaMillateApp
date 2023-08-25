@@ -11,11 +11,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.mninetytechnology.mahamillateapp.MainActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.OrganisationMainActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.intro.Info1Fragment;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.SelectUserActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.intro.Info1Fragment;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityIntroBinding;
+import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 public class IntroActivity extends BaseActivity implements View.OnClickListener {
@@ -30,7 +32,11 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_intro);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         if (!getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId().trim().isEmpty()) {
-            startActivityOnTop(MainActivity.class, true);
+            if (getGlobalHelper().getSharedPreferencesHelper().getUser().equalsIgnoreCase(AppKeys.ORGANISATION)) {
+                startActivityOnTop(OrganisationMainActivity.class, true);
+            } else {
+                startActivityOnTop(MainActivity.class, true);
+            }
         }
         binding.vpPager.setAdapter(adapterViewPager);
         DotsIndicator extensiblePageIndicator = (DotsIndicator) findViewById(R.id.flexibleIndicator);
@@ -73,7 +79,7 @@ public class IntroActivity extends BaseActivity implements View.OnClickListener 
 //            } else
             if (selectPage == 0) {
                 if (getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId().trim().isEmpty()) {
-                    startActivityOnTop(LoginActivity.class, true);
+                    startActivityOnTop(SelectUserActivity.class, true);
                 } else {
                     startActivityOnTop(MainActivity.class, true);
                 }

@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.OtpCheckActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.OtpCheckActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.OtpContract;
 
 /**

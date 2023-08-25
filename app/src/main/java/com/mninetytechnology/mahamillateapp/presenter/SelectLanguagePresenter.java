@@ -3,8 +3,7 @@ package com.mninetytechnology.mahamillateapp.presenter;
 
 import android.view.View;
 
-import com.mninetytechnology.mahamillateapp.MainActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizMainActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizMainActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.SelectLanguageContract;
 
 /**

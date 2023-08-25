@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.RegistrationActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.RegistrationActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.RegisterContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;

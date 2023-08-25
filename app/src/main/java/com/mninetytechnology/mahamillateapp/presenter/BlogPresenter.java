@@ -3,7 +3,7 @@ package com.mninetytechnology.mahamillateapp.presenter;
 import android.util.Log;
 
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.blog.BlogActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.blog.BlogActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.BlogContract;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogLikeResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogResponseModel;

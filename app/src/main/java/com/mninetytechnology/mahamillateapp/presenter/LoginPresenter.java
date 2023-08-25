@@ -10,11 +10,14 @@ import androidx.databinding.ObservableField;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.MobileCheckActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MobileCheckActivity;
+import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.LoginContract;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.LoginResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.OrganisationLoginResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClientLogin;
 
 import java.util.regex.Pattern;
@@ -70,72 +73,121 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void doLogin() {
         if (validate()) {
-            ScreenHelper.hideKeyboard(mActivity);
+            if (mActivity.getGlobalHelper().getSharedPreferencesHelper().getUser().equalsIgnoreCase(AppKeys.ORGANISATION)) {
+                doOrganisationLogin();
+            } else {
+                doUserLogin();
+            }
+        }
+    }
+
+    private void doOrganisationLogin() {
+        ScreenHelper.hideKeyboard(mActivity);
 //            UserLoginObject obj = new UserLoginObject();
 //            mViewModel.login(obj,"token");
-            if (mActivity.isInternetConnected()) {
-                mActivity.startProgressDialog(mActivity);
-
-                if (isEmailOrNot()) {
-                    RetrofitClientLogin.getApiService().getLoginResponse(userId.get(), "", password.get()).enqueue(new Callback<LoginResponseModel>() {
-                        @Override
-                        public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
-                            if (response.code() == 200 || response.code() == 201) {
-                                if (response.body() != null) {
-                                    UserLoginObject obj = response.body().getData();
-                                    mActivity.dismissProgressDialog();
-                                    mViewModel.login(obj, response.body().getToken());
-                                } else {
-                                    mActivity.dismissProgressDialog();
-                                    mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
-                                }
-                            } else {
-                                mActivity.dismissProgressDialog();
-                                mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull Call<LoginResponseModel> call, @NonNull Throwable t) {
+        if (mActivity.isInternetConnected()) {
+            mActivity.startProgressDialog(mActivity);
+            RetrofitClientLogin.getApiService().getOrganisationLoginResponse("", userId.get(), password.get()).enqueue(new Callback<OrganisationLoginResponseModel>() {
+                @Override
+                public void onResponse(@NonNull Call<OrganisationLoginResponseModel> call, @NonNull Response<OrganisationLoginResponseModel> response) {
+                    if (response.code() == 200 || response.code() == 201) {
+                        if (response.body() != null) {
+                            OrganisationLoginObject obj = response.body().getData();
                             mActivity.dismissProgressDialog();
-                            mViewModel.showLoginFailed(t.getMessage());
-                        }
-                    });
-                } else {
-                    RetrofitClientLogin.getApiService().getLoginResponse("", userId.get(), password.get()).enqueue(new Callback<LoginResponseModel>() {
-                        @Override
-                        public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
-                            if (response.code() == 200 || response.code() == 201) {
-                                if (response.body() != null) {
-                                    UserLoginObject obj = response.body().getData();
-                                    mActivity.dismissProgressDialog();
-                                    mViewModel.login(obj, response.body().getToken());
-                                } else {
-                                    mActivity.dismissProgressDialog();
-                                    mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
-                                }
-                            } else {
-                                mActivity.dismissProgressDialog();
-                                mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull Call<LoginResponseModel> call, @NonNull Throwable t) {
+                            mViewModel.organisationLogin(obj, response.body().getToken());
+                        } else {
                             mActivity.dismissProgressDialog();
-                            mViewModel.showLoginFailed(t.getMessage());
+                            mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
                         }
-                    });
+                    } else {
+                        mActivity.dismissProgressDialog();
+                        mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
+                    }
                 }
 
-            } else {
-                mActivity.showNotInternetConnected(new BaseActivity.OnInternetConnectedListener() {
+                @Override
+                public void onFailure(@NonNull Call<OrganisationLoginResponseModel> call, @NonNull Throwable t) {
+                    mActivity.dismissProgressDialog();
+                    mViewModel.showLoginFailed(t.getMessage());
+                }
+            });
+
+        } else {
+            mActivity.showNotInternetConnected(new BaseActivity.OnInternetConnectedListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+        }
+    }
+
+    private void doUserLogin() {
+        ScreenHelper.hideKeyboard(mActivity);
+//            UserLoginObject obj = new UserLoginObject();
+//            mViewModel.login(obj,"token");
+        if (mActivity.isInternetConnected()) {
+            mActivity.startProgressDialog(mActivity);
+
+            if (isEmailOrNot()) {
+                RetrofitClientLogin.getApiService().getLoginResponse(userId.get(), "", password.get()).enqueue(new Callback<LoginResponseModel>() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                    public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
+                        if (response.code() == 200 || response.code() == 201) {
+                            if (response.body() != null) {
+                                UserLoginObject obj = response.body().getData();
+                                mActivity.dismissProgressDialog();
+                                mViewModel.login(obj, response.body().getToken());
+                            } else {
+                                mActivity.dismissProgressDialog();
+                                mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
+                            }
+                        } else {
+                            mActivity.dismissProgressDialog();
+                            mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<LoginResponseModel> call, @NonNull Throwable t) {
+                        mActivity.dismissProgressDialog();
+                        mViewModel.showLoginFailed(t.getMessage());
+                    }
+                });
+            } else {
+                RetrofitClientLogin.getApiService().getLoginResponse("", userId.get(), password.get()).enqueue(new Callback<LoginResponseModel>() {
+                    @Override
+                    public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
+                        if (response.code() == 200 || response.code() == 201) {
+                            if (response.body() != null) {
+                                UserLoginObject obj = response.body().getData();
+                                mActivity.dismissProgressDialog();
+                                mViewModel.login(obj, response.body().getToken());
+                            } else {
+                                mActivity.dismissProgressDialog();
+                                mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
+                            }
+                        } else {
+                            mActivity.dismissProgressDialog();
+                            mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<LoginResponseModel> call, @NonNull Throwable t) {
+                        mActivity.dismissProgressDialog();
+                        mViewModel.showLoginFailed(t.getMessage());
                     }
                 });
             }
+
+        } else {
+            mActivity.showNotInternetConnected(new BaseActivity.OnInternetConnectedListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
         }
     }
 

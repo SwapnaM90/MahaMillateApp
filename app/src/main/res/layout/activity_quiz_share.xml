@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".acitivities.ui.quiz.QuizShareActivity">
+        tools:context=".acitivities.ui.user.quiz.QuizShareActivity">
 
         <LinearLayout
             android:layout_width="match_parent"

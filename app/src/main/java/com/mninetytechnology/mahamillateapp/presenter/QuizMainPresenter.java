@@ -1,9 +1,9 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
 import com.mninetytechnology.mahamillateapp.R;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.LeaderboardActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizLevelsActivity;
-import com.mninetytechnology.mahamillateapp.acitivities.ui.quiz.QuizMainActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.LeaderboardActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizLevelsActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizMainActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizMainContract;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizLevelResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
