@@ -59,7 +59,7 @@ public class OrganisationBlogActivity extends BaseActivity implements BlogContra
 
             @Override
             public void updateShare(Blog listModel, int share) {
-                mPresenter.updateShare(listModel._id);
+                mPresenter.updateShare(listModel);
             }
 
             @Override
@@ -75,6 +75,11 @@ public class OrganisationBlogActivity extends BaseActivity implements BlogContra
     @Override
     public void showBlogFailed(String error) {
         showErrorSnackBar(mBinding.getRoot(), error);
+    }
+
+    @Override
+    public void shareBlog(Blog blog) {
+
     }
 
     @Override

@@ -34,7 +34,11 @@ public class QuizScoreActivity extends BaseActivity implements QuizScoreContract
         binding.saDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityOnTop(QuizCertificateActivity.class, true);
+                if (score.getScore() >= score.getPassing_marks()) {
+                    startActivityOnTop(QuizCertificateActivity.class, true);
+                } else {
+                    startActivityOnTop(QuizShareActivity.class, true);
+                }
             }
         });
     }

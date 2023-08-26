@@ -4,6 +4,7 @@ import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.LeaderboardContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
 
 import java.util.List;
@@ -31,9 +32,9 @@ public class LeaderboardPresenter implements LeaderboardContract.Presenter {
 
             String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
-            RetrofitClient.getApiService().getLeaderboards(userId).enqueue(new Callback<List<Leaderboard>>() {
+            RetrofitClient.getApiService().getLeaderboards(userId).enqueue(new Callback<List<UserLoginObject>>() {
                 @Override
-                public void onResponse(Call<List<Leaderboard>> call, Response<List<Leaderboard>> response) {
+                public void onResponse(Call<List<UserLoginObject>> call, Response<List<UserLoginObject>> response) {
                     mActivity.dismissProgressDialog();
                     if (response.code() == 200 && response.body() != null) {
                         mViewModel.setUpLeaderboardAdapter(response.body());
@@ -43,7 +44,7 @@ public class LeaderboardPresenter implements LeaderboardContract.Presenter {
                 }
 
                 @Override
-                public void onFailure(Call<List<Leaderboard>> call, Throwable t) {
+                public void onFailure(Call<List<UserLoginObject>> call, Throwable t) {
                     mActivity.dismissProgressDialog();
                     mViewModel.showLeaderboardFailed(mActivity.getResources().getString(R.string.invalid_response));
                 }

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="quizLevelData"
-            type="com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData" />
+            type="com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject" />
         <variable
             name="presenter"
             type="com.mninetytechnology.mahamillateapp.presenter.QuizMainPresenter" />
@@ -68,7 +68,7 @@
                 android:id="@+id/tv_points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{Integer.toString(quizLevelData.firstLevel)}"
+                android:text="@{quizLevelData.score}"
                 android:textStyle="bold" />
 
             <TextView
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Level 1" />
+            android:text="@{quizLevelData.userLevel}" />
 
         <ProgressBar
             android:id="@+id/pb_level"

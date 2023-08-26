@@ -15,6 +15,8 @@ public interface BlogContract {
         void setUpBlogAdapter(List<Blog> blogs);
 
         void showBlogFailed(String error);
+
+        void shareBlog(Blog blog);
     }
 
     interface Presenter {
@@ -24,7 +26,7 @@ public interface BlogContract {
 
         void updateDislike(boolean isAdd, String blogId);
 
-        void updateShare(String blogId);
+        void updateShare(Blog blog);
 
         void updateView(String blogId);
     }

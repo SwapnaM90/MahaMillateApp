@@ -18,7 +18,7 @@ public interface QuizQuestionContract {
 
         void checkAnswer(String selectedOption, View view);
 
-        void setQuestions(List<Questions> questions);
+        void setQuestions(List<Questions> questions,int marks_per_question,int passing_marks);
 
         void showFailed(String error);
     }

@@ -57,7 +57,7 @@ public class RetrofitClient {
                     return chain.proceed(request);
                 }
             })
-            .readTimeout(60, TimeUnit.SECONDS)
-            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(100, TimeUnit.SECONDS)
+            .connectTimeout(100, TimeUnit.SECONDS)
             .build();
 }

@@ -2,6 +2,7 @@ package com.mninetytechnology.mahamillateapp.network.reposervices;
 
 import com.google.gson.JsonObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.Contants;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogLikeResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogResponseModel;
@@ -63,7 +64,6 @@ public interface ApiService {
      * @param phone_number
      * @param password
      * @param district
-     * @param city
      * @param village
      * @param classText
      * @return
@@ -74,15 +74,32 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(Contants.REGISTER_USER)
     Call<RegisterResponseModel> registerUser(
-            @Field("name") String name,
-            @Field("email") String email,
-            @Field("phone_number") String phone_number,
-            @Field("password") String password,
-            @Field("state") String state,
-            @Field("district") String district,
-            @Field("city") String city,
-            @Field("village") String village,
-            @Field("class") String classText
+             @Field("name") String name,
+             @Field("email") String email,
+             @Field("phone_number") String phone_number,
+             @Field("state") String state,
+             @Field("division") String division,
+             @Field("district") String district,
+             @Field("taluka") String taluka,
+             @Field("village") String village,
+             @Field("class") String classText,
+             @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST(Contants.REGISTER_ORGANISATION)
+    Call<OrganisationLoginResponseModel> registerOrganisation(
+           @Field("name") String name,
+           @Field("reg_number") String reg_number,
+           @Field("contact_person") String contact_person,
+           @Field("contact_person_email") String contact_person_email,
+           @Field("password") String password,
+           @Field("contact_person_phone_number") String contact_person_phone_number,
+           @Field("state") String state,
+           @Field("division") String division,
+           @Field("district") String district,
+           @Field("taluka") String taluka,
+           @Field("village") String village
     );
 
     /**
@@ -175,8 +192,8 @@ public interface ApiService {
      * @date 7-8-2023
      * gets leaderboard user list
      */
-    @GET(Contants.LEADERBORAD + "/{id}")
-    Call<List<Leaderboard>> getLeaderboards(
+    @GET(Contants.LEADERBORAD + "/{id}/?level=firstLevel")
+    Call<List<UserLoginObject>> getLeaderboards(
             @Path("id") String userId
     );
 
@@ -196,7 +213,7 @@ public interface ApiService {
      * gets all quiz data
      */
     @GET(Contants.GET_QUIZ_DATA + "/{userId}")
-    Call<QuizLevelResponseModel> getAllQuizData(
+    Call<LoginResponseModel> getAllQuizData(
             @Path("userId") String userId
     );
 
@@ -218,9 +235,9 @@ public interface ApiService {
      * gets all quiz data
      */
     @FormUrlEncoded
-    @POST(Contants.UPDATE_SCORE)
+    @POST(Contants.UPDATE_SCORE+"/{userId}")
     Call<QuizScoreResponseModel> updateScore(
-            @Field("userId") String userId,
+            @Path("userId") String userId,
             @Field("firstLevel") String firstLevel
     );
 
@@ -302,6 +319,16 @@ public interface ApiService {
     @GET(Contants.GET_VILLAGE + "/{taluka}")
     Call<DistrictTalukaVillageResponseModel> getUpdatedVillage(
             @Path("taluka") String taluka
+    );
+
+    /**
+     * @return
+     * @date 3-8-2023
+     * gets all village
+     */
+    @GET(Contants.GET_CERTIFICATE + "/{id}")
+    Call<JsonObject> getCertificate(
+            @Path("id") String id
     );
 
     /**

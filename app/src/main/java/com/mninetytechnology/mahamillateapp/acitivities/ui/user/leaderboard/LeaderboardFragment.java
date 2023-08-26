@@ -14,6 +14,7 @@ import com.mninetytechnology.mahamillateapp.adapters.LeaderboardListAdapter;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentLeaderboardBinding;
 import com.mninetytechnology.mahamillateapp.models.contracts.LeaderboardContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.presenter.LeaderboardPresenter;
 
 import java.util.List;
@@ -36,12 +37,9 @@ public class LeaderboardFragment extends Fragment implements LeaderboardContract
     }
 
     @Override
-    public void setUpLeaderboardAdapter(List<Leaderboard> leaderboard) {
-        mAdapter = new LeaderboardListAdapter(mActivity, leaderboard, new LeaderboardListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClicked(Leaderboard listModel, int position) {
+    public void setUpLeaderboardAdapter(List<UserLoginObject> leaderboard) {
+        mAdapter = new LeaderboardListAdapter(mActivity, leaderboard, (listModel, position) -> {
 
-            }
         });
         binding.rvLeaderboard.setLayoutManager(new LinearLayoutManager(mActivity));
         binding.rvLeaderboard.setAdapter(mAdapter);

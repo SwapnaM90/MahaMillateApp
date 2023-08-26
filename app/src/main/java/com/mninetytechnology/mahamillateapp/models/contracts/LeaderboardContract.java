@@ -2,6 +2,7 @@ package com.mninetytechnology.mahamillateapp.models.contracts;
 
 
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public interface LeaderboardContract {
 
     interface ViewModel {
-        void setUpLeaderboardAdapter(List<Leaderboard> leaderboards);
+        void setUpLeaderboardAdapter(List<UserLoginObject> leaderboards);
 
         void showLeaderboardFailed(String error);
     }

@@ -9,8 +9,11 @@ public class QuizScore implements Parcelable {
     int tot_questions = 0;
     int solved_question = 0;
     int score = 0;
+    int correct_questions = 0;
     int incorrect_questions = 0;
     int not_answered_questions = 0;
+    int passing_marks = 0;
+    int total_marks = 0;
 
     public QuizScore() {
     }
@@ -19,8 +22,11 @@ public class QuizScore implements Parcelable {
         tot_questions = in.readInt();
         solved_question = in.readInt();
         score = in.readInt();
+        correct_questions = in.readInt();
         incorrect_questions = in.readInt();
         not_answered_questions = in.readInt();
+        passing_marks = in.readInt();
+        total_marks = in.readInt();
     }
 
     public static final Creator<QuizScore> CREATOR = new Creator<QuizScore>() {
@@ -34,6 +40,11 @@ public class QuizScore implements Parcelable {
             return new QuizScore[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     public int getTot_questions() {
         return tot_questions;
@@ -59,6 +70,14 @@ public class QuizScore implements Parcelable {
         this.score = score;
     }
 
+    public int getCorrect_questions() {
+        return correct_questions;
+    }
+
+    public void setCorrect_questions(int correct_questions) {
+        this.correct_questions = correct_questions;
+    }
+
     public int getIncorrect_questions() {
         return incorrect_questions;
     }
@@ -75,9 +94,20 @@ public class QuizScore implements Parcelable {
         this.not_answered_questions = not_answered_questions;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public int getPassing_marks() {
+        return passing_marks;
+    }
+
+    public void setPassing_marks(int passing_marks) {
+        this.passing_marks = passing_marks;
+    }
+
+    public int getTotal_marks() {
+        return total_marks;
+    }
+
+    public void setTotal_marks(int total_marks) {
+        this.total_marks = total_marks;
     }
 
     @Override
@@ -85,7 +115,10 @@ public class QuizScore implements Parcelable {
         parcel.writeInt(tot_questions);
         parcel.writeInt(solved_question);
         parcel.writeInt(score);
+        parcel.writeInt(correct_questions);
         parcel.writeInt(incorrect_questions);
         parcel.writeInt(not_answered_questions);
+        parcel.writeInt(passing_marks);
+        parcel.writeInt(total_marks);
     }
 }

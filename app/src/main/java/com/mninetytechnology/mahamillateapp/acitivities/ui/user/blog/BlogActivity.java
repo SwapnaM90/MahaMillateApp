@@ -1,11 +1,18 @@
 package com.mninetytechnology.mahamillateapp.acitivities.ui.user.blog;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
@@ -15,6 +22,9 @@ import com.mninetytechnology.mahamillateapp.models.contracts.BlogContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Blog;
 import com.mninetytechnology.mahamillateapp.presenter.BlogPresenter;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class BlogActivity extends BaseActivity implements BlogContract.ViewModel {
@@ -58,7 +68,7 @@ public class BlogActivity extends BaseActivity implements BlogContract.ViewModel
 
             @Override
             public void updateShare(Blog listModel, int share) {
-                mPresenter.updateShare(listModel._id);
+                mPresenter.updateShare(listModel);
             }
 
             @Override
@@ -74,6 +84,26 @@ public class BlogActivity extends BaseActivity implements BlogContract.ViewModel
     @Override
     public void showBlogFailed(String error) {
         showErrorSnackBar(mBinding.getRoot(), error);
+    }
+
+    @Override
+    public void shareBlog(Blog blog) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, blog.description);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_STREAM,getImageUri(blog.getImg()));
+        intent.setType("*/*");
+        intent.setPackage("com.whatsapp");
+        startActivity(intent);
+
+    }
+
+    private Uri getImageUri(Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), inImage, "share_image", null);
+        return Uri.parse(path);
     }
 
     @Override

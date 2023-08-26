@@ -12,6 +12,7 @@ import com.mninetytechnology.mahamillateapp.adapters.LeaderboardListAdapter;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityLeaderboardBinding;
 import com.mninetytechnology.mahamillateapp.models.contracts.LeaderboardContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.presenter.LeaderboardPresenter;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class LeaderboardActivity extends BaseActivity implements LeaderboardCont
     }
 
     @Override
-    public void setUpLeaderboardAdapter(List<Leaderboard> leaderboard) {
+    public void setUpLeaderboardAdapter(List<UserLoginObject> leaderboard) {
         mAdapter = new LeaderboardListAdapter(this, leaderboard, (listModel, position) -> {
 
         });

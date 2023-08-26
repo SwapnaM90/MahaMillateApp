@@ -133,6 +133,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_referal_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/referal_code"
+                        android:background="@drawable/round_corner_edittext"
+                        android:inputType="textEmailAddress"
+                        android:text="@={presenter.referal_code}"
+                        android:padding="@dimen/activity_horizontal_margin"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
                     android:layout_marginBottom="10dp">
 
                     <com.google.android.material.textfield.TextInputEditText

@@ -5,7 +5,8 @@ import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.Leaderboard
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizLevelsActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizMainActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizMainContract;
-import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizLevelResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.LoginResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.LoginResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
 
 import retrofit2.Call;
@@ -31,9 +32,9 @@ public class QuizMainPresenter implements QuizMainContract.Presenter {
 
             String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
-            RetrofitClient.getApiService().getAllQuizData(userId).enqueue(new Callback<QuizLevelResponseModel>() {
+            RetrofitClient.getApiService().getAllQuizData(userId).enqueue(new Callback<LoginResponseModel>() {
                 @Override
-                public void onResponse(Call<QuizLevelResponseModel> call, Response<QuizLevelResponseModel> response) {
+                public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
                     mActivity.dismissProgressDialog();
                     if (response.code() == 200 && response.body() != null) {
                         mViewModel.setQuiz(response.body().getData());
@@ -43,7 +44,7 @@ public class QuizMainPresenter implements QuizMainContract.Presenter {
                 }
 
                 @Override
-                public void onFailure(Call<QuizLevelResponseModel> call, Throwable t) {
+                public void onFailure(Call<LoginResponseModel> call, Throwable t) {
                     mActivity.dismissProgressDialog();
                     mViewModel.showFailed(mActivity.getResources().getString(R.string.invalid_response));
                 }

@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
+import com.google.gson.JsonObject;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.RegistrationActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.RegisterContract;
@@ -29,6 +30,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     public ObservableField<String> name;
     public ObservableField<String> password;
     public ObservableField<String> re_enter_password;
+    public ObservableField<String> referal_code;
     public ObservableField<String> address;
     public ObservableField<String> user_class;
 
@@ -52,7 +54,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         address = new ObservableField<>();
         user_class = new ObservableField<>();
         phone_number = new ObservableField<>();
-//        division = new ObservableField<>();
+        referal_code = new ObservableField<>();
         district = new ObservableField<>();
         taluka = new ObservableField<>();
         village = new ObservableField<>();
@@ -105,7 +107,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
             if (mActivity.isInternetConnected()) {
                 mActivity.startProgressDialog(mActivity);
 
-                RetrofitClientLogin.getApiService().registerUser(name.get(), email.get(), phone_number.get(), password.get(), "Maharashtra", district.get(), village.get(), village.get(), user_class.get()).enqueue(new Callback<RegisterResponseModel>() {
+                RetrofitClientLogin.getApiService().registerUser(name.get(), email.get(), phone_number.get(), "Maharashtra", district.get(), district.get(), taluka.get(), village.get(), user_class.get(), password.get()).enqueue(new Callback<RegisterResponseModel>() {
                     @Override
                     public void onResponse(@NonNull Call<RegisterResponseModel> call, @NonNull Response<RegisterResponseModel> response) {
                         if (response.code() == 200 || response.code() == 201) {

@@ -20,6 +20,8 @@ public class QuizData {
     public ArrayList<Questions> questions;
     public Date createdAt;
     public Date updatedAt;
+    public int marks_per_question;
+    public int total_questions;
 
     public String get_id() {
         return _id;
@@ -115,5 +117,21 @@ public class QuizData {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public int getMarks_per_question() {
+        return marks_per_question;
+    }
+
+    public void setMarks_per_question(int marks_per_question) {
+        this.marks_per_question = marks_per_question;
+    }
+
+    public int getTotal_questions() {
+        return total_questions;
+    }
+
+    public void setTotal_questions(int total_questions) {
+        this.total_questions = total_questions;
     }
 }

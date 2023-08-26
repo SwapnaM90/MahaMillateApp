@@ -41,6 +41,8 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
     String selectedQuestion = "";
     private int tot_timer_time;
     private String language;
+    private int marks_per_question;
+    private int passing_marks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +115,9 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
     }
 
     @Override
-    public void setQuestions(List<Questions> questions) {
+    public void setQuestions(List<Questions> questions,int marks_per_question,int passing_marks) {
+        this.marks_per_question = marks_per_question;
+        this.passing_marks = passing_marks;
         questionsList = questions;
         binding.textViewProgress.setText(String.valueOf(10));
         if (questionsList.get(0).isImage()) {
@@ -326,10 +330,16 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
             int tot_questions = questionsList.size();
             int answered = score + incorrect;
             int not_answered = tot_questions - answered;
-            quizScore.setScore(score);
+            int tot_score = score * marks_per_question;
+            int tot_marks = tot_questions * marks_per_question;
+            quizScore.setScore(tot_score);
+            quizScore.setCorrect_questions(score);
             quizScore.setIncorrect_questions(incorrect);
             quizScore.setTot_questions(tot_questions);
             quizScore.setNot_answered_questions(not_answered);
+            quizScore.setSolved_question(answered);
+            quizScore.setPassing_marks(passing_marks);
+            quizScore.setTotal_marks(tot_marks);
             //go to score activity
             Intent intent = new Intent(QuizQuestionsActivity.this, QuizScoreActivity.class);
             intent.putExtra(AppKeys.SCORE, quizScore);

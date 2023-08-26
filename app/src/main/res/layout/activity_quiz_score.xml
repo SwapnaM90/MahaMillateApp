@@ -55,7 +55,7 @@
                 android:background="@drawable/round_corner"
                 android:backgroundTint="@color/light_green"
                 android:gravity="center"
-                android:text="@{@string/quiz_score_generic(Integer.toString(quizScore.score),Integer.toString(quizScore.tot_questions))}"
+                android:text="@{@string/quiz_score_generic(Integer.toString(quizScore.score),Integer.toString(quizScore.total_marks))}"
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
@@ -129,7 +129,7 @@
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@{Integer.toString(quizScore.score)}"
+                            android:text="@{Integer.toString(quizScore.correct_questions)}"
                             android:textColor="@color/green"
                             android:textSize="36sp" />
 
@@ -168,7 +168,7 @@
             android:layout_marginEnd="64dp"
             android:layout_marginBottom="64dp"
             android:background="@drawable/round_corner"
-            android:text="Done"
+            android:text="@string/done"
             android:textSize="20sp"
             android:textStyle="bold"
 

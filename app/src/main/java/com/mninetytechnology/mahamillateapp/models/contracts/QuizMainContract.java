@@ -2,6 +2,7 @@ package com.mninetytechnology.mahamillateapp.models.contracts;
 
 
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 
 /**
  * Created by Swapna Thakur on 19/7/2023.
@@ -10,7 +11,7 @@ import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizLevelData;
 public interface QuizMainContract {
 
     interface ViewModel {
-        void setQuiz(QuizLevelData quizLevelData);
+        void setQuiz(UserLoginObject quizLevelData);
 
         void showFailed(String error);
     }

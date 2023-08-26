@@ -17,6 +17,7 @@ import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.OrganisationMainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MainActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.SelectUserActivity;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentOrganisationProfileBinding;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentProfileBinding;
 import com.mninetytechnology.mahamillateapp.databinding.SingleAddressBinding;
@@ -42,7 +43,7 @@ public class OrganisationProfileFragment extends Fragment implements ProfileCont
             @Override
             public void onClick(View view) {
                 mActivity.getGlobalHelper().getSharedPreferencesHelper().clear();
-                mActivity.startActivityOnTop(LoginActivity.class, true);
+                mActivity.startActivityOnTop(SelectUserActivity.class, true);
             }
         });
         if (!mActivity.getGlobalHelper().getSharedPreferencesHelper().getAddress().trim().isEmpty()) {

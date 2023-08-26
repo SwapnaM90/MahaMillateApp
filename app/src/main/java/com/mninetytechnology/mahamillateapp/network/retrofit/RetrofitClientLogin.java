@@ -36,7 +36,7 @@ public class RetrofitClientLogin {
     }
 
     final static OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .readTimeout(60, TimeUnit.SECONDS)
-            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(100, TimeUnit.SECONDS)
+            .connectTimeout(100, TimeUnit.SECONDS)
             .build();
 }

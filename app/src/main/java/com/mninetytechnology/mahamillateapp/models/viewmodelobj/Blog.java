@@ -1,5 +1,7 @@
 package com.mninetytechnology.mahamillateapp.models.viewmodelobj;
 
+import android.graphics.Bitmap;
+
 import java.util.Date;
 
 public class Blog {
@@ -14,6 +16,8 @@ public class Blog {
     public Date createdAt;
     public Date updatedAt;
     public int __v;
+
+    private Bitmap img;
 
     public String get_id() {
         return _id;
@@ -101,5 +105,13 @@ public class Blog {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Bitmap getImg() {
+        return img;
+    }
+
+    public void setImg(Bitmap img) {
+        this.img = img;
     }
 }

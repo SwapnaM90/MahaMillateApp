@@ -9,6 +9,7 @@ import com.google.firebase.FirebaseApp;
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.OrganisationRegistrationActivity;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityOtpCheckBinding;
 import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
@@ -41,6 +42,7 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
             mPresenter.rootView = mBinding.getRoot();
             mBinding.setPresenter(mPresenter);
             mPresenter.otp = otp;
+            Log.e(TAG, "onCreate: "+otp);
         } catch (Exception e) {
             Log.e(TAG, "onCreate: " + e.getMessage());
         }
@@ -72,9 +74,15 @@ public class OtpCheckActivity extends BaseActivity implements OtpContract.ViewMo
      * navigates to dashboard activity
      */
     private void goToDashboard() {
-        Intent intent = new Intent(OtpCheckActivity.this, RegistrationActivity.class);
-        intent.putExtra(AppKeys.PHONE_NUMBER, phone_number);
-        startActivityOnTop(false, intent);
+        if (getGlobalHelper().getSharedPreferencesHelper().getUser().equalsIgnoreCase(AppKeys.ORGANISATION)) {
+            Intent intent = new Intent(OtpCheckActivity.this, OrganisationRegistrationActivity.class);
+            intent.putExtra(AppKeys.PHONE_NUMBER, phone_number);
+            startActivityOnTop(false, intent);
+        } else {
+            Intent intent = new Intent(OtpCheckActivity.this, RegistrationActivity.class);
+            intent.putExtra(AppKeys.PHONE_NUMBER, phone_number);
+            startActivityOnTop(false, intent);
+        }
     }
 
     @Override

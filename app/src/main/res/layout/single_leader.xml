@@ -5,7 +5,7 @@
     <data>
         <variable
             name="leader"
-            type="com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard" />
+            type="com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject" />
     </data>
 
     <LinearLayout
@@ -30,13 +30,13 @@
                 android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{leader.userId.name}" />
+                android:text="@{leader.name}" />
 
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{leader.userId.email}" />
+                android:text="@{leader.email}" />
         </LinearLayout>
 
         <LinearLayout

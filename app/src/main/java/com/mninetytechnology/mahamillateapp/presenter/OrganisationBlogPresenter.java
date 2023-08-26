@@ -6,6 +6,7 @@ import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.blog.OrganisationBlogActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.blog.BlogActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.BlogContract;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Blog;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogLikeResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
@@ -114,10 +115,10 @@ public class OrganisationBlogPresenter implements BlogContract.Presenter {
     }
 
     @Override
-    public void updateShare(String blogId) {
+    public void updateShare(Blog blog) {
         if (mActivity.isInternetConnected()) {
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
-            RetrofitClient.getApiService().updateShare(blogId).enqueue(new Callback<BlogLikeResponseModel>() {
+            RetrofitClient.getApiService().updateShare(blog._id).enqueue(new Callback<BlogLikeResponseModel>() {
                 @Override
                 public void onResponse(Call<BlogLikeResponseModel> call, Response<BlogLikeResponseModel> response) {
                     Log.e("TAG", "onResponse: " + response);

@@ -9,16 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mninetytechnology.mahamillateapp.databinding.SingleLeaderBinding;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 
 import java.util.List;
 
 public class LeaderboardListAdapter extends RecyclerView.Adapter<LeaderboardListAdapter.LeaderboardHolder> {
     private static final String TAG = LeaderboardListAdapter.class.getName();
     private final Context context;
-    private final List<Leaderboard> stateList;
+    private final List<UserLoginObject> stateList;
     private final OnItemClickListener mListener;
 
-    public LeaderboardListAdapter(Context context, List<Leaderboard> stateList, OnItemClickListener mListener) {
+    public LeaderboardListAdapter(Context context, List<UserLoginObject> stateList, OnItemClickListener mListener) {
         this.context = context;
         this.stateList = stateList;
         this.mListener = mListener;
@@ -33,7 +34,7 @@ public class LeaderboardListAdapter extends RecyclerView.Adapter<LeaderboardList
 
     @Override
     public void onBindViewHolder(@NonNull LeaderboardHolder holder, int position) {
-        Leaderboard listItem = stateList.get(position);
+        UserLoginObject listItem = stateList.get(position);
         holder.binding.setLeader(listItem);
 
     }
@@ -53,6 +54,6 @@ public class LeaderboardListAdapter extends RecyclerView.Adapter<LeaderboardList
     }
 
     public interface OnItemClickListener {
-        void onItemClicked(Leaderboard listModel, int position);
+        void onItemClicked(UserLoginObject listModel, int position);
     }
 }

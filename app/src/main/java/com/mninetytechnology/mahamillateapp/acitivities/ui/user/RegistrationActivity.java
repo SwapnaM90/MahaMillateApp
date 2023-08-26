@@ -37,9 +37,7 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
     private RegisterPresenter presenter;
     private GlobalHelper helper;
     private SingleAddressBinding addressBinding;
-
     private AlertDialog dialog;
-
     private String phone_number;
 
 
@@ -98,7 +96,7 @@ public class RegistrationActivity extends BaseActivity implements RegisterContra
         binding.sprClassText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                presenter.user_class.set(classes.get(i).title);
+                presenter.user_class.set(classes.get(i)._id);
             }
 
             @Override

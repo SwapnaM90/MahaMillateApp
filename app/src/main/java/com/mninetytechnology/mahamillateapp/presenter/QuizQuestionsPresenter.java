@@ -37,7 +37,7 @@ public class QuizQuestionsPresenter implements QuizQuestionContract.Presenter {
                 public void onResponse(Call<QuizResponseModel> call, Response<QuizResponseModel> response) {
                     mActivity.dismissProgressDialog();
                     if (response.code() == 200 && response.body() != null) {
-                        mViewModel.setQuestions(response.body().getData().getQuestions());
+                        mViewModel.setQuestions(response.body().getData().getQuestions(),response.body().getData().marks_per_question,response.body().getData().passing_marks);
                     } else {
                         mViewModel.showFailed(mActivity.getResources().getString(R.string.invalid_response));
                     }

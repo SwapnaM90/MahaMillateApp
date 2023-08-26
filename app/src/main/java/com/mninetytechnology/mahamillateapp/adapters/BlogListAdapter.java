@@ -1,6 +1,8 @@
 package com.mninetytechnology.mahamillateapp.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,6 +109,10 @@ public class BlogListAdapter extends RecyclerView.Adapter<BlogListAdapter.BlogHo
         holder.binding.imgShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                BitmapDrawable drawable = (BitmapDrawable) holder.binding.imgBlog.getDrawable();
+                Bitmap bitmap = drawable.getBitmap();
+                listItem.setImg(bitmap);
+
                 int share = stateList.get(holder.getAdapterPosition()).getShare();
                 share++;
                 stateList.get(holder.getAdapterPosition()).setShare(share);

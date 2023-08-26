@@ -24,6 +24,8 @@ public class QuizCertificateActivity extends BaseActivity {
         });
     }
 
+
+
     @Override
     public void onBackPressed() {
         startActivityOnTop(QuizMainActivity.class, true);
