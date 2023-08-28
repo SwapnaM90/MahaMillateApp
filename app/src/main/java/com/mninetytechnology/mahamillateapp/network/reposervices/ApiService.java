@@ -83,7 +83,8 @@ public interface ApiService {
              @Field("taluka") String taluka,
              @Field("village") String village,
              @Field("class") String classText,
-             @Field("password") String password
+             @Field("password") String password,
+             @Field("organization_id") String organization_id
     );
 
     @FormUrlEncoded

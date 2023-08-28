@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.RegistrationActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.RegisterContract;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.ClassResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictTalukaVillageResponseModel;
@@ -39,6 +40,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     public ObservableField<String> district;
     public ObservableField<String> taluka;
     public ObservableField<String> village;
+    public ObservableField<OrganisationLoginObject> organisation;
 
     public RegisterPresenter(RegistrationActivity mActivity, RegisterContract.ViewModel mViewModel) {
         this.mActivity = mActivity;
@@ -58,6 +60,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         district = new ObservableField<>();
         taluka = new ObservableField<>();
         village = new ObservableField<>();
+        organisation = new ObservableField<>();
     }
 
     private boolean validate() {
@@ -106,8 +109,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         if (validate()) {
             if (mActivity.isInternetConnected()) {
                 mActivity.startProgressDialog(mActivity);
-
-                RetrofitClientLogin.getApiService().registerUser(name.get(), email.get(), phone_number.get(), "Maharashtra", district.get(), district.get(), taluka.get(), village.get(), user_class.get(), password.get()).enqueue(new Callback<RegisterResponseModel>() {
+                RetrofitClientLogin.getApiService().registerUser(name.get(), email.get(), phone_number.get(), "Maharashtra", district.get(), district.get(), taluka.get(), village.get(), user_class.get(), password.get(),organisation.get().get_id()).enqueue(new Callback<RegisterResponseModel>() {
                     @Override
                     public void onResponse(@NonNull Call<RegisterResponseModel> call, @NonNull Response<RegisterResponseModel> response) {
                         if (response.code() == 200 || response.code() == 201) {
@@ -276,6 +278,11 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         } else {
             mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
         }
+    }
+
+    @Override
+    public void populateOrganisation() {
+        //mActivity.startActivityOnTop();
     }
 
     public void populateAddress() {

@@ -43,6 +43,24 @@
                     android:layout_marginBottom="10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_organisation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/organisation"
+                        android:background="@drawable/round_corner_edittext"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:onClick="@{()->presenter.populateOrganisation()}"
+                        android:padding="@dimen/activity_horizontal_margin"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edt_full_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

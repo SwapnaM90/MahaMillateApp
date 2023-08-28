@@ -24,6 +24,7 @@ import com.mninetytechnology.mahamillateapp.databinding.SingleAddressBinding;
 import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.RegisterContract;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.SingleClass;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.presenter.RegisterPresenter;

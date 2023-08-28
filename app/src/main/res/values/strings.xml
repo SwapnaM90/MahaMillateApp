@@ -106,6 +106,7 @@
     <string name="invalid_mobile_number">Invalid Mobile Number</string>
     <string name="welcome_to_millet_india">Welcome to Millet India</string>
     <string name="full_name">Full Name</string>
+    <string name="organisation_full_name">School / Organisation Name</string>
     <string name="division">Division</string>
     <string name="done">Done</string>
     <string name="please_select_division">Please select division</string>
@@ -132,7 +133,7 @@
     <string name="tifanfoundation_gmail_com">tifanfoundation@gmail.com</string>
     <string name="finish">Finish</string>
     <string name="news">News</string>
-    <string name="who_is_using">Select User</string>
+    <string name="who_is_using">Who are you</string>
     <string name="organisation">School/Organisation</string>
     <string name="user">User</string>
     <string name="title_user_list">Users</string>
@@ -142,4 +143,5 @@
     <string name="organisational_point">Organisational Points</string>
     <string name="referal_point">Referal Points</string>
     <string name="referal_code">Referal Code (optional)</string>
+    <string name="contact_person_name">Contact Person Name</string>
 </resources>

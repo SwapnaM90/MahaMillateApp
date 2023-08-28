@@ -1,6 +1,7 @@
 package com.mninetytechnology.mahamillateapp.models.contracts;
 
 
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.SingleClass;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 
@@ -41,5 +42,7 @@ public interface RegisterContract {
         void getTaluka(String districtCode);
 
         void getVillage(String talukaCode);
+
+        void populateOrganisation();
     }
 }
