@@ -10,7 +10,7 @@ import java.util.Date;
 public class UserLoginObject {
     private String _id;
     private int organization_points;
-    private double referral_earn_points;
+    private int referral_earn_points;
     private int firstLevel;
     private int secondLevel;
     private int thirdLevel;
@@ -23,10 +23,10 @@ public class UserLoginObject {
     private String taluka;
     private String village;
     @SerializedName("class")
-    private String class_text;
+    private String myclass;
     private String referral_code;
-    private int referral_points;
-    private Object referral_userId;
+    private double referral_points;
+    private int referral_userId;
     private String organization_id;
     private String password;
     private Date createdAt;
@@ -38,6 +38,46 @@ public class UserLoginObject {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public int getOrganization_points() {
+        return organization_points;
+    }
+
+    public void setOrganization_points(int organization_points) {
+        this.organization_points = organization_points;
+    }
+
+    public int getReferral_earn_points() {
+        return referral_earn_points;
+    }
+
+    public void setReferral_earn_points(int referral_earn_points) {
+        this.referral_earn_points = referral_earn_points;
+    }
+
+    public int getFirstLevel() {
+        return firstLevel;
+    }
+
+    public void setFirstLevel(int firstLevel) {
+        this.firstLevel = firstLevel;
+    }
+
+    public int getSecondLevel() {
+        return secondLevel;
+    }
+
+    public void setSecondLevel(int secondLevel) {
+        this.secondLevel = secondLevel;
+    }
+
+    public int getThirdLevel() {
+        return thirdLevel;
+    }
+
+    public void setThirdLevel(int thirdLevel) {
+        this.thirdLevel = thirdLevel;
     }
 
     public String getName() {
@@ -72,12 +112,28 @@ public class UserLoginObject {
         this.state = state;
     }
 
+    public String getDivision() {
+        return division;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
+    }
+
     public String getDistrict() {
         return district;
     }
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public String getTaluka() {
+        return taluka;
+    }
+
+    public void setTaluka(String taluka) {
+        this.taluka = taluka;
     }
 
     public String getVillage() {
@@ -88,12 +144,44 @@ public class UserLoginObject {
         this.village = village;
     }
 
-    public String getClass_text() {
-        return class_text;
+    public String getMyclass() {
+        return myclass;
     }
 
-    public void setClass_text(String class_text) {
-        this.class_text = class_text;
+    public void setMyclass(String myclass) {
+        this.myclass = myclass;
+    }
+
+    public String getReferral_code() {
+        return referral_code;
+    }
+
+    public void setReferral_code(String referral_code) {
+        this.referral_code = referral_code;
+    }
+
+    public double getReferral_points() {
+        return referral_points;
+    }
+
+    public void setReferral_points(double referral_points) {
+        this.referral_points = referral_points;
+    }
+
+    public int getReferral_userId() {
+        return referral_userId;
+    }
+
+    public void setReferral_userId(int referral_userId) {
+        this.referral_userId = referral_userId;
+    }
+
+    public String getOrganization_id() {
+        return organization_id;
+    }
+
+    public void setOrganization_id(String organization_id) {
+        this.organization_id = organization_id;
     }
 
     public String getPassword() {
@@ -118,94 +206,6 @@ public class UserLoginObject {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public int getOrganization_points() {
-        return organization_points;
-    }
-
-    public void setOrganization_points(int organization_points) {
-        this.organization_points = organization_points;
-    }
-
-    public double getReferral_earn_points() {
-        return referral_earn_points;
-    }
-
-    public void setReferral_earn_points(double referral_earn_points) {
-        this.referral_earn_points = referral_earn_points;
-    }
-
-    public int getFirstLevel() {
-        return firstLevel;
-    }
-
-    public void setFirstLevel(int firstLevel) {
-        this.firstLevel = firstLevel;
-    }
-
-    public int getSecondLevel() {
-        return secondLevel;
-    }
-
-    public void setSecondLevel(int secondLevel) {
-        this.secondLevel = secondLevel;
-    }
-
-    public int getThirdLevel() {
-        return thirdLevel;
-    }
-
-    public void setThirdLevel(int thirdLevel) {
-        this.thirdLevel = thirdLevel;
-    }
-
-    public String getDivision() {
-        return division;
-    }
-
-    public void setDivision(String division) {
-        this.division = division;
-    }
-
-    public String getTaluka() {
-        return taluka;
-    }
-
-    public void setTaluka(String taluka) {
-        this.taluka = taluka;
-    }
-
-    public String getReferral_code() {
-        return referral_code;
-    }
-
-    public void setReferral_code(String referral_code) {
-        this.referral_code = referral_code;
-    }
-
-    public int getReferral_points() {
-        return referral_points;
-    }
-
-    public void setReferral_points(int referral_points) {
-        this.referral_points = referral_points;
-    }
-
-    public Object getReferral_userId() {
-        return referral_userId;
-    }
-
-    public void setReferral_userId(Object referral_userId) {
-        this.referral_userId = referral_userId;
-    }
-
-    public String getOrganization_id() {
-        return organization_id;
-    }
-
-    public void setOrganization_id(String organization_id) {
-        this.organization_id = organization_id;
     }
 
     public String getUserLevel() {

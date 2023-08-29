@@ -59,7 +59,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
             String user = gson.toJson(userLoginObject, UserLoginObject.class);
             helper.getSharedPreferencesHelper().setPrefLoginUser(user);
             helper.getSharedPreferencesHelper().setLoginServerUserId(userLoginObject.get_id());
-            helper.getSharedPreferencesHelper().setLoginServerUserClass(userLoginObject.getClass_text());
+            helper.getSharedPreferencesHelper().setLoginServerUserClass(userLoginObject.getMyclass());
             helper.getSharedPreferencesHelper().setLoginKey(token);
 
             //start otp check activity

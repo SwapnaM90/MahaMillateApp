@@ -32,6 +32,8 @@ public class Contants {
     public static final String UPDATE_ORGANISATION_DISTRICT = "organization/update";
     public static final String REGISTER_ORGANISATION = "organization";
     public static final String GET_CERTIFICATE = "certificate/print";
+    public static final String GET_ORGANISATION = "organization";
+    public static final String UPDATE_ORGANISATION = "user/update";
 
     public static String PREF_LOGIN = "PREF_LOGIN";
     public static String PREF_AUTH_TOKEN = "PREF_AUTH_TOKEN";

@@ -134,7 +134,7 @@
     <string name="finish">Finish</string>
     <string name="news">News</string>
     <string name="who_is_using">Who are you</string>
-    <string name="organisation">School/Organisation</string>
+    <string name="organisation">School / Organisation</string>
     <string name="user">User</string>
     <string name="title_user_list">Users</string>
     <string name="indivisual">User/Indivisual</string>
@@ -144,4 +144,11 @@
     <string name="referal_point">Referal Points</string>
     <string name="referal_code">Referal Code (optional)</string>
     <string name="contact_person_name">Contact Person Name</string>
+    <string name="change_organisation">Change Organisation</string>
+    <string name="my_performance">My Performance</string>
+    <string name="ref">Ref</string>
+    <string name="org">Org</string>
+    <string name="earn">Earn</string>
+    <string name="donation_description">Your donation, no matter the size, helps us to continue our mission of spreading hope and making positive transformations. Join us for making a difference today!</string>
+    <string name="hash_maha_millet">#MahaMilletQuiz</string>
 </resources>

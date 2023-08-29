@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
 import com.mninetytechnology.mahamillateapp.SplashActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.LoginActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.OrganisationMainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.base.IntroActivity;
@@ -71,7 +72,7 @@ public class SplashPresenter implements SplashContract.Presenter {
             // todo direct login screen
             try {
                 if (helper.getSharedPreferencesHelper().getLoginUserId().trim().isEmpty()) {
-                    mViewModel.startAnotherActivity(IntroActivity.class, true);
+                    mViewModel.startAnotherActivity(LoginActivity.class, true);
                 } else {
                     if (mActivity.getGlobalHelper().getSharedPreferencesHelper().getUser().equalsIgnoreCase(AppKeys.ORGANISATION)) {
                         mViewModel.startAnotherActivity(OrganisationMainActivity.class, true);

@@ -18,5 +18,6 @@ public class AppKeys {
     public static final String MARATHI = "marathi";
     public static final String QUIZ_LANGUAGE = "quiz_language";
     public static final String USER_TYPE = "user_type";
+    public static final String ORGANISATION_ID = "organisation_id";
     public static String loginUserId = "loginUserId";
 }

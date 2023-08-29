@@ -13,7 +13,6 @@ import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends BaseActivity {
-
     private ActivityMainBinding binding;
 
     @Override
@@ -32,6 +31,9 @@ public class MainActivity extends BaseActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        if (getIntent().hasExtra("organizationId")) {
+            navController.navigate(R.id.navigation_profile);
+        }
     }
 
 }

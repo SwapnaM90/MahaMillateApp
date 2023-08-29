@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".acitivities.ui.user.profile.MyPerformanceActivity"
+            android:exported="false" />
+        <activity
             android:name=".acitivities.ui.user.OrganisationSearchActivity"
             android:exported="false" />
         <activity

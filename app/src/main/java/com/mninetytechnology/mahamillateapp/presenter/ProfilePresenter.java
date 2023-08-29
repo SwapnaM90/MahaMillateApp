@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.google.gson.Gson;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.OrganisationSearchActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.profile.MyPerformanceActivity;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.LoginResponseModel;
@@ -40,6 +42,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     public ObservableField<String> taluka;
     public ObservableField<String> village;
     public ObservableField<String> address;
+    public ObservableField<String> organisation;
 
     public ProfilePresenter(MainActivity mActivity, ProfileContract.ViewModel mViewModel) {
         this.mActivity = mActivity;
@@ -59,6 +62,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
         taluka = new ObservableField<>();
         village = new ObservableField<>();
         address = new ObservableField<>();
+        organisation = new ObservableField<>();
     }
 
 //    @Override
@@ -275,5 +279,11 @@ public class ProfilePresenter implements ProfileContract.Presenter {
 
     public void goToAboutUs() {
         mActivity.startActivityOnTop(AboutUsActivity.class, false);
+    }
+    public void goToOrganisation() {
+        mActivity.startActivityOnTop(OrganisationSearchActivity.class, false);
+    }
+    public void goToMyPerformance() {
+        mActivity.startActivityOnTop(MyPerformanceActivity.class, false);
     }
 }

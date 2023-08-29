@@ -20,6 +20,7 @@ import com.mninetytechnology.mahamillateapp.acitivities.ui.user.SelectUserActivi
 import com.mninetytechnology.mahamillateapp.databinding.FragmentProfileBinding;
 import com.mninetytechnology.mahamillateapp.databinding.SingleAddressBinding;
 import com.mninetytechnology.mahamillateapp.models.contracts.ProfileContract;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.presenter.ProfilePresenter;
 
@@ -31,7 +32,6 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
     private MainActivity mActivity;
     private ProfilePresenter presenter;
     private SingleAddressBinding addressBinding;
-
     private AlertDialog dialog;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +51,13 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
         Gson gson = new Gson();
         String userStr = mActivity.getGlobalHelper().getSharedPreferencesHelper().getPrefLoginUser();
         UserLoginObject obj = gson.fromJson(userStr, UserLoginObject.class);
+        if (mActivity.getGlobalHelper().getSharedPreferencesHelper().getOrganisationId().trim().isEmpty()) {
+            presenter.organisation.set(getString(R.string.change_organisation));
+        } else {
+            String organisationId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getOrganisationId();
+            OrganisationLoginObject obj_org = gson.fromJson(organisationId, OrganisationLoginObject.class);
+            presenter.organisation.set(obj_org.getName());
+        }
         if (obj != null) {
             binding.tvUserName.setText(obj.getName());
             presenter.address.set("" + obj.getVillage() + "," + obj.getDistrict() + "," + obj.getState());

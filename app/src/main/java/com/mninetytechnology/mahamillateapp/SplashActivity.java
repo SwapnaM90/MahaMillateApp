@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.mninetytechnology.mahamillateapp.Helpers.GlobalHelper;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
+import com.mninetytechnology.mahamillateapp.adapters.SplashGridAdapter;
 import com.mninetytechnology.mahamillateapp.databinding.ActivitySplashBinding;
 import com.mninetytechnology.mahamillateapp.lib.ScreenHelper;
 import com.mninetytechnology.mahamillateapp.models.contracts.SplashContract;
@@ -19,6 +20,15 @@ public class SplashActivity extends BaseActivity implements SplashContract.ViewM
     private final static long SPLASH_INTERVAL_IN_MILLIS = 500;
     private GlobalHelper helper;
     private static final String TAG = "SplashActivity";
+
+    Integer[] drawables = {
+            R.drawable.farmer,
+            R.drawable.millapte_app_icon,
+            R.drawable.rcf,
+            R.drawable.tifan_foundation
+    };
+
+    private SplashGridAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +47,9 @@ public class SplashActivity extends BaseActivity implements SplashContract.ViewM
     }
 
     private void init() {
+        adapter = new SplashGridAdapter(SplashActivity.this,drawables);
+        mBinding.grdLayout.setAdapter(adapter);
+
         mHandler = new Handler();
         mRunnable = () -> {
             mPresenter.checkLastLoginDate(helper);

@@ -2,6 +2,7 @@ package com.mninetytechnology.mahamillateapp.network.reposervices;
 
 import com.google.gson.JsonObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.Leaderboard;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.UserLoginObject;
 import com.mninetytechnology.mahamillateapp.network.Contants;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.BlogLikeResponseModel;
@@ -11,6 +12,7 @@ import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictRespon
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DistrictTalukaVillageResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.DivisionResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.LoginResponseModel;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.OrganisationListResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.OrganisationLoginResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.OrganisationUserListResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.OtpResponseModel;
@@ -30,6 +32,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
 
@@ -358,6 +361,29 @@ public interface ApiService {
             @Field("district") String district,
             @Field("taluka") String taluka,
             @Field("village") String village
+    );
+
+
+    /**
+     * @return
+     * @date 3-8-2023
+     * gets all village
+     */
+    @GET(Contants.GET_ORGANISATION)
+    Call<OrganisationListResponseModel> getOrganisationListByPage(
+            @Query("page") String page
+    );
+
+    /**
+     * @return
+     * @date 3-8-2023
+     * gets all village
+     */
+    @FormUrlEncoded
+    @POST(Contants.UPDATE_ORGANISATION+"/{id}")
+    Call<JsonObject> updateOrganisation(
+            @Path("id") String id,
+            @Field("organization_id") String organization_id
     );
 }
 

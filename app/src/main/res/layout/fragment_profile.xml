@@ -98,8 +98,29 @@
                     android:padding="10dp"
                     android:text="@string/about_us"
                     android:onClick="@{()->presenter.goToAboutUs()}"/>
-            </LinearLayout>
 
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_radio_background"
+                    android:drawableRight="@drawable/ic_forward_arrow"
+                    android:padding="10dp"
+                    android:text="@{presenter.organisation}"
+                    android:onClick="@{()->presenter.goToOrganisation()}"/>
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_radio_background"
+                    android:drawableRight="@drawable/ic_forward_arrow"
+                    android:padding="10dp"
+                    android:text="@string/my_performance"
+                    android:onClick="@{()->presenter.goToMyPerformance()}"/>
+            </LinearLayout>
 
         <Button
             android:id="@+id/btn_logout"

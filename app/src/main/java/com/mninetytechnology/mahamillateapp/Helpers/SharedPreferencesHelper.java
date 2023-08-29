@@ -162,10 +162,16 @@ public class SharedPreferencesHelper extends GlobalHelper {
         editor.putString(AppKeys.USER_TYPE, user_type);
         editor.apply();
     }
-
     public String getUser() {
         return preferences.getString(AppKeys.USER_TYPE, AppKeys.USER);
     }
 
-
+    public void setOrganisationId(String organisationId) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(AppKeys.ORGANISATION_ID, organisationId);
+        editor.apply();
+    }
+    public String getOrganisationId() {
+        return preferences.getString(AppKeys.ORGANISATION_ID, "");
+    }
 }
