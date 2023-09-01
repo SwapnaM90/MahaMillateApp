@@ -6,8 +6,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.view.View;
 
+import androidx.core.text.HtmlKt;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -88,9 +90,10 @@ public class BlogActivity extends BaseActivity implements BlogContract.ViewModel
 
     @Override
     public void shareBlog(Blog blog) {
+        String blogDescription = String.valueOf(HtmlKt.parseAsHtml(blog.description, Html.FROM_HTML_MODE_LEGACY,null,null));
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT, blog.description);
+        intent.putExtra(Intent.EXTRA_TEXT, blogDescription);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_STREAM,getImageUri(blog.getImg()));
         intent.setType("*/*");

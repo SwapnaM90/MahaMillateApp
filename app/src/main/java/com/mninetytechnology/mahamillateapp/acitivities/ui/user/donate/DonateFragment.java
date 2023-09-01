@@ -2,13 +2,19 @@ package com.mninetytechnology.mahamillateapp.acitivities.ui.user.donate;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,6 +27,10 @@ import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MainActivity;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.custom.RadioGridGroup;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentDonateBinding;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 public class DonateFragment extends Fragment {
@@ -70,10 +80,32 @@ public class DonateFragment extends Fragment {
                         imageView.setImageBitmap(bitmap);
                         dialog.setView(imageView);
                         dialog.setCancelable(false);
-                        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Download QR Code", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialog.dismiss();
+                                try {
+                                    BitmapDrawable draw = (BitmapDrawable) imageView.getDrawable();
+                                    Bitmap bitmap = draw.getBitmap();
+
+                                    FileOutputStream outStream = null;
+                                    File sdCard = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+                                    File dir = new File(sdCard.getAbsolutePath() + "/MahaMillets");
+                                    dir.mkdirs();
+                                    String fileName = String.format("%d.jpg", System.currentTimeMillis());
+                                    File outFile = new File(dir, fileName);
+                                    outStream = new FileOutputStream(outFile);
+                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+                                    outStream.flush();
+                                    outStream.close();
+
+                                    Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                                    intent.setData(Uri.fromFile(outFile));
+                                    mActivity.sendBroadcast(intent);
+                                    Toast.makeText(mActivity, mActivity.getString(R.string.downloaded_successfully), Toast.LENGTH_SHORT).show();
+                                } catch (IOException e) {
+                                    Log.e("TAG", "onClick: "+e.getMessage());
+                                }
                             }
                         });
                         dialog.show();

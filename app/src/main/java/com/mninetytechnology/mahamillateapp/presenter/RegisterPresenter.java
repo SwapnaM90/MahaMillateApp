@@ -64,10 +64,10 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     }
 
     private boolean validate() {
-        if (email == null || TextUtils.isEmpty(email.get())) {
+        /*if (email == null || TextUtils.isEmpty(email.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_email));
             return false;
-        } else if (name == null || TextUtils.isEmpty(name.get())) {
+        } else*/ if (name == null || TextUtils.isEmpty(name.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
         } else if (password == null || TextUtils.isEmpty(password.get())) {
@@ -100,7 +100,6 @@ public class RegisterPresenter implements RegisterContract.Presenter {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
         }
-
         return true;
     }
 
@@ -109,14 +108,18 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         if (validate()) {
             if (mActivity.isInternetConnected()) {
                 mActivity.startProgressDialog(mActivity);
-                RetrofitClientLogin.getApiService().registerUser(name.get(), email.get(), phone_number.get(), "Maharashtra", district.get(), district.get(), taluka.get(), village.get(), user_class.get(), password.get(),organisation.get().get_id()).enqueue(new Callback<RegisterResponseModel>() {
+                RetrofitClientLogin.getApiService().registerUser(name.get(), email.get(), phone_number.get(), "Maharashtra", district.get(), district.get(), taluka.get(), village.get(), user_class.get(), password.get(),referal_code.get()).enqueue(new Callback<RegisterResponseModel>() {
                     @Override
                     public void onResponse(@NonNull Call<RegisterResponseModel> call, @NonNull Response<RegisterResponseModel> response) {
                         if (response.code() == 200 || response.code() == 201) {
-                            assert response.body() != null;
-                            UserLoginObject obj = response.body().getData();
-                            mActivity.dismissProgressDialog();
-                            mViewModel.register(obj, response.body().getToken());
+                            if (response.body() != null) {
+                                UserLoginObject obj = response.body().getData();
+                                mActivity.dismissProgressDialog();
+                                mViewModel.register(obj, response.body().getToken());
+                            } else {
+                                mActivity.dismissProgressDialog();
+                                mViewModel.showRegisterFailed(response.body().getMessage());
+                            }
                         } else {
                             mActivity.dismissProgressDialog();
                             mViewModel.showRegisterFailed("" + mActivity.getResources().getString(R.string.invalid_response));
@@ -126,7 +129,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                     @Override
                     public void onFailure(@NonNull Call<RegisterResponseModel> call, @NonNull Throwable t) {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showRegisterFailed(t.getMessage());
+                        mViewModel.showRegisterFailed(mActivity.getString(R.string.invalid_user));
                     }
                 });
 

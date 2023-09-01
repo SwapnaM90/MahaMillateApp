@@ -71,8 +71,8 @@ public class SplashPresenter implements SplashContract.Presenter {
         } else {
             // todo direct login screen
             try {
-                if (helper.getSharedPreferencesHelper().getLoginUserId().trim().isEmpty()) {
-                    mViewModel.startAnotherActivity(LoginActivity.class, true);
+                if (mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId().trim().isEmpty()) {
+                    mViewModel.startAnotherActivity(SelectUserActivity.class, true);
                 } else {
                     if (mActivity.getGlobalHelper().getSharedPreferencesHelper().getUser().equalsIgnoreCase(AppKeys.ORGANISATION)) {
                         mViewModel.startAnotherActivity(OrganisationMainActivity.class, true);

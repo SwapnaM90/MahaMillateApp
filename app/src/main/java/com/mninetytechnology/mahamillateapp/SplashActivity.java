@@ -17,17 +17,15 @@ public class SplashActivity extends BaseActivity implements SplashContract.ViewM
     private SplashPresenter mPresenter;
     private Runnable mRunnable;
     private Handler mHandler;
-    private final static long SPLASH_INTERVAL_IN_MILLIS = 500;
+    private final static long SPLASH_INTERVAL_IN_MILLIS = 1500;
     private GlobalHelper helper;
     private static final String TAG = "SplashActivity";
-
     Integer[] drawables = {
             R.drawable.farmer,
             R.drawable.millapte_app_icon,
             R.drawable.rcf,
             R.drawable.tifan_foundation
     };
-
     private SplashGridAdapter adapter;
 
     @Override

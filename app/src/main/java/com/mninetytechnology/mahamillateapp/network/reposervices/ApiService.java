@@ -87,7 +87,8 @@ public interface ApiService {
              @Field("village") String village,
              @Field("class") String classText,
              @Field("password") String password,
-             @Field("organization_id") String organization_id
+             @Field("referral_code") String referral_code
+//             @Field("organization_id") String organization_id
     );
 
     @FormUrlEncoded
@@ -381,7 +382,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST(Contants.UPDATE_ORGANISATION+"/{id}")
-    Call<JsonObject> updateOrganisation(
+    Call<LoginResponseModel> updateOrganisation(
             @Path("id") String id,
             @Field("organization_id") String organization_id
     );

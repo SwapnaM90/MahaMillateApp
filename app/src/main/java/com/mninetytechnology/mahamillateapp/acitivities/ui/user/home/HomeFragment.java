@@ -125,6 +125,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         getVideos();
 
         return binding.getRoot();

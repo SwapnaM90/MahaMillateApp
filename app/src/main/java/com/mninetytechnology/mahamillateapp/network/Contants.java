@@ -14,7 +14,7 @@ public class Contants {
     public static final String QUIZ = "quiz/class";
     public static final String GET_QUIZ_DATA = "user";
     public static final String LEADERBORAD = "user/leaderboard";
-    public static final String UPDATE_SCORE = "user";
+    public static final String UPDATE_SCORE = "user/score";
     public static final String GET_CLASS = "class";
     public static final String GET_DIVISION = "village/dvncode";
     public static final String GET_DISTRICTCODE = "village/districtcode";

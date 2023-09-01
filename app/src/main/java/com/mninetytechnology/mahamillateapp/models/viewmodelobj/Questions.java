@@ -6,6 +6,7 @@ public class Questions {
     private String question_mr;
     private Options options;
     private boolean isImage;
+    private String image;
     private String answer;
     private String _id;
 
@@ -63,5 +64,13 @@ public class Questions {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

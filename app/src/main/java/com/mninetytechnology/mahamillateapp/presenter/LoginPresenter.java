@@ -91,13 +91,13 @@ public class LoginPresenter implements LoginContract.Presenter {
                 @Override
                 public void onResponse(@NonNull Call<OrganisationLoginResponseModel> call, @NonNull Response<OrganisationLoginResponseModel> response) {
                     if (response.code() == 200 || response.code() == 201) {
-                        if (response.body() != null) {
+                        if (response.body() != null && response.body().getCode() == 200) {
                             OrganisationLoginObject obj = response.body().getData();
                             mActivity.dismissProgressDialog();
                             mViewModel.organisationLogin(obj, response.body().getToken());
                         } else {
                             mActivity.dismissProgressDialog();
-                            mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
+                            mViewModel.showLoginFailed(response.body().getMessage());
                         }
                     } else {
                         mActivity.dismissProgressDialog();
@@ -108,7 +108,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                 @Override
                 public void onFailure(@NonNull Call<OrganisationLoginResponseModel> call, @NonNull Throwable t) {
                     mActivity.dismissProgressDialog();
-                    mViewModel.showLoginFailed(t.getMessage());
+                    mViewModel.showLoginFailed(mActivity.getString(R.string.invalid_user));
                 }
             });
 
@@ -134,13 +134,13 @@ public class LoginPresenter implements LoginContract.Presenter {
                     @Override
                     public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
                         if (response.code() == 200 || response.code() == 201) {
-                            if (response.body() != null) {
+                            if (response.body() != null && response.body().getCode() == 200) {
                                 UserLoginObject obj = response.body().getData();
                                 mActivity.dismissProgressDialog();
                                 mViewModel.login(obj, response.body().getToken());
                             } else {
                                 mActivity.dismissProgressDialog();
-                                mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
+                                mViewModel.showLoginFailed(response.body().getMessage());
                             }
                         } else {
                             mActivity.dismissProgressDialog();
@@ -151,7 +151,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                     @Override
                     public void onFailure(@NonNull Call<LoginResponseModel> call, @NonNull Throwable t) {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showLoginFailed(t.getMessage());
+                        mViewModel.showLoginFailed(mActivity.getString(R.string.invalid_user));
                     }
                 });
             } else {
@@ -159,13 +159,13 @@ public class LoginPresenter implements LoginContract.Presenter {
                     @Override
                     public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
                         if (response.code() == 200 || response.code() == 201) {
-                            if (response.body() != null) {
+                            if (response.body() != null && response.body().getCode() == 200) {
                                 UserLoginObject obj = response.body().getData();
                                 mActivity.dismissProgressDialog();
                                 mViewModel.login(obj, response.body().getToken());
                             } else {
                                 mActivity.dismissProgressDialog();
-                                mViewModel.showLoginFailed("" + mActivity.getResources().getString(R.string.invalid_response));
+                                mViewModel.showLoginFailed(response.body().getMessage());
                             }
                         } else {
                             mActivity.dismissProgressDialog();
@@ -176,7 +176,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                     @Override
                     public void onFailure(@NonNull Call<LoginResponseModel> call, @NonNull Throwable t) {
                         mActivity.dismissProgressDialog();
-                        mViewModel.showLoginFailed(t.getMessage());
+                        mViewModel.showLoginFailed(mActivity.getString(R.string.invalid_user));
                     }
                 });
             }

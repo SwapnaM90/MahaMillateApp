@@ -151,4 +151,6 @@
     <string name="earn">Earn</string>
     <string name="donation_description">Your donation, no matter the size, helps us to continue our mission of spreading hope and making positive transformations. Join us for making a difference today!</string>
     <string name="hash_maha_millet">#MahaMilletQuiz</string>
+    <string name="invalid_user">Please enter correct login I\'d and password</string>
+    <string name="downloaded_successfully">Downloaded Successfully</string>
 </resources>

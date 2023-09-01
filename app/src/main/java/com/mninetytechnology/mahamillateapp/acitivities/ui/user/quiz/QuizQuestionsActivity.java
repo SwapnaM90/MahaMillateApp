@@ -19,6 +19,7 @@ import androidx.databinding.DataBindingUtil;
 import com.bumptech.glide.Glide;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.base.BaseActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.MainActivity;
 import com.mninetytechnology.mahamillateapp.databinding.ActivityQuizQuestionsBinding;
 import com.mninetytechnology.mahamillateapp.lib.AppKeys;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizQuestionContract;
@@ -34,7 +35,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
     public CountDownTimer countDown;
     private int score;
     private int incorrect;
-//    private int unans;
+    //    private int unans;
     private QuizScore quizScore;
     private ActivityQuizQuestionsBinding binding;
     private QuizQuestionsPresenter presenter;
@@ -99,19 +100,19 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
             countDown.cancel();
         }
         this.selectedQuestion = selectedOption;
-        if (questionsList.get(quesNum).isImage()) {
+        /*if (questionsList.get(quesNum).isImage()) {
             binding.imgOption1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
             binding.imgOption2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
             binding.imgOption3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
             binding.imgOption4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
             view.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#855D25")));
-        } else {
-            binding.txtOption1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
-            binding.txtOption2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
-            binding.txtOption3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
-            binding.txtOption4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
-            view.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#855D25")));
-        }
+        } else {*/
+        binding.txtOption1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
+        binding.txtOption2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
+        binding.txtOption3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
+        binding.txtOption4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F4F4F4")));
+        view.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#855D25")));
+        //}
     }
 
     @Override
@@ -120,45 +121,14 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
         this.passing_marks = passing_marks;
         questionsList = questions;
         binding.textViewProgress.setText(String.valueOf(10));
-        if (questionsList.get(0).isImage()) {
-            setImageQuestion(0);
-        } else {
-            setTextQuestion(0);
-        }
+
+        setTextQuestion(0);
+
         binding.tvCurrentQuestion.setText(String.valueOf(1));
         binding.tvTotalQuestion.setText(String.valueOf(questionsList.size()));
         binding.pbLevel.setMax(questionsList.size());
         starttimer();
         quesNum = 0;
-    }
-
-    /**
-     * set question as a image format
-     */
-    private void setImageQuestion(int position) {
-        binding.tvQuestion.setVisibility(View.GONE);
-        binding.imgQuestion.setVisibility(View.VISIBLE);
-
-        if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
-            Glide.with(QuizQuestionsActivity.this)
-                    .load(questionsList.get(position).getQuestion_en())
-                    .placeholder(R.drawable.ic_quiz)
-                    .into(binding.imgQuestion);
-
-            setUpOptions(questionsList.get(position).isImage(), position);
-        } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
-            Glide.with(QuizQuestionsActivity.this)
-                    .load(questionsList.get(position).getQuestion_mr())
-                    .placeholder(R.drawable.ic_quiz)
-                    .into(binding.imgQuestion);
-            setUpOptions(questionsList.get(position).isImage(), position);
-        } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
-            Glide.with(QuizQuestionsActivity.this)
-                    .load(questionsList.get(position).getQuestion_hd())
-                    .placeholder(R.drawable.ic_quiz)
-                    .into(binding.imgQuestion);
-            setUpOptions(questionsList.get(position).isImage(), position);
-        }
     }
 
     /**
@@ -168,91 +138,6 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
      * @param position
      */
     private void setUpOptions(boolean image, int position) {
-        if (image) {
-            binding.llOptionText.setVisibility(View.GONE);
-            binding.scvOptionImage.setVisibility(View.VISIBLE);
-
-            if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getQuestion_en())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgQuestion);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getA_en())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption1);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getB_en())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption2);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getC_en())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption3);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getD_en())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption4);
-            } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getQuestion_mr())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgQuestion);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getA_mr())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption1);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getB_mr())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption2);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getC_mr())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption3);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getD_mr())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption4);
-            } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getQuestion_hd())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgQuestion);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getA_hd())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption1);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getB_hd())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption2);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load(questionsList.get(position).getOptions().getC_hd())
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption3);
-
-                Glide.with(QuizQuestionsActivity.this)
-                        .load("http://api.milletsindia.org/quiz/image/1692431723886.jpg")
-                        .placeholder(R.drawable.ic_quiz)
-                        .into(binding.imgOption4);
-            }
-
-
-        } else {
-            binding.scvOptionImage.setVisibility(View.GONE);
-            binding.llOptionText.setVisibility(View.VISIBLE);
         if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
             binding.tvQuestion.setText(questionsList.get(position).getQuestion_en());
             binding.txtOption1.setText(questionsList.get(position).getOptions().getA_en());
@@ -272,15 +157,27 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
             binding.txtOption3.setText(questionsList.get(position).getOptions().getC_hd());
             binding.txtOption4.setText(questionsList.get(position).getOptions().getD_hd());
         }
-      }
     }
 
     /**
      * set question as a text format
      */
     private void setTextQuestion(int position) {
-        binding.tvQuestion.setVisibility(View.VISIBLE);
-        binding.imgQuestion.setVisibility(View.GONE);
+        if (questionsList.get(0).isImage()) {
+            binding.imgQuestion.setVisibility(View.VISIBLE);
+            Glide.with(QuizQuestionsActivity.this)
+                    .load(questionsList.get(0).getImage())
+                    .into(binding.imgQuestion);
+        } else {
+            binding.imgQuestion.setVisibility(View.GONE);
+        }
+        if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
+            binding.tvQuestion.setText(questionsList.get(0).getQuestion_en());
+        } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
+            binding.tvQuestion.setText(questionsList.get(0).getQuestion_mr());
+        } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
+            binding.tvQuestion.setText(questionsList.get(0).getQuestion_hd());
+        }
         setUpOptions(questionsList.get(position).isImage(), position);
     }
 
@@ -306,18 +203,20 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
                 binding.btnNext.setText(getString(R.string.finish));
             }
             if (questionsList.get(quesNum).isImage()) {
-                setImageQuestion(quesNum);
+                binding.imgQuestion.setVisibility(View.VISIBLE);
+                Glide.with(QuizQuestionsActivity.this)
+                        .load(questionsList.get(quesNum).getImage())
+                        .into(binding.imgQuestion);
             } else {
-                binding.tvQuestion.setVisibility(View.VISIBLE);
                 binding.imgQuestion.setVisibility(View.GONE);
-                binding.llOptionText.setVisibility(View.VISIBLE);
-                binding.scvOptionImage.setVisibility(View.GONE);
-                playAnim(binding.tvQuestion, 0, 0);
-                playAnim(binding.txtOption1, 0, 1);
-                playAnim(binding.txtOption2, 0, 2);
-                playAnim(binding.txtOption3, 0, 3);
-                playAnim(binding.txtOption4, 0, 4);
             }
+
+            binding.llOptionText.setVisibility(View.VISIBLE);
+            playAnim(binding.tvQuestion, 0, 0);
+            playAnim(binding.txtOption1, 0, 1);
+            playAnim(binding.txtOption2, 0, 2);
+            playAnim(binding.txtOption3, 0, 3);
+            playAnim(binding.txtOption4, 0, 4);
 
             int quesNumFinal = quesNum + 1;
             binding.tvCurrentQuestion.setText(String.valueOf(quesNumFinal));
@@ -438,7 +337,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
+        /*new AlertDialog.Builder(this)
                 .setTitle("Really Exit?")
                 .setMessage("Are you sure you want to exit?")
                 .setNegativeButton(android.R.string.no, null)
@@ -448,7 +347,7 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
                         QuizQuestionsActivity.super.onBackPressed();
                         countDown.cancel();
                     }
-                }).create().show();
-
+                }).create().show();*/
+        startActivityOnTop(MainActivity.class,true);
     }
 }

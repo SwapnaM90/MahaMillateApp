@@ -37,10 +37,12 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         this.context = context;
         this.mListener = mListener;
         organisations = new ArrayList<>();
+        organisationListFiltered = new ArrayList<>();
     }
 
     public void setOrganisationLoginObjectList(List<OrganisationLoginObject> organisations1) {
-        this.organisations = organisations;
+        this.organisations = organisations1;
+        this.organisationListFiltered = organisations1;
     }
 
     @NonNull
@@ -67,7 +69,7 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         switch (getItemViewType(position)) {
             case ITEM:
                 OrganisationViewHolder organisationViewHolder = (OrganisationViewHolder) holder;
-                OrganisationLoginObject organisation = organisations.get(position);
+                OrganisationLoginObject organisation = organisationListFiltered.get(position);
                 organisationViewHolder.binding.setOrganisation(organisation);
                 organisationViewHolder.binding.textViewTitle.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -88,12 +90,12 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemCount() {
-        return organisations == null ? 0 : organisations.size();
+        return organisationListFiltered == null ? 0 : organisationListFiltered.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        return (position == organisations.size() - 1 && isLoadingAdded) ? LOADING : ITEM;
+        return (position == organisationListFiltered.size() - 1 && isLoadingAdded) ? LOADING : ITEM;
     }
 
     public void addLoadingFooter() {
@@ -104,28 +106,30 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void removeLoadingFooter() {
         isLoadingAdded = false;
 
-        int position = organisations.size() - 1;
+        int position = organisationListFiltered.size() - 1;
         OrganisationLoginObject result = getItem(position);
 
         if (result != null) {
             organisations.remove(position);
+            organisationListFiltered.remove(position);
             notifyItemRemoved(position);
         }
     }
 
     public void add(OrganisationLoginObject organisation) {
+        organisationListFiltered.add(organisation);
         organisations.add(organisation);
-        notifyItemInserted(organisations.size() - 1);
+        notifyItemInserted(organisationListFiltered.size() - 1);
     }
 
-    public void addAll(List<OrganisationLoginObject> moveResults) {
-        for (OrganisationLoginObject result : moveResults) {
+    public void addAll(List<OrganisationLoginObject> organizationResult) {
+        for (OrganisationLoginObject result : organizationResult) {
             add(result);
         }
     }
 
     public OrganisationLoginObject getItem(int position) {
-        return organisations.get(position);
+        return organisationListFiltered.get(position);
     }
 
     @Override
@@ -154,7 +158,6 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 organisationListFiltered = (ArrayList<OrganisationLoginObject>) filterResults.values;
-
                 notifyDataSetChanged();
             }
         };

@@ -21,8 +21,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/organisation"
                 android:background="@drawable/round_corner_edittext"
-                android:inputType="none"
-                android:focusable="false"
+                android:inputType="text"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="10dp"
                 android:padding="@dimen/activity_horizontal_margin"/>

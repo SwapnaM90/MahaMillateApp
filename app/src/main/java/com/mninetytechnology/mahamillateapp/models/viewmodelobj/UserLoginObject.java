@@ -10,7 +10,7 @@ import java.util.Date;
 public class UserLoginObject {
     private String _id;
     private int organization_points;
-    private int referral_earn_points;
+    private float referral_earn_points;
     private int firstLevel;
     private int secondLevel;
     private int thirdLevel;
@@ -26,7 +26,7 @@ public class UserLoginObject {
     private String myclass;
     private String referral_code;
     private double referral_points;
-    private int referral_userId;
+    private String referral_userId;
     private String organization_id;
     private String password;
     private Date createdAt;
@@ -48,11 +48,11 @@ public class UserLoginObject {
         this.organization_points = organization_points;
     }
 
-    public int getReferral_earn_points() {
+    public float getReferral_earn_points() {
         return referral_earn_points;
     }
 
-    public void setReferral_earn_points(int referral_earn_points) {
+    public void setReferral_earn_points(float referral_earn_points) {
         this.referral_earn_points = referral_earn_points;
     }
 
@@ -168,11 +168,11 @@ public class UserLoginObject {
         this.referral_points = referral_points;
     }
 
-    public int getReferral_userId() {
+    public String getReferral_userId() {
         return referral_userId;
     }
 
-    public void setReferral_userId(int referral_userId) {
+    public void setReferral_userId(String referral_userId) {
         this.referral_userId = referral_userId;
     }
 
