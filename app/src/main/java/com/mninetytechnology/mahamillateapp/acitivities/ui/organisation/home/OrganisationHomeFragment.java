@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.Gson;
 import com.mninetytechnology.mahamillateapp.R;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.OrganisationMainActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.organisation.blog.OrganisationBlogActivity;
@@ -23,7 +24,10 @@ import com.mninetytechnology.mahamillateapp.acitivities.ui.user.news.NewsActivit
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.videos.VideosActivity;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentHomeBinding;
 import com.mninetytechnology.mahamillateapp.databinding.FragmentOrganisationHomeBinding;
+import com.mninetytechnology.mahamillateapp.lib.AppKeys;
+import com.mninetytechnology.mahamillateapp.models.viewmodelobj.OrganisationLoginObject;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.YoutubeVideo;
+import com.mninetytechnology.mahamillateapp.network.responsemodel.OrganisationLoginResponseModel;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.VideoResponseModel;
 import com.mninetytechnology.mahamillateapp.network.retrofit.RetrofitClient;
 import com.mninetytechnology.mahamillateapp.utils.StringUtil;
@@ -46,12 +50,7 @@ public class OrganisationHomeFragment extends Fragment {
         binding = FragmentOrganisationHomeBinding.inflate(inflater, container, false);
         mActivity = (OrganisationMainActivity) getActivity();
 
-        binding.imgVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openVideosActivity();
-            }
-        });
+        binding.imgVideo.setOnClickListener(view -> openVideosActivity());
 
         binding.tvVideo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +99,7 @@ public class OrganisationHomeFragment extends Fragment {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        getVideos();
+        getOrganisationVerification();
 
         return binding.getRoot();
     }
@@ -129,15 +128,54 @@ public class OrganisationHomeFragment extends Fragment {
         binding = null;
     }
 
-    public void getVideos() {
+    public void getOrganisationVerification() {
         if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
+
+            RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
+            String userId = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginServerUserId();
+            RetrofitClient.getApiService().getOrganisationByID(userId).enqueue(new Callback<OrganisationLoginResponseModel>() {
+                @Override
+                public void onResponse(Call<OrganisationLoginResponseModel> call, Response<OrganisationLoginResponseModel> response) {
+                    mActivity.dismissProgressDialog();
+                    if (response.code() == 200 && response.body() != null && response.body().getData() != null) {
+                        OrganisationLoginObject userLoginObject = response.body().getData();
+                        Gson gson = new Gson();
+                        String user = gson.toJson(userLoginObject, OrganisationLoginObject.class);
+                        mActivity.getGlobalHelper().getSharedPreferencesHelper().setPrefLoginUser(user);
+                        mActivity.getGlobalHelper().getSharedPreferencesHelper().setLoginServerUserId(userLoginObject.get_id());
+                        mActivity.getGlobalHelper().getSharedPreferencesHelper().setUser(AppKeys.ORGANISATION);
+                        if (userLoginObject.isVerified()) {
+                            binding.tvVerification.setVisibility(View.VISIBLE);
+                        } else {
+                            binding.tvVerification.setVisibility(View.GONE);
+                        }
+                        getVideos();
+                    } else {
+                        mActivity.showErrorSnackBar(binding.getRoot(), mActivity.getResources().getString(R.string.invalid_response));
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<OrganisationLoginResponseModel> call, Throwable t) {
+                    mActivity.dismissProgressDialog();
+                    mActivity.showErrorSnackBar(binding.getRoot(), mActivity.getResources().getString(R.string.invalid_response));
+                }
+            });
+
+        } else {
+            mActivity.showNotInternetConnected((dialog, which) -> dialog.dismiss());
+        }
+    }
+    public void getVideos() {
+        if (mActivity.isInternetConnected()) {
+            //mActivity.startProgressDialog(mActivity);
 
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
             RetrofitClient.getApiService().getVideos().enqueue(new Callback<VideoResponseModel>() {
                 @Override
                 public void onResponse(Call<VideoResponseModel> call, Response<VideoResponseModel> response) {
-                    mActivity.dismissProgressDialog();
+              //      mActivity.dismissProgressDialog();
                     if (response.code() == 200 && response.body() != null && response.body().getData() != null) {
                         for (int i = 0; i < response.body().getData().size(); i++) {
                             YoutubeVideo video = response.body().getData().get(i);
@@ -154,7 +192,7 @@ public class OrganisationHomeFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<VideoResponseModel> call, Throwable t) {
-                    mActivity.dismissProgressDialog();
+                //    mActivity.dismissProgressDialog();
                     mActivity.showErrorSnackBar(binding.getRoot(), mActivity.getResources().getString(R.string.invalid_response));
                 }
             });

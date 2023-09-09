@@ -1,7 +1,9 @@
 package com.mninetytechnology.mahamillateapp.presenter;
 
 import com.mninetytechnology.mahamillateapp.R;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizCertificateActivity;
 import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizScoreActivity;
+import com.mninetytechnology.mahamillateapp.acitivities.ui.user.quiz.QuizShareActivity;
 import com.mninetytechnology.mahamillateapp.models.contracts.QuizScoreContract;
 import com.mninetytechnology.mahamillateapp.models.viewmodelobj.QuizScore;
 import com.mninetytechnology.mahamillateapp.network.responsemodel.QuizScoreResponseModel;
@@ -25,6 +27,7 @@ public class QuizScorePresenter implements QuizScoreContract.Presenter {
 
     @Override
     public void uploadScore(QuizScore score) {
+        boolean isPassed = false;
         if (mActivity.isInternetConnected()) {
             mActivity.startProgressDialog(mActivity);
 
@@ -33,7 +36,13 @@ public class QuizScorePresenter implements QuizScoreContract.Presenter {
             RetrofitClient.key = mActivity.getGlobalHelper().getSharedPreferencesHelper().getLoginKey();
 
             String userScore = String.valueOf(score.getScore());
-            RetrofitClient.getApiService().updateScore(userId, userScore).enqueue(new Callback<QuizScoreResponseModel>() {
+
+            if (score.getScore() >= score.getPassing_marks()) {
+                isPassed = true;
+            } else {
+                isPassed = false;
+            }
+            RetrofitClient.getApiService().updateScore(userId, userScore,isPassed).enqueue(new Callback<QuizScoreResponseModel>() {
                 @Override
                 public void onResponse(Call<QuizScoreResponseModel> call, Response<QuizScoreResponseModel> response) {
                     mActivity.dismissProgressDialog();

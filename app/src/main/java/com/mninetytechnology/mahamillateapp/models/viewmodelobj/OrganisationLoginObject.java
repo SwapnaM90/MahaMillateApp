@@ -13,6 +13,7 @@ public class OrganisationLoginObject {
     private String reg_number;
     private String contact_person;
     private String password;
+    private boolean isVerified;
     private String contact_person_email;
     private String contact_person_phone_number;
     private String state;
@@ -61,6 +62,14 @@ public class OrganisationLoginObject {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public void setVerified(boolean verified) {
+        isVerified = verified;
     }
 
     public String getContact_person_email() {

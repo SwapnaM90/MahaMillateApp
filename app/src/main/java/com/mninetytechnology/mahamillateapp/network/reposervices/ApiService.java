@@ -243,7 +243,8 @@ public interface ApiService {
     @POST(Contants.UPDATE_SCORE+"/{userId}")
     Call<QuizScoreResponseModel> updateScore(
             @Path("userId") String userId,
-            @Field("firstLevel") String firstLevel
+            @Field("firstLevel") String firstLevel,
+            @Field("result") boolean result
     );
 
     /**
@@ -378,13 +379,23 @@ public interface ApiService {
     /**
      * @return
      * @date 3-8-2023
-     * gets all village
+     * updates organisation
      */
     @FormUrlEncoded
     @POST(Contants.UPDATE_ORGANISATION+"/{id}")
     Call<LoginResponseModel> updateOrganisation(
             @Path("id") String id,
             @Field("organization_id") String organization_id
+    );
+
+    /**
+     * @return
+     * @date 3-8-2023
+     * gets organisation
+     */
+    @GET(Contants.GET_ORGANISATION+"/{id}")
+    Call<OrganisationLoginResponseModel> getOrganisationByID(
+            @Path("id") String id
     );
 }
 

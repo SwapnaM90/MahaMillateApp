@@ -17,7 +17,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ViewM
     private SplashPresenter mPresenter;
     private Runnable mRunnable;
     private Handler mHandler;
-    private final static long SPLASH_INTERVAL_IN_MILLIS = 1500;
+    private final static long SPLASH_INTERVAL_IN_MILLIS = 2000;
     private GlobalHelper helper;
     private static final String TAG = "SplashActivity";
     Integer[] drawables = {

@@ -13,6 +13,8 @@ public class VideoResponseModel {
     int count;
     int code;
 
+    String Message;
+
     public List<YoutubeVideo> getData() {
         return Data;
     }
@@ -35,5 +37,13 @@ public class VideoResponseModel {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getMessage() {
+        return Message;
+    }
+
+    public void setMessage(String message) {
+        Message = message;
     }
 }

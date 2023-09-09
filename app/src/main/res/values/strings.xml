@@ -153,4 +153,7 @@
     <string name="hash_maha_millet">#MahaMilletQuiz</string>
     <string name="invalid_user">Please enter correct login I\'d and password</string>
     <string name="downloaded_successfully">Downloaded Successfully</string>
+    <string name="registration_number">Registration number</string>
+    <string name="total">Total :</string>
+    <string name="not_verified">You are welcome. I’m glad you are interested in the MahaMilletsQuiz, a quiz competition on the goodness of millets and their health benefits. Millets are nutritious cereals that are rich in vitamins, minerals, essential fatty acids and antioxidants. They are also climate-resilient crops that can grow in dry and marginal lands. The United Nations has declared 2023 as the International Year of Millets (IYOM) to raise awareness and promote the consumption of millets globally.\n\nYour registration is in process and you will soon receive the registration approval. You can contact the Tifan Foundation for any queries or assistance.</string>
 </resources>

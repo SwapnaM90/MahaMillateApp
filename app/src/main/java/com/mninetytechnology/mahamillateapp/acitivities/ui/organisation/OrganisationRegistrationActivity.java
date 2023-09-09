@@ -39,7 +39,6 @@ public class OrganisationRegistrationActivity extends BaseActivity implements Or
     private SingleAddressBinding addressBinding;
     private AlertDialog dialog;
     private String phone_number;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -60,6 +60,7 @@ public class ProfileFragment extends Fragment implements ProfileContract.ViewMod
         }
         if (obj != null) {
             binding.tvUserName.setText(obj.getName());
+            binding.tvRefralCode.setText(obj.getReferral_code());
             presenter.address.set("" + obj.getVillage() + "," + obj.getDistrict() + "," + obj.getState());
             presenter.district.set(obj.getDistrict());
             presenter.village.set(obj.getVillage());

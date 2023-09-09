@@ -55,7 +55,12 @@ public class SplashPresenter implements SplashContract.Presenter {
                 /* You can also convert the milliseconds to days using this method
                  * float daysBetween = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS) */
                 if (daysBetween < 15) {
-                    mViewModel.startAnotherActivity(MainActivity.class, true);
+                    if (mActivity.getGlobalHelper().getSharedPreferencesHelper().getUser().equalsIgnoreCase(AppKeys.ORGANISATION)) {
+
+                        mViewModel.startAnotherActivity(OrganisationMainActivity.class, true);
+                    } else {
+                        mViewModel.startAnotherActivity(MainActivity.class, true);
+                    }
                     Log.i("SplashActivity::", "direct start");
                 } else {
                     try {

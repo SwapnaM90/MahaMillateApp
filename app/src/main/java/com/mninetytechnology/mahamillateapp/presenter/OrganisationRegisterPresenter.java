@@ -77,12 +77,10 @@ public class OrganisationRegisterPresenter implements OrganisationRegisterContra
         } else if (address == null || TextUtils.isEmpty(address.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
-        }
-//        else if (division == null || TextUtils.isEmpty(division.get())) {
-//            mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
-//            return false;
-//        }
-        else if (district == null || TextUtils.isEmpty(district.get())) {
+        } else if (referal_code == null || TextUtils.isEmpty(referal_code.get())) {
+            mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
+            return false;
+        } else if (district == null || TextUtils.isEmpty(district.get())) {
             mViewModel.showRegisterFailed(mActivity.getResources().getString(R.string.empty_field));
             return false;
         } else if (taluka == null || TextUtils.isEmpty(taluka.get())) {

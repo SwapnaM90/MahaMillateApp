@@ -263,47 +263,77 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
                             switch (viewNum) {
                                 case 0:
                                     if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getQuestion_en());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getQuestion_en() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getQuestion_en());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getQuestion_mr());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getQuestion_mr() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getQuestion_mr());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getQuestion_hd());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getQuestion_hd() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getQuestion_hd());
+                                        }
                                     }
                                     break;
                                 case 1:
                                     if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA_en());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getA_en() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA_en());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA_mr());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getA_mr() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA_mr());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA_hd());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getA_hd() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getA_hd());
+                                        }
                                     }
                                     break;
                                 case 2:
                                     if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB_en());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getB_en() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB_en());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB_mr());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getB_mr() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB_mr());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB_hd());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getB_hd() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getB_hd());
+                                        }
                                     }
                                     break;
                                 case 3:
                                     if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC_en());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getC_en() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC_en());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC_mr());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getC_mr() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC_mr());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC_hd());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getC_hd() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getC_hd());
+                                        }
                                     }
                                     break;
                                 case 4:
                                     if (language.equalsIgnoreCase(AppKeys.ENGLISH)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD_en());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getD_en() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD_en());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.MARATHI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD_mr());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getD_mr() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD_mr());
+                                        }
                                     } else if (language.equalsIgnoreCase(AppKeys.HINDI)) {
-                                        ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD_hd());
+                                        if(questionsList.get(quesNum) != null && questionsList.get(quesNum).getOptions() != null && questionsList.get(quesNum).getOptions().getD_hd() != null) {
+                                            ((TextView) view).setText(questionsList.get(quesNum).getOptions().getD_hd());
+                                        }
                                     }
                                     break;
                             }
@@ -337,17 +367,16 @@ public class QuizQuestionsActivity extends BaseActivity implements QuizQuestionC
 
     @Override
     public void onBackPressed() {
-        /*new AlertDialog.Builder(this)
+        new AlertDialog.Builder(this)
                 .setTitle("Really Exit?")
                 .setMessage("Are you sure you want to exit?")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
-                        QuizQuestionsActivity.super.onBackPressed();
+                        startActivityOnTop(MainActivity.class,true);
                         countDown.cancel();
                     }
-                }).create().show();*/
-        startActivityOnTop(MainActivity.class,true);
+                }).create().show();
     }
 }

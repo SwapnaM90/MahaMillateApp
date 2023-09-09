@@ -174,15 +174,19 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onResponse(Call<VideoResponseModel> call, Response<VideoResponseModel> response) {
                     mActivity.dismissProgressDialog();
-                    if (response.code() == 200 && response.body() != null && response.body().getData() != null) {
-                        for (int i = 0; i < response.body().getData().size(); i++) {
-                            YoutubeVideo video = response.body().getData().get(i);
-                            if (video.isSpecial) {
-                                youtubeVideo = video;
-                                break;
+                    if (response.code() == 200 ) {
+                        if(response.body() != null && response.body().getData() != null) {
+                            for (int i = 0; i < response.body().getData().size(); i++) {
+                                YoutubeVideo video = response.body().getData().get(i);
+                                if (video.isSpecial) {
+                                    youtubeVideo = video;
+                                    break;
+                                }
                             }
+                            setUpVideo();
+                        } else {
+                            mActivity.showErrorSnackBar(binding.getRoot(), response.body().getMessage());
                         }
-                        setUpVideo();
                     } else {
                         mActivity.showErrorSnackBar(binding.getRoot(), mActivity.getResources().getString(R.string.invalid_response));
                     }

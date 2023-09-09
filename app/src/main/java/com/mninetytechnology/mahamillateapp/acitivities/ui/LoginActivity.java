@@ -61,6 +61,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
             helper.getSharedPreferencesHelper().setLoginServerUserId(userLoginObject.get_id());
             helper.getSharedPreferencesHelper().setLoginServerUserClass(userLoginObject.getMyclass());
             helper.getSharedPreferencesHelper().setLoginKey(token);
+            helper.getSharedPreferencesHelper().setUser(AppKeys.USER);
 
             //start otp check activity
             Intent intent = new Intent(this, MainActivity.class);
@@ -83,6 +84,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ViewMod
             helper.getSharedPreferencesHelper().setPrefLoginUser(user);
             helper.getSharedPreferencesHelper().setLoginServerUserId(userLoginObject.get_id());
             helper.getSharedPreferencesHelper().setLoginKey(token);
+            helper.getSharedPreferencesHelper().setUser(AppKeys.ORGANISATION);
 
             //start otp check activity
             Intent intent = new Intent(this, OrganisationMainActivity.class);

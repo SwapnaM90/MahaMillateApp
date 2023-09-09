@@ -136,7 +136,7 @@
                         android:id="@+id/edt_referal_code"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/referal_code"
+                        android:hint="@string/registration_number"
                         android:background="@drawable/round_corner_edittext"
                         android:inputType="textEmailAddress"
                         android:text="@={presenter.referal_code}"

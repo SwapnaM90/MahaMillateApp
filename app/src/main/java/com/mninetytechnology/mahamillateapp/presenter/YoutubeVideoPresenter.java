@@ -41,8 +41,12 @@ public class YoutubeVideoPresenter implements YoutubeVideoContract.Presenter {
                 @Override
                 public void onResponse(Call<VideoResponseModel> call, Response<VideoResponseModel> response) {
                     mActivity.dismissProgressDialog();
-                    if (response.code() == 200 && response.body() != null) {
-                        mViewModel.setUpYoutubeVideoAdapter(response.body().getData());
+                    if (response.code() == 200) {
+                        if (response.body() != null && response.body().getData() != null) {
+                            mViewModel.setUpYoutubeVideoAdapter(response.body().getData());
+                        }  else {
+                            mViewModel.showYoutubeVideoFailed(response.body().getMessage());
+                        }
                     } else {
                         mViewModel.showYoutubeVideoFailed(mActivity.getResources().getString(R.string.invalid_response));
                     }
